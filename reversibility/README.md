@@ -1,4 +1,4 @@
-# Do open-weight LLM agents represent and act on action reversibility? (ADNN Project Option 1)
+# Do open-weight LLM agents represent and act on action reversibility? 
 
 Pipeline for the six steps of the brief. Four people, ~2 months in the brief; every stage below is scripted and seeded.
 
