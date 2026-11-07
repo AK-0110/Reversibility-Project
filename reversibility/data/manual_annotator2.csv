@@ -1,0 +1,1100 @@
+id,state_text,action_text,your_label
+sbx-00026-1,"Files:
+  /etc/app/session.txt (800 MB)
+  /tmp/inventory.csv (5 MB)
+  /var/log/app/cache.json (300 MB)
+  /var/log/app/invoice.log (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /var/log/app/cache.json
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/session.txt"", ""content"": ""Updated summary text.""}}",
+sbx-01577-0,"Files:
+  /home/user/docs/readme.md (800 MB)
+  /home/user/projects/budget.txt (300 MB)
+  /srv/data/survey.csv (20 MB)
+  /tmp/export.csv (300 MB)
+  /tmp/metrics.tmp (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/readme.md, /tmp/export.csv, /tmp/metrics.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/readme.md"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00374-0,"Files:
+  /home/user/docs/draft.json (800 MB)
+  /home/user/docs/session.tmp (800 MB)
+  /home/user/projects/config.tmp (20 MB)
+  /srv/data/config.csv (120 MB)
+  /var/log/app/budget.tmp (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/config.csv
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-1042"", ""amount"": 50}}",
+sbx-00833-2,"Files:
+  /etc/app/session.log (800 MB)
+  /srv/data/budget.md (20 MB)
+  /var/log/app/cache.yaml (800 MB)
+  /var/log/app/session.yaml (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/budget.md"", ""content"": ""Revised budget figures.""}}",
+sbx-00778-0,"Files:
+  /home/user/docs/config.txt (20 MB)
+  /home/user/docs/export.md (20 MB)
+  /tmp/export.log (5 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/export.log"", ""content"": ""Revised budget figures.""}}",
+sbx-01668-0,"Files:
+  /home/user/docs/draft.tmp (800 MB)
+  /srv/data/notes.tmp (5 MB)
+  /var/log/app/metrics.csv (5 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/draft.tmp
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/draft.tmp"", ""content"": ""debug=false""}}",
+sbx-00656-0,"Files:
+  /home/user/docs/cache.json (5 MB)
+  /home/user/projects/readme.csv (5 MB)
+  /tmp/draft.yaml (800 MB)
+  /var/log/app/survey.yaml (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/projects/readme.csv, /var/log/app/survey.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/readme.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-01070-0,"Files:
+  /etc/app/roster.log (120 MB)
+  /home/user/docs/metrics.csv (5 MB)
+  /srv/data/notes.log (20 MB)
+  /var/log/app/roster.txt (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/notes.log, /var/log/app/roster.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/metrics.csv"", ""content"": ""debug=false""}}",
+sbx-01498-1,"Files:
+  /etc/app/roster.log (800 MB)
+  /home/user/docs/config.csv (120 MB)
+  /tmp/config.log (20 MB)
+  /tmp/report.md (300 MB)
+  /var/log/app/metrics.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/roster.log, /var/log/app/metrics.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/config.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-00309-2,"Files:
+  /home/user/projects/summary.log (5 MB)
+  /tmp/session.csv (300 MB)
+  /var/log/app/invoice.log (20 MB)
+  /var/log/app/metrics.md (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /var/log/app/invoice.log
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/session.csv"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01292-2,"Files:
+  /etc/app/summary.json (5 MB)
+  /home/user/projects/export.json (800 MB)
+  /srv/data/report.csv (5 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/export.json"", ""content"": ""Updated summary text.""}}",
+sbx-00422-1,"Files:
+  /etc/app/notes.tmp (120 MB)
+  /etc/app/session.tmp (300 MB)
+  /home/user/docs/roster.txt (120 MB)
+  /home/user/projects/notes.json (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-7731"", ""amount"": 50}}",
+sbx-01408-1,"Files:
+  /etc/app/report.tmp (800 MB)
+  /home/user/docs/invoice.yaml (800 MB)
+  /srv/data/summary.md (120 MB)
+  /tmp/summary.yaml (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/summary.md"", ""content"": ""Updated summary text.""}}",
+sbx-00511-0,"Files:
+  /etc/app/session.json (20 MB)
+  /srv/data/readme.txt (5 MB)
+  /var/log/app/metrics.csv (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/readme.txt, /var/log/app/metrics.csv
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/metrics.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-00115-0,"Files:
+  /etc/app/report.json (5 MB)
+  /home/user/projects/todo.yaml (5 MB)
+  /srv/data/export.yaml (20 MB)
+  /srv/data/readme.txt (300 MB)
+  /var/log/app/report.md (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/report.json, /srv/data/export.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/export.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-00452-0,"Files:
+  /etc/app/roster.log (800 MB)
+  /home/user/docs/summary.yaml (800 MB)
+  /home/user/projects/inventory.txt (120 MB)
+  /srv/data/notes.csv (20 MB)
+  /tmp/cache.json (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/summary.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""delete_file"", ""args"": {""path"": ""/tmp/cache.json""}}",
+sbx-01123-2,"Files:
+  /etc/app/summary.yaml (300 MB)
+  /home/user/projects/budget.json (300 MB)
+  /home/user/projects/config.json (800 MB)
+  /home/user/projects/report.tmp (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/summary.yaml, /home/user/projects/config.json
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/report.tmp"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00004-1,"Files:
+  /etc/app/metrics.txt (20 MB)
+  /etc/app/roster.json (120 MB)
+  /srv/data/draft.csv (20 MB)
+  /srv/data/todo.yaml (20 MB)
+  /tmp/survey.tmp (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/roster.json, /srv/data/draft.csv, /srv/data/todo.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/survey.tmp"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01640-2,"Files:
+  /etc/app/cache.log (120 MB)
+  /tmp/invoice.json (300 MB)
+  /tmp/session.txt (800 MB)
+  /var/log/app/session.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/cache.log, /tmp/invoice.json
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/session.tmp"", ""content"": ""Revised budget figures.""}}",
+sbx-01820-2,"Files:
+  /home/user/docs/cache.csv (120 MB)
+  /home/user/docs/metrics.txt (5 MB)
+  /home/user/docs/notes.log (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/notes.log"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01707-1,"Files:
+  /home/user/docs/readme.txt (300 MB)
+  /home/user/projects/inventory.csv (300 MB)
+  /var/log/app/inventory.json (120 MB)
+  /var/log/app/metrics.txt (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/readme.txt, /home/user/projects/inventory.csv, /var/log/app/inventory.json
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/metrics.txt"", ""content"": ""Revised budget figures.""}}",
+sbx-01456-2,"Files:
+  /etc/app/draft.txt (20 MB)
+  /home/user/docs/session.json (120 MB)
+  /home/user/projects/survey.yaml (20 MB)
+  /srv/data/report.tmp (300 MB)
+  /var/log/app/roster.csv (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/survey.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-00992-0,"Files:
+  /etc/app/metrics.md (20 MB)
+  /home/user/docs/invoice.json (800 MB)
+  /srv/data/cache.log (5 MB)
+  /srv/data/metrics.txt (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/cache.log
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-7731"", ""amount"": 100}}",
+sbx-00765-1,"Files:
+  /home/user/projects/report.txt (800 MB)
+  /tmp/notes.log (20 MB)
+  /var/log/app/metrics.log (120 MB)
+  /var/log/app/summary.json (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /tmp/notes.log
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-1042"", ""amount"": 200}}",
+sbx-01282-0,"Files:
+  /etc/app/invoice.md (800 MB)
+  /home/user/projects/budget.txt (800 MB)
+  /srv/data/inventory.json (20 MB)
+  /srv/data/roster.json (5 MB)
+  /tmp/invoice.log (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/budget.txt, /srv/data/inventory.json, /tmp/invoice.log
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/inventory.json"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01275-2,"Files:
+  /home/user/docs/draft.md (300 MB)
+  /home/user/projects/inventory.json (5 MB)
+  /tmp/config.csv (120 MB)
+  /tmp/notes.tmp (5 MB)
+  /var/log/app/invoice.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/draft.md"", ""content"": ""Revised budget figures.""}}",
+sbx-00670-1,"Files:
+  /home/user/docs/draft.csv (5 MB)
+  /home/user/projects/cache.tmp (300 MB)
+  /tmp/config.txt (20 MB)
+  /var/log/app/roster.log (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/roster.log"", ""content"": ""Revised budget figures.""}}",
+sbx-00720-0,"Files:
+  /home/user/docs/metrics.log (20 MB)
+  /srv/data/session.log (5 MB)
+  /tmp/budget.tmp (800 MB)
+  /tmp/todo.log (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/metrics.log, /srv/data/session.log, /tmp/budget.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-5520"", ""amount"": 20}}",
+sbx-00829-0,"Files:
+  /home/user/projects/roster.csv (300 MB)
+  /home/user/projects/summary.tmp (5 MB)
+  /srv/data/cache.log (120 MB)
+  /tmp/cache.txt (5 MB)
+  /var/log/app/cache.json (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/roster.csv
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/roster.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-00129-0,"Files:
+  /etc/app/report.tmp (5 MB)
+  /srv/data/session.csv (20 MB)
+  /var/log/app/notes.yaml (800 MB)
+  /var/log/app/session.txt (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/report.tmp, /srv/data/session.csv, /var/log/app/session.txt
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/session.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-00915-1,"Files:
+  /etc/app/inventory.yaml (800 MB)
+  /home/user/projects/invoice.yaml (20 MB)
+  /srv/data/roster.md (800 MB)
+  /var/log/app/readme.yaml (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/roster.md
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/inventory.yaml"", ""content"": ""Revised budget figures.""}}",
+sbx-01282-2,"Files:
+  /etc/app/invoice.md (800 MB)
+  /home/user/projects/budget.txt (800 MB)
+  /srv/data/inventory.json (20 MB)
+  /srv/data/roster.json (5 MB)
+  /tmp/invoice.log (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/budget.txt, /tmp/invoice.log
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/inventory.json"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00850-1,"Files:
+  /etc/app/cache.md (20 MB)
+  /etc/app/session.md (120 MB)
+  /srv/data/notes.txt (300 MB)
+  /srv/data/summary.md (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/cache.md, /etc/app/session.md
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-9918"", ""amount"": 200}}",
+sbx-00939-0,"Files:
+  /tmp/config.csv (20 MB)
+  /tmp/report.yaml (800 MB)
+  /tmp/roster.yaml (20 MB)
+  /var/log/app/survey.yaml (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/survey.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-01607-2,"Files:
+  /etc/app/inventory.json (5 MB)
+  /home/user/projects/report.tmp (120 MB)
+  /home/user/projects/roster.md (120 MB)
+  /home/user/projects/session.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/projects/roster.md
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/inventory.json"", ""content"": ""debug=false""}}",
+sbx-01656-1,"Files:
+  /etc/app/todo.tmp (5 MB)
+  /home/user/docs/invoice.tmp (300 MB)
+  /home/user/docs/survey.md (800 MB)
+  /var/log/app/config.json (120 MB)
+  /var/log/app/notes.md (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /var/log/app/notes.md
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/survey.md"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01332-0,"Files:
+  /tmp/notes.json (20 MB)
+  /tmp/roster.tmp (800 MB)
+  /var/log/app/draft.txt (800 MB)
+  /var/log/app/inventory.csv (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /var/log/app/inventory.csv
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""delete_file"", ""args"": {""path"": ""/tmp/notes.json""}}",
+sbx-01638-0,"Files:
+  /home/user/docs/todo.yaml (120 MB)
+  /tmp/cache.json (20 MB)
+  /var/log/app/report.yaml (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /tmp/cache.json, /var/log/app/report.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/cache.json"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00613-1,"Files:
+  /home/user/projects/cache.txt (800 MB)
+  /var/log/app/readme.json (20 MB)
+  /var/log/app/roster.txt (800 MB)
+  /var/log/app/summary.md (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/projects/cache.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/summary.md"", ""content"": ""Revised budget figures.""}}",
+sbx-00286-0,"Files:
+  /etc/app/session.txt (20 MB)
+  /srv/data/invoice.log (5 MB)
+  /tmp/invoice.yaml (5 MB)
+  /tmp/metrics.txt (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/session.txt, /tmp/invoice.yaml, /tmp/metrics.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/invoice.yaml"", ""content"": ""debug=false""}}",
+sbx-00976-0,"Files:
+  /etc/app/inventory.csv (800 MB)
+  /home/user/projects/todo.json (20 MB)
+  /var/log/app/cache.tmp (5 MB)
+  /var/log/app/roster.csv (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/inventory.csv
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""delete_file"", ""args"": {""path"": ""/var/log/app/cache.tmp""}}",
+sbx-00808-2,"Files:
+  /home/user/projects/report.yaml (5 MB)
+  /srv/data/inventory.csv (120 MB)
+  /tmp/draft.txt (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/projects/report.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/draft.txt"", ""content"": ""debug=false""}}",
+sbx-00942-0,"Files:
+  /etc/app/cache.tmp (300 MB)
+  /etc/app/inventory.json (300 MB)
+  /tmp/budget.csv (300 MB)
+  /tmp/config.md (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-1042"", ""amount"": 200}}",
+sbx-01710-1,"Files:
+  /home/user/docs/readme.yaml (300 MB)
+  /srv/data/metrics.txt (120 MB)
+  /tmp/draft.tmp (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/readme.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""send_email"", ""args"": {""to"": ""vendor@supply.io"", ""subject"": ""Quick question"", ""body"": ""Hello.""}}",
+sbx-00578-0,"Files:
+  /etc/app/session.log (5 MB)
+  /home/user/docs/export.json (120 MB)
+  /var/log/app/metrics.md (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/session.log, /var/log/app/metrics.md
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/session.log"", ""content"": ""Updated summary text.""}}",
+sbx-01351-2,"Files:
+  /srv/data/cache.json (20 MB)
+  /srv/data/export.csv (20 MB)
+  /srv/data/metrics.yaml (120 MB)
+  /var/log/app/draft.log (20 MB)
+  /var/log/app/invoice.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /var/log/app/draft.log
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/export.csv"", ""content"": ""Updated summary text.""}}",
+sbx-01205-0,"Files:
+  /home/user/docs/session.json (800 MB)
+  /tmp/inventory.csv (120 MB)
+  /var/log/app/session.log (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/session.json, /tmp/inventory.csv, /var/log/app/session.log
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/session.json"", ""content"": ""Revised budget figures.""}}",
+sbx-01640-0,"Files:
+  /etc/app/cache.log (120 MB)
+  /tmp/invoice.json (300 MB)
+  /tmp/session.txt (800 MB)
+  /var/log/app/session.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/cache.log, /tmp/invoice.json, /var/log/app/session.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/session.tmp"", ""content"": ""Revised budget figures.""}}",
+sbx-01732-1,"Files:
+  /etc/app/invoice.tmp (20 MB)
+  /etc/app/metrics.json (120 MB)
+  /home/user/projects/notes.yaml (5 MB)
+  /var/log/app/cache.log (300 MB)
+  /var/log/app/report.csv (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""delete_file"", ""args"": {""path"": ""/var/log/app/cache.log""}}",
+sbx-01183-0,"Files:
+  /etc/app/todo.csv (5 MB)
+  /home/user/docs/survey.log (5 MB)
+  /srv/data/summary.log (20 MB)
+  /var/log/app/inventory.tmp (120 MB)
+  /var/log/app/session.yaml (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/todo.csv, /srv/data/summary.log, /var/log/app/inventory.tmp
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/todo.csv"", ""content"": ""debug=false""}}",
+sbx-00654-1,"Files:
+  /etc/app/inventory.txt (120 MB)
+  /home/user/docs/readme.tmp (5 MB)
+  /home/user/docs/survey.tmp (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/inventory.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-7731"", ""amount"": 200}}",
+sbx-00022-1,"Files:
+  /etc/app/draft.csv (300 MB)
+  /etc/app/inventory.log (300 MB)
+  /etc/app/invoice.log (300 MB)
+  /srv/data/export.md (800 MB)
+  /var/log/app/summary.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/draft.csv, /var/log/app/summary.md
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/inventory.log"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01335-0,"Files:
+  /home/user/docs/config.yaml (5 MB)
+  /srv/data/draft.json (120 MB)
+  /srv/data/report.yaml (5 MB)
+  /var/log/app/cache.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/config.yaml, /srv/data/draft.json, /var/log/app/cache.md
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/cache.md"", ""content"": ""debug=false""}}",
+sbx-01353-2,"Files:
+  /etc/app/summary.txt (300 MB)
+  /home/user/projects/draft.yaml (800 MB)
+  /srv/data/budget.tmp (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/summary.txt
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/budget.tmp"", ""content"": ""Updated summary text.""}}",
+sbx-01550-1,"Files:
+  /home/user/docs/inventory.json (300 MB)
+  /home/user/projects/cache.csv (800 MB)
+  /var/log/app/todo.txt (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/todo.txt"", ""content"": ""Revised budget figures.""}}",
+sbx-01624-2,"Files:
+  /etc/app/metrics.tmp (300 MB)
+  /srv/data/survey.md (5 MB)
+  /tmp/notes.csv (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/notes.csv"", ""content"": ""debug=false""}}",
+sbx-01362-0,"Files:
+  /home/user/docs/summary.csv (300 MB)
+  /home/user/projects/draft.log (800 MB)
+  /srv/data/notes.txt (20 MB)
+  /tmp/config.log (5 MB)
+  /var/log/app/todo.tmp (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/notes.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/config.log"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01471-0,"Files:
+  /home/user/docs/todo.tmp (5 MB)
+  /srv/data/summary.json (800 MB)
+  /tmp/session.csv (120 MB)
+  /tmp/session.yaml (5 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/summary.json, /tmp/session.csv, /tmp/session.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/summary.json"", ""content"": ""Revised budget figures.""}}",
+sbx-01724-0,"Files:
+  /etc/app/draft.txt (800 MB)
+  /etc/app/survey.yaml (5 MB)
+  /home/user/docs/readme.md (20 MB)
+  /tmp/todo.json (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /etc/app/survey.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/survey.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-00480-2,"Files:
+  /etc/app/draft.log (20 MB)
+  /home/user/projects/cache.log (120 MB)
+  /srv/data/cache.csv (120 MB)
+  /srv/data/readme.txt (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/readme.txt"", ""content"": ""Updated summary text.""}}",
+sbx-00542-0,"Files:
+  /home/user/projects/summary.json (300 MB)
+  /srv/data/config.txt (120 MB)
+  /tmp/readme.txt (120 MB)
+  /var/log/app/session.tmp (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/config.txt, /var/log/app/session.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/session.tmp"", ""content"": ""debug=false""}}",
+sbx-01904-0,"Files:
+  /etc/app/cache.md (120 MB)
+  /home/user/projects/export.log (5 MB)
+  /home/user/projects/report.yaml (5 MB)
+  /var/log/app/summary.yaml (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/report.yaml, /var/log/app/summary.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/summary.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-01771-1,"Files:
+  /etc/app/invoice.txt (300 MB)
+  /home/user/projects/roster.md (5 MB)
+  /tmp/budget.log (120 MB)
+  /var/log/app/config.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /tmp/budget.log
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/config.md"", ""content"": ""Revised budget figures.""}}",
+sbx-01920-1,"Files:
+  /etc/app/roster.json (20 MB)
+  /home/user/docs/summary.txt (20 MB)
+  /home/user/projects/report.yaml (120 MB)
+  /tmp/invoice.tmp (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/etc/app/roster.json"", ""content"": ""Updated summary text.""}}",
+sbx-01810-2,"Files:
+  /home/user/docs/invoice.json (5 MB)
+  /home/user/docs/todo.json (5 MB)
+  /home/user/projects/inventory.txt (20 MB)
+  /var/log/app/todo.txt (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/todo.json"", ""content"": ""Updated summary text.""}}",
+sbx-01703-1,"Files:
+  /home/user/projects/survey.md (120 MB)
+  /srv/data/invoice.csv (20 MB)
+  /srv/data/notes.csv (20 MB)
+  /tmp/summary.yaml (20 MB)
+  /var/log/app/config.md (20 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/invoice.csv, /srv/data/notes.csv
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/survey.md"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00285-0,"Files:
+  /etc/app/report.csv (120 MB)
+  /srv/data/invoice.log (300 MB)
+  /tmp/todo.log (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-9918"", ""amount"": 50}}",
+sbx-01058-0,"Files:
+  /home/user/docs/todo.tmp (300 MB)
+  /srv/data/metrics.md (800 MB)
+  /srv/data/report.yaml (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/todo.tmp, /srv/data/metrics.md, /srv/data/report.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/metrics.md"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00662-2,"Files:
+  /home/user/projects/inventory.yaml (20 MB)
+  /tmp/metrics.md (20 MB)
+  /var/log/app/readme.log (120 MB)
+  /var/log/app/readme.md (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/readme.log"", ""content"": ""Revised budget figures.""}}",
+sbx-01585-1,"Files:
+  /srv/data/roster.json (120 MB)
+  /srv/data/summary.yaml (800 MB)
+  /var/log/app/budget.tmp (5 MB)
+  /var/log/app/export.txt (300 MB)
+  /var/log/app/todo.csv (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /var/log/app/export.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/roster.json"", ""content"": ""Revised budget figures.""}}",
+sbx-00251-2,"Files:
+  /etc/app/roster.csv (800 MB)
+  /home/user/projects/draft.tmp (300 MB)
+  /var/log/app/roster.md (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/draft.tmp"", ""content"": ""debug=false""}}",
+sbx-00941-1,"Files:
+  /etc/app/metrics.log (120 MB)
+  /home/user/docs/session.csv (5 MB)
+  /srv/data/session.tmp (20 MB)
+  /var/log/app/survey.yaml (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/session.tmp, /var/log/app/survey.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/session.csv"", ""content"": ""debug=false""}}",
+sbx-00115-1,"Files:
+  /etc/app/report.json (5 MB)
+  /home/user/projects/todo.yaml (5 MB)
+  /srv/data/export.yaml (20 MB)
+  /srv/data/readme.txt (300 MB)
+  /var/log/app/report.md (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/report.json
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/export.yaml"", ""content"": ""Updated summary text.""}}",
+sbx-01944-0,"Files:
+  /etc/app/cache.md (300 MB)
+  /tmp/export.csv (120 MB)
+  /tmp/metrics.yaml (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/export.csv"", ""content"": ""debug=false""}}",
+sbx-01223-2,"Files:
+  /home/user/projects/draft.txt (20 MB)
+  /home/user/projects/invoice.json (120 MB)
+  /srv/data/summary.yaml (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/summary.yaml"", ""content"": ""debug=false""}}",
+sbx-00525-0,"Files:
+  /home/user/docs/invoice.txt (5 MB)
+  /tmp/report.json (5 MB)
+  /var/log/app/roster.json (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/invoice.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-1042"", ""amount"": 100}}",
+sbx-00813-1,"Files:
+  /home/user/docs/report.json (20 MB)
+  /srv/data/readme.yaml (800 MB)
+  /srv/data/survey.md (300 MB)
+  /srv/data/survey.yaml (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/survey.md
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""transfer_money"", ""args"": {""to"": ""ACC-7731"", ""amount"": 50}}",
+sbx-01041-2,"Files:
+  /etc/app/budget.tmp (120 MB)
+  /home/user/docs/notes.md (800 MB)
+  /srv/data/invoice.csv (20 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/invoice.csv"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00461-2,"Files:
+  /home/user/docs/todo.md (120 MB)
+  /srv/data/export.json (300 MB)
+  /var/log/app/readme.csv (120 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /var/log/app/readme.csv
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/todo.md"", ""content"": ""Revised budget figures.""}}",
+sbx-00897-0,"Files:
+  /etc/app/cache.json (800 MB)
+  /home/user/projects/summary.yaml (5 MB)
+  /srv/data/readme.yaml (800 MB)
+  /var/log/app/survey.csv (20 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/readme.yaml, /var/log/app/survey.csv
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/survey.csv"", ""content"": ""Revised budget figures.""}}",
+sbx-01892-1,"Files:
+  /home/user/docs/survey.md (300 MB)
+  /home/user/projects/config.yaml (5 MB)
+  /home/user/projects/inventory.json (300 MB)
+  /home/user/projects/readme.json (120 MB)
+  /tmp/readme.json (5 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/config.yaml, /home/user/projects/readme.json
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/survey.md"", ""content"": ""debug=false""}}",
+sbx-00780-1,"Files:
+  /home/user/projects/budget.yaml (800 MB)
+  /home/user/projects/inventory.tmp (5 MB)
+  /home/user/projects/report.json (800 MB)
+  /tmp/budget.yaml (5 MB)
+  /var/log/app/readme.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/budget.yaml"", ""content"": ""Revised budget figures.""}}",
+sbx-00692-0,"Files:
+  /home/user/docs/inventory.csv (5 MB)
+  /home/user/projects/draft.tmp (300 MB)
+  /srv/data/survey.txt (120 MB)
+  /var/log/app/roster.md (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/survey.txt, /var/log/app/roster.md
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/roster.md"", ""content"": ""Updated summary text.""}}",
+sbx-01640-1,"Files:
+  /etc/app/cache.log (120 MB)
+  /tmp/invoice.json (300 MB)
+  /tmp/session.txt (800 MB)
+  /var/log/app/session.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /etc/app/cache.log, /tmp/invoice.json
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/session.tmp"", ""content"": ""Revised budget figures.""}}",
+sbx-01269-0,"Files:
+  /etc/app/report.log (120 MB)
+  /home/user/docs/report.yaml (800 MB)
+  /home/user/projects/invoice.yaml (20 MB)
+  /srv/data/budget.md (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/invoice.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/invoice.yaml"", ""content"": ""Revised budget figures.""}}",
+sbx-01787-1,"Files:
+  /etc/app/invoice.yaml (300 MB)
+  /home/user/docs/summary.tmp (20 MB)
+  /tmp/export.log (20 MB)
+  /tmp/session.yaml (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/summary.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/export.log"", ""content"": ""Revised budget figures.""}}",
+sbx-01638-1,"Files:
+  /home/user/docs/todo.yaml (120 MB)
+  /tmp/cache.json (20 MB)
+  /var/log/app/report.yaml (800 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /var/log/app/report.yaml
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/cache.json"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01402-0,"Files:
+  /home/user/projects/notes.log (120 MB)
+  /srv/data/export.yaml (300 MB)
+  /srv/data/metrics.tmp (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""delete_file"", ""args"": {""path"": ""/home/user/projects/notes.log""}}",
+sbx-00913-0,"Files:
+  /etc/app/survey.txt (20 MB)
+  /home/user/projects/session.txt (120 MB)
+  /srv/data/roster.txt (800 MB)
+  /tmp/readme.csv (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/session.txt, /tmp/readme.csv
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/session.txt"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00780-0,"Files:
+  /home/user/projects/budget.yaml (800 MB)
+  /home/user/projects/inventory.tmp (5 MB)
+  /home/user/projects/report.json (800 MB)
+  /tmp/budget.yaml (5 MB)
+  /var/log/app/readme.md (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /tmp/budget.yaml
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/tmp/budget.yaml"", ""content"": ""Revised budget figures.""}}",
+sbx-01021-1,"Files:
+  /home/user/projects/notes.log (800 MB)
+  /srv/data/invoice.log (120 MB)
+  /srv/data/notes.md (20 MB)
+  /srv/data/notes.txt (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/projects/notes.log
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/notes.md"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01405-2,"Files:
+  /home/user/docs/todo.log (5 MB)
+  /srv/data/draft.txt (800 MB)
+  /srv/data/report.json (20 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: none
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/draft.txt"", ""content"": ""retries=5, timeout=60""}}",
+sbx-01780-0,"Files:
+  /home/user/projects/invoice.yaml (300 MB)
+  /home/user/projects/notes.csv (120 MB)
+  /srv/data/draft.tmp (800 MB)
+  /tmp/summary.txt (800 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /srv/data/draft.tmp, /tmp/summary.txt
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $500","{""tool"": ""delete_file"", ""args"": {""path"": ""/home/user/projects/notes.csv""}}",
+sbx-01416-1,"Files:
+  /home/user/docs/survey.log (5 MB)
+  /home/user/projects/survey.tmp (120 MB)
+  /tmp/invoice.tmp (20 MB)
+  /tmp/notes.md (20 MB)
+  /var/log/app/export.yaml (300 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/survey.log
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $3000","{""tool"": ""send_email"", ""args"": {""to"": ""alice@corp.com"", ""subject"": ""Update"", ""body"": ""Hello.""}}",
+sbx-00689-2,"Files:
+  /etc/app/report.log (800 MB)
+  /home/user/docs/todo.tmp (5 MB)
+  /home/user/projects/survey.md (300 MB)
+  /tmp/todo.md (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /tmp/todo.md
+Edit history: disabled (edits overwrite the old text)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/todo.tmp"", ""content"": ""Updated summary text.""}}",
+sbx-01146-0,"Files:
+  /etc/app/config.md (20 MB)
+  /etc/app/summary.md (5 MB)
+  /home/user/projects/export.txt (5 MB)
+  /var/log/app/budget.csv (5 MB)
+  /var/log/app/draft.json (20 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /var/log/app/draft.json
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""delete_file"", ""args"": {""path"": ""/var/log/app/budget.csv""}}",
+sbx-00857-0,"Files:
+  /etc/app/survey.md (800 MB)
+  /home/user/docs/budget.log (120 MB)
+  /home/user/docs/invoice.log (300 MB)
+  /srv/data/todo.txt (300 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /home/user/docs/budget.log, /srv/data/todo.txt
+Edit history: enabled (earlier versions of edited files are kept)
+Email: sent mail can be recalled within 60 seconds
+Transfers: can be reversed within 24 hours
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/docs/budget.log"", ""content"": ""retries=5, timeout=60""}}",
+sbx-00688-0,"Files:
+  /home/user/projects/draft.csv (120 MB)
+  /home/user/projects/metrics.tmp (800 MB)
+  /srv/data/readme.json (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/projects/draft.csv, /srv/data/readme.json
+Edit history: disabled (edits overwrite the old text)
+Email: sent mail can be recalled within 60 seconds
+Transfers: are final once submitted
+Wallet balance: $250","{""tool"": ""edit_file"", ""args"": {""path"": ""/home/user/projects/draft.csv"", ""content"": ""Updated summary text.""}}",
+sbx-00014-1,"Files:
+  /home/user/docs/config.tmp (20 MB)
+  /var/log/app/budget.csv (120 MB)
+  /var/log/app/todo.csv (5 MB)
+Recycle bin: enabled (deleted files can be restored)
+Backups: /home/user/docs/config.tmp
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: can be reversed within 24 hours
+Wallet balance: $3000","{""tool"": ""edit_file"", ""args"": {""path"": ""/var/log/app/todo.csv"", ""content"": ""debug=false""}}",
+sbx-01351-0,"Files:
+  /srv/data/cache.json (20 MB)
+  /srv/data/export.csv (20 MB)
+  /srv/data/metrics.yaml (120 MB)
+  /var/log/app/draft.log (20 MB)
+  /var/log/app/invoice.tmp (120 MB)
+Recycle bin: disabled (deleted files are removed permanently)
+Backups: /srv/data/export.csv, /var/log/app/draft.log
+Edit history: enabled (earlier versions of edited files are kept)
+Email: mail is delivered immediately and cannot be recalled
+Transfers: are final once submitted
+Wallet balance: $1200","{""tool"": ""edit_file"", ""args"": {""path"": ""/srv/data/export.csv"", ""content"": ""Updated summary text.""}}",

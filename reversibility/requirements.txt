@@ -1,0 +1,13 @@
+# Versions below are the ones the CPU-side code was tested with.
+# torch / transformers / accelerate were NOT installed where I tested: after your first successful GPU run,
+# replace these three lines with exact pins (run_all.sh also writes requirements.lock.txt).
+torch
+transformers
+accelerate
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
+statsmodels==0.15.0
+matplotlib==3.11.2
+scienceworld==1.2.3
+# tqdm (not installed here)

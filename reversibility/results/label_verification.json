@@ -1,0 +1,12 @@
+{
+ "n": 1664,
+ "horizon_1": 0.8780048076923077,
+ "horizon_2": 1.0,
+ "horizon_3": 1.0,
+ "class_counts": {
+  "reversible": 607,
+  "irreversible": 607,
+  "partially_reversible": 450
+ },
+ "minimal_pair_share": 0.9663461538461539
+}
