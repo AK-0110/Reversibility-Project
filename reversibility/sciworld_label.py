@@ -174,6 +174,8 @@ def job(args):
 def relabel_job(args):
     """Re-run the search for one stored row (same state: task, variation, gold prefix) with a new budget."""
     r, budget = args
+    if r["action_text"].strip().isdigit():          # a bare menu choice ("0", "1") means nothing without its question
+        return {**r, "_error": "bare menu choice"}
     _, task, var, k = r["source"].split(":")
     try:
         lab = Labeler(task, int(var[3:])); out = lab.label_pair(lab.gold[:int(k[1:])], r["action_text"], budget, random.Random(r["_seed"]))
@@ -207,7 +209,10 @@ if __name__ == "__main__":
         recs = read_jsonl(a.relabel); todo = [(r, a.budget) for r in recs if r["label"] != REV]
         with Pool(a.workers) as pool: new = {r["id"]: r for r in pool.imap_unordered(relabel_job, todo)}
         for r in new.values():
-            if "_error" in r: print("WARN kept old label", r["id"], r.pop("_error"))
+            if "_error" in r:                       # never keep the budget-60 label: it is the one known to be unreliable
+                print("WARN unverified (excluded from probes and scores)", r["id"], r.pop("_error"))
+                r.update({"label_budget60": r["label"], "budget": a.budget,
+                          **{k: "unverified" for k in ("label", "label_h1", "label_h2", "label_h3")}})
         out = [new.get(r["id"], r) for r in recs]; write_jsonl(a.out, out)
         print("relabelled", len(todo), "changes:", collections.Counter((r["label_budget60"], r["label"]) for r in new.values()
                                                                     if "label_budget60" in r))
