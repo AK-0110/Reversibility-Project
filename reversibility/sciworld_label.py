@@ -171,6 +171,19 @@ def job(args):
         return [{"_error": f"{task} var{var}: {e!r}"}]
 
 
+def relabel_job(args):
+    """Re-run the search for one stored row (same state: task, variation, gold prefix) with a new budget."""
+    r, budget = args
+    _, task, var, k = r["source"].split(":")
+    try:
+        lab = Labeler(task, int(var[3:])); out = lab.label_pair(lab.gold[:int(k[1:])], r["action_text"], budget, random.Random(r["_seed"]))
+        lab.env.close()
+        return {**r, **{x: out[x] for x in ("label", "label_h1", "label_h2", "label_h3", "min_restore_steps", "nodes_searched")},
+                "label_budget60": r["label"], "budget": budget} if out else {**r, "_error": "action had no effect on replay"}
+    except Exception as e:
+        return {**r, "_error": repr(e)}
+
+
 def job_stream(tasks_vars, args, rng):
     n = 0
     while True:
@@ -186,7 +199,19 @@ if __name__ == "__main__":
     ap.add_argument("--budget", type=int, default=60, help="max search nodes per pair")
     ap.add_argument("--seed", type=int, default=0); ap.add_argument("--tasks", nargs="*", default=None)
     ap.add_argument("--out", default="data/sciworld.jsonl")
+    ap.add_argument("--relabel", help="re-search the non-reversible rows of this file with --budget, write --out")
     a = ap.parse_args()
+    if a.relabel:
+        # budget >= 140 covers the whole candidate shortlist (BRANCH 6/4/3 over h = 1, 2, 3), so "irreversible" then means
+        # "no restoring sequence among the shortlisted follow-ups", not "search stopped early"
+        recs = read_jsonl(a.relabel); todo = [(r, a.budget) for r in recs if r["label"] != REV]
+        with Pool(a.workers) as pool: new = {r["id"]: r for r in pool.imap_unordered(relabel_job, todo)}
+        for r in new.values():
+            if "_error" in r: print("WARN kept old label", r["id"], r.pop("_error"))
+        out = [new.get(r["id"], r) for r in recs]; write_jsonl(a.out, out)
+        print("relabelled", len(todo), "changes:", collections.Counter((r["label_budget60"], r["label"]) for r in new.values()
+                                                                    if "label_budget60" in r))
+        raise SystemExit
     from scienceworld import ScienceWorldEnv
     e = ScienceWorldEnv("", envStepLimit=10); names = a.tasks or sorted(e.get_task_names()); tv = []
     for t in names:
