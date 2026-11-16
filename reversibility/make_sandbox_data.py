@@ -1,5 +1,6 @@
 """Step 1: generate labelled (state, action) pairs from the sandbox, with minimal pairs.
-Usage: python make_sandbox_data.py --per-class 450 --manual 100"""
+Usage: python make_sandbox_data.py --per-class 450 --manual 100
+       python make_sandbox_data.py --extra 50 --seed 1 --out data/sandbox_extra.jsonl   (supplement, new ids)"""
 import argparse, copy, csv, json, random, collections
 from sandbox import Sandbox, REV, PART, IRR, LABELS
 from utils import write_jsonl
@@ -76,15 +77,28 @@ def generate(per_class, seed):
         group, is_min = make_group(rng, kind, rng.random() < .7)
         split = "test" if rng.random() < .2 else "train"
         for j, (cfg, (tool, args)) in enumerate(group):
-            sb = Sandbox.from_config(cfg)
-            label = sb.designed_label(tool, args)
-            recs.append(dict(id=f"sbx-{n:05d}-{j}", environment="sandbox", state_text=sb.state_text(),
-                             action_text=json.dumps({"tool": tool, "args": args}), label=label, horizon=3,
-                             source="synthetic", scenario_id=f"sbx-{n:05d}", is_minimal=is_min,
-                             pair_id=f"sbx-{n:05d}" if is_min else None, verb=tool, split=split))
-            objs.append((sb, tool, args))
-            counts[label] += 1
+            r, o = record("sbx", n, j, cfg, tool, args, is_min, split)
+            recs.append(r); objs.append(o); counts[r["label"]] += 1
     return recs, objs, rng
+
+
+def record(prefix, n, j, cfg, tool, args, is_min, split):
+    sb = Sandbox.from_config(cfg)
+    return dict(id=f"{prefix}-{n:05d}-{j}", environment="sandbox", state_text=sb.state_text(),
+                action_text=json.dumps({"tool": tool, "args": args}), label=sb.designed_label(tool, args), horizon=3,
+                source="synthetic", scenario_id=f"{prefix}-{n:05d}", is_minimal=is_min,
+                pair_id=f"{prefix}-{n:05d}" if is_min else None, verb=tool, split=split), (sb, tool, args)
+
+
+def generate_extra(n_per_kind, seed):
+    """Supplement with NEW ids (sandbox.jsonl and the manual sheets stay untouched): one single-variant row per
+    scenario for every kind, including read/move/trash, so 'all rows' vs 'minimal pairs only' is a real contrast."""
+    rng = random.Random(seed); recs, objs = [], []
+    for n in range(n_per_kind * len(KINDS)):
+        [(cfg, (tool, args))], _ = make_group(rng, list(KINDS)[n % len(KINDS)], minimal=False)
+        r, o = record("sbe", n, 0, cfg, tool, args, False, "test" if rng.random() < .2 else "train")
+        recs.append(r); objs.append(o)
+    return recs, objs
 
 
 def balance(recs, objs, per_class, rng, slack=1.35):
@@ -114,9 +128,14 @@ if __name__ == "__main__":
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--manual", type=int, default=100, help="pairs for the manual labelling sheet")
     ap.add_argument("--out", default="data/sandbox.jsonl")
+    ap.add_argument("--extra", type=int, default=0, help="write a single-variant supplement with N rows per kind instead")
     a = ap.parse_args()
-    recs, objs, rng = generate(a.per_class, a.seed)
-    recs, objs = balance(recs, objs, a.per_class, rng)
+    if a.extra and a.out == "data/sandbox.jsonl": a.out = "data/sandbox_extra.jsonl"     # never overwrite the main set
+    if a.extra:
+        recs, objs = generate_extra(a.extra, a.seed)
+    else:
+        recs, objs, rng = generate(a.per_class, a.seed)
+        recs, objs = balance(recs, objs, a.per_class, rng)
     # BFS labels for EVERY record at horizons 1, 2, 3 (used for the horizon ablation and to verify the designed labels)
     agree = {1: 0, 2: 0, 3: 0}
     for r, (sb, tool, args) in zip(recs, objs):
@@ -131,7 +150,9 @@ if __name__ == "__main__":
     res = {f"horizon_{h}": agree[h] / len(recs) for h in (1, 2, 3)}
     print("designed label vs BFS label agreement (all records):", res)
     json.dump({"n": len(recs), **res, "class_counts": dict(c), "minimal_pair_share": mp},
-              open("results/label_verification.json", "w"), indent=1)
+              open(a.out.replace("data/", "results/label_verification_").replace(".jsonl", ".json")
+                   if a.extra else "results/label_verification.json", "w"), indent=1)
+    if a.extra: raise SystemExit                                    # the manual sheets belong to sandbox.jsonl
 
     # manual labelling sheets: same 100 pairs for two annotators, labels hidden
     man = rng.sample(recs, min(a.manual, len(recs)))
