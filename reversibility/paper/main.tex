@@ -1,0 +1,71 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{booktabs,graphicx,amsmath,url}
+\begin{document}
+\title{Do Open-Weight LLM Agents Represent and Act on Action Reversibility?}
+\author{\IEEEauthorblockN{TODO: names and IDs}}
+\maketitle
+
+\begin{abstract}
+TODO (write last). One sentence each: the question; the setup (sandbox and ScienceWorld, which models); the main finding, stated plainly even if negative; the main caveat.
+\end{abstract}
+
+\section{Introduction}
+LLM agents run commands, edit files and send messages. Some of these actions can be undone and some cannot. We ask two questions. First, does the model internally represent whether an action is reversible? Second, if it does, does that knowledge reach action selection? We call the case where a model can state that an action is permanent but still takes it without hesitation \emph{irreversibility blindness}. Reversibility has been studied in reinforcement learning~\cite{grinsztajn2021turning}, and agent safety benchmarks test risky actions in general~\cite{ruan2024toolemu,yin2024safeagentbench}. Closest to our question, \cite{tang2025risk} show a gap between risk knowledge and action for risky actions in general, not for reversibility. TODO: state our contributions and the finding once results are in.
+
+\section{Related Work}
+\textbf{Reversibility and side effects.} \cite{grinsztajn2021turning} learn a reversibility estimate in RL; \cite{krakovna2018side,turner2020aup} penalise side effects through reachability and attainable utility. \textbf{Agent safety.} ToolEmu~\cite{ruan2024toolemu} and SafeAgentBench~\cite{yin2024safeagentbench} measure risky behaviour; \cite{tang2025risk} measure the knowing--acting gap. \textbf{Probing and steering.} Linear probes~\cite{alain2016probes} need control tasks~\cite{hewitt2019control}; world-state representations have been found in sequence models~\cite{li2023othello}; activation steering~\cite{rimsky2024caa} tests causal use. TODO: search arXiv for newer work on reversibility and LLM agents and cite it or rule it out.
+
+\section{Method}
+\subsection{Data}
+\textbf{Sandbox.} A small Python simulation of a file system, email outbox and wallet. Each tool has a known reversibility given the state (recycle bin, backups, undo window, versioning). We label each (state, action) pair as reversible, partially reversible or irreversible, meaning the exact previous state can be restored in at most $h$ further actions; we report $h=1,2,3$. The designed label is checked by breadth-first search, with agreement 0.878, 1.000 and 1.000 at $h=1,2,3$. The sandbox has 1{,}664 pairs (607 reversible, 450 partially reversible, 607 irreversible); 97\% are minimal pairs, i.e.\ the same action with only a reversibility-relevant setting changed. A supplement of 350 single-variant pairs adds the read, move and trash verbs. About a fifth of scenarios (18\% of pairs) are held out for testing, and splits are grouped by scenario. ``Partially reversible'' (an edit with history but no backup) hinges on a file timestamp the state text does not show, so the binary task is primary.
+
+\textbf{ScienceWorld}~\cite{wang2022scienceworld}. 259 pairs (TODO class counts after the re-search), split by task. Labels come from a search over a ranked shortlist of follow-up actions, so ``irreversible'' means no restoring sequence was found among them (an upper bound). With the first search budget most non-reversible labels were search cut-offs (TODO: re-searched over the whole shortlist, or reported as a limitation). The total is 2{,}273 pairs.
+
+\textbf{Human check.} Two annotators labelled the same 100 pairs blind: TODO kappa between annotators and against the automatic label.
+
+\subsection{RQ1: probes}
+We extract, in one forward pass, the hidden state of the last action token, the mean over action tokens, and the last token \emph{before} the action (``pre'', which sees the state but not the action) at every layer and train a standardised L2 logistic regression ($C=0.05$) per layer, binary and three-class. The layer is chosen on a validation split taken from the training scenarios, never on the test set. We report balanced accuracy over 3 split seeds with bootstrap 95\% confidence intervals. Controls: majority class; bag-of-words baselines over the action, the state, and both (all rows and minimal pairs); shuffled labels; a Hewitt--Liang verb control task with selectivity~\cite{hewitt2019control}; a \emph{permuted-setting} control whose label is a setting irrelevant to the verb (same structure and danger phrases, no meaning); and a layer-0 probe. The state text names reversibility (``removed permanently''), so a state-only bag-of-words reaches 0.745 on minimal pairs; we claim action-specific information only if the probe at the last action token beats both that baseline and the pre-action probe. We also report leave-one-verb-out transfer, per-verb accuracy, and frozen probes on reworded test rows (settings written only as on/off; or only an irrelevant setting flipped). Ablations: token position, minimal pairs only, horizon $h$, cross-environment transfer (layer chosen on source validation), and the careful system prompt. TODO: confirm which were actually run.
+
+\subsection{RQ2: stated answer}
+We ask the model directly whether the action can be undone, take the first label word of its answer, and compare the true label, the stated answer and the probe prediction on the same test rows (balanced accuracy and Cohen's kappa; parse failures count as wrong).
+
+\subsection{RQ3: behaviour}
+72 paired tasks (12 per template) in the sandbox. Each task has a tempting irreversible shortcut and a safer path, in two versions that differ in one prompt line. Greedy decoding, at most 15 steps, one JSON tool call per step; parse failures are counted and reported. Caution means checking settings, asking the user, making a backup, using the recycle bin before the first irreversible action, or refusing (finishing without taking the shortcut). Reversibility sensitivity $A^*$ is the caution rate on the irreversible version minus that on the reversible version (McNemar exact test on pairs); $A^*_\mathrm{out}$ is the same for avoiding the shortcut. $K$ is the share of correct answers when the model is asked which version makes the planned action irreversible, asked in both A/B orders. The brief's gap $K-A$ is about $0.5$ for a model that knows nothing and acts the same in both versions ($K$ has chance $0.5$, $A$ a floor of $0$), so our headline is the chance-corrected $\mathrm{Gap}^*=K^*-A^*$ with $K^*=2K-1$: $0$ for a model that neither knows nor acts, $1$ for one that knows perfectly but acts identically. We verified these properties with mock policies. CIs are bootstrapped over pairs and over the six templates.
+
+\subsection{RQ4: steering (bonus)}
+TODO if run: direction $v$ = mean(irreversible) $-$ mean(reversible) on the training split at the selected layer; the added vector has norm $f\cdot\mathrm{median}\lVert h\rVert$ for $f\in\{-0.5,-0.25,0,0.25,0.5,1\}$; three random directions of equal norm at $\pm0.5$ as control; task success reported alongside caution.
+
+\section{Experiments}
+Models: Qwen2.5-3B-Instruct in fp16 (7B does not fit a free 16\,GB T4) and TODO the second family (Llama-3.1-8B-Instruct in 4-bit NF4 if access was granted). Both are deviations from the brief. Greedy decoding with the repetition penalty and sampling parameters of the shipped generation config switched off, fixed seeds, all prompts and outputs saved. The analysis plan and its one amendment were committed before the first real-model result. Exact library versions are in \texttt{requirements.txt}.
+
+\section{Results}
+\subsection{RQ1: probe accuracy by layer}
+TODO figure (accuracy vs.\ layer with baselines) and numbers.
+\subsection{RQ2: stated vs.\ probed}
+TODO.
+\subsection{RQ3: behaviour and the blindness gap}
+TODO table and gap with CI.
+\subsection{Ablations}
+TODO table.
+\subsection{RQ4: steering}
+TODO or ``not run''.
+
+\section{Limitations}
+\begin{itemize}
+\item The sandbox is small and simulated, and most undo operations need one or two steps, so horizon effects are weak (in the sandbox $h=2,3$ equal the main label).
+\item Task prompts push for the shortcut (``delete\_file is the fastest way'', ``just send it now''), and email and transfer have no safer tool except asking the user, so $A^*$ partly measures instruction following; the careful-prompt ablation addresses this only in part.
+\item The 72 behaviour pairs come from six templates, so the effective sample is small; we report template-level CIs.
+\item The sandbox label is a function of a few settings, so the test split mostly tests interpolation within seen setting combinations.
+\item TODO: only the models listed above; findings may not transfer to other families or sizes.
+\item ScienceWorld labelling was limited by compute (a single laptop), giving TODO pairs. ``Irreversible'' there is an upper bound from a bounded search.
+\item Partially reversible actions are rare outside the edit-with-history case.
+\item Text-only states, English only, a 3-step horizon.
+\item Hand-label agreement: TODO.
+\end{itemize}
+
+\section{Conclusion}
+TODO: one clear finding, stated as the data show it, including if the result is negative.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}
