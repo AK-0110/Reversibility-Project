@@ -30,3 +30,10 @@ def bootstrap_ci(values_or_fn, n=1000, seed=0, alpha=0.05, size=None):
         v = np.asarray(values_or_fn, dtype=float)
         stats = [v[rng.integers(0, len(v), len(v))].mean() for _ in range(n)]
     return float(np.percentile(stats, 100 * alpha / 2)), float(np.percentile(stats, 100 * (1 - alpha / 2)))
+
+def cluster_bootstrap_ci(values, groups, n=1000, seed=0, alpha=0.05):
+    """CI of the mean when items come in clusters (e.g. task pairs from a few templates): resample whole clusters."""
+    v, g = np.asarray(values, dtype=float), np.asarray(groups)
+    members = [v[g == u] for u in np.unique(g)]; rng = np.random.default_rng(seed)
+    stats = [np.concatenate([members[i] for i in rng.integers(0, len(members), len(members))]).mean() for _ in range(n)]
+    return float(np.percentile(stats, 100 * alpha / 2)), float(np.percentile(stats, 100 * (1 - alpha / 2)))
