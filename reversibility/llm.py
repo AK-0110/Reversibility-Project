@@ -1,10 +1,12 @@
 """Model helpers (torch/transformers imported lazily so CPU-only scripts still run)."""
 
-def load_model(name, device="cuda"):
+def load_model(name, device=None):
     import torch
+    device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(name)
-    model = AutoModelForCausalLM.from_pretrained(name, torch_dtype=torch.bfloat16).to(device).eval()
+    dtype = torch.bfloat16 if device == "cuda" else torch.float32
+    model = AutoModelForCausalLM.from_pretrained(name, torch_dtype=dtype).to(device).eval()
     return model, tok
 
 
