@@ -49,11 +49,13 @@ if __name__ == "__main__":
     ap.add_argument("--test-only", action="store_true")
     ap.add_argument("--rescore", action="store_true", help="no model: re-score saved answers against the labels in --data")
     a = ap.parse_args(); seed_all()
-    recs = [r for d in a.data for r in read_jsonl(d)]
+    recs = [r for d in a.data for r in read_jsonl(d) if r["label"] in LAB3]   # drops "unverified" (failed re-search)
     if a.test_only: recs = [r for r in recs if r.get("split") == "test"]
     if a.rescore:                                            # e.g. after the ScienceWorld re-search changed labels
         lab = {r["id"]: LAB3.index(r["label"]) for r in recs}
-        rows = [{**r, "true": lab[r["id"]], "stated": parse_stated(r["raw"])} for r in read_jsonl(f"results/stated_{a.tag}.jsonl")]
+        # keep every saved answer in the file (true = None when unverified); score only labelled rows
+        saved = [{**r, "true": lab.get(r["id"]), "stated": parse_stated(r["raw"])} for r in read_jsonl(f"results/stated_{a.tag}.jsonl")]
+        rows = [r for r in saved if r["true"] is not None]
     else:
         from tqdm import tqdm
         from llm import load_model, chat_generate
@@ -62,7 +64,7 @@ if __name__ == "__main__":
             raw = chat_generate(model, tok, stated_messages(r["state_text"], r["action_text"]), max_new_tokens=12)
             rows.append({"id": r["id"], "prompt": stated_messages(r["state_text"], r["action_text"]), "environment": r["environment"], "true": LAB3.index(r["label"]),
                          "stated": parse_stated(raw), "raw": raw, "is_minimal": r["is_minimal"], "split": r.get("split")})
-    write_jsonl(f"results/stated_{a.tag}.jsonl", rows)
+    write_jsonl(f"results/stated_{a.tag}.jsonl", saved if a.rescore else rows)
     y = np.array([r["true"] for r in rows]); p = np.array([-1 if r["stated"] is None else r["stated"] for r in rows])
     ok = p >= 0; b = y != 1                                  # binary rows: true label reversible / irreversible
     yb, pb = (y[b] == 2).astype(int), np.where(p[b] < 0, -1, (p[b] == 2).astype(int))

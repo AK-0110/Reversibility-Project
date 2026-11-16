@@ -16,7 +16,7 @@ TODO (write last): question, setup (sandbox + ScienceWorld, Qwen2.5-3B-Instruct 
 - 1,664 pairs: 607 reversible, 450 partially reversible, 607 irreversible; 97% minimal pairs; 18% test; split grouped by scenario.
 - Label check, designed vs search: 0.878 (horizon 1), 1.000 (horizons 2 and 3).
 - Human check: TODO two annotators, 100 pairs, Cohen's kappa = ___.
-- Supplement: 350 single-variant sandbox pairs (read/move/trash included). ScienceWorld: 259 pairs; most non-reversible labels were search cut-offs (re-search pending). Total 2,273.
+- Supplement: 350 single-variant sandbox pairs (read/move/trash included). ScienceWorld: 259 pairs; most non-reversible labels were search cut-offs (re-search pending), so it is used only for transfer and a separate stated-answer table; probes and stated answers use the sandbox (2,014 rows). Total 2,273.
 - Reworded test copies (terse on/off wording; irrelevant setting flipped) for frozen-probe checks.
 
 ## 3. Methods
