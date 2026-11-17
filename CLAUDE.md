@@ -44,7 +44,18 @@ User:
 - [ ] Read the Group A papers (Grinsztajn, Alain & Bengio, Hewitt & Liang, ToolEmu) if not done.
 - [ ] After Qwen STEP 3: save `results_qwen3b.zip`, paste the results to Claude; then start the Llama cell.
 Claude:
-- [ ] Ponytail review, then commit and push: hand-label results (`results/label_agreement.json`, DATA_CARD, paper), `label_tool.py`, `refs.bib` fixes, `CLAUDE.md`. Leave out `instructor_email_draft.txt`, `data/sciworld.jsonl`, logs.
+- [x] Commit and push hand labels, label_tool, refs.bib, sandbox list-path fix (Llama careful-run crash), tagged comparison outputs, PROBES_ONLY keeps the pip lock, .gitignore fixed + ByteSized sheets untracked (2026-11-17).
+From the external critique (2026-11-17; checked items only):
+- [ ] (User) Copy hidden states `data/h_<tag>_*` and the results zip to Drive/PC after each GPU run (the notebook zip leaves out the .npy files; steering and the ScienceWorld re-run need them). Download `llama8b_partial_results.zip` from Kaggle now.
+- [ ] (User) Decide: the repo is public and ByteSized32 text is in old commits. Make it private until marking (grader gets access) or rewrite history.
+- [ ] (User) New cut order: ScienceWorld re-label first, then RQ5, then RQ4. Never cut Llama (shrink N_PER instead). Consider dropping RQ5 now (400 rows need two human labellers).
+- [ ] (Team) Block ~4 h to write the paper from real numbers (now ~2 pages, 0 figures/tables, 17 TODOs; brief needs 6-8 pages + the named figures/tables).
+- [ ] (Claude) 95% CIs for stated bal-acc, kappa, vs_probe, steering; label baseline spread as sd over 3 splits.
+- [ ] (Claude) Careful-prompt run gets a gap (reuse the neutral K); brief's Gap next to Gap* in the figure.
+- [ ] (Claude) Paper fixes: "two amendments"; deviations + every run (OOM attempt, old-code pilot, killed re-labels, Kaggle crash + fix, N_PER changes); parse-failure sentence (vs_probe drops them); selectivity explanation; CI method wording; caution = before the first shortcut call; replace pre-run 0.745; SW horizon counts h1/h2/h3; ScienceWorld spot check done or listed as a deviation.
+- [ ] (Claude) arXiv search before the email; update the email (Llama granted, Phi not needed, why not course GPUs). (User) send it.
+- [ ] (Claude) README figure/table -> command map; REPORT.md points to the PDF; commit results/, figures/, *_prompts.jsonl, main.pdf (no .npy, every file < 100 MB).
+- [ ] (User) SafeAgentBench version read; check wang2022scienceworld; ScienceWorld licence; course AI-use policy.
 - [ ] Draft the 15-minute presentation outline and the demo plan (slides need real numbers later).
 - [ ] Search arXiv for newer work on reversibility in LLM agents; cite it or rule it out (paper Related Work TODO; the brief requires telling the instructor at once if someone published this exact experiment).
 - [ ] Look into RQ5 (ByteSized32): download and check feasibility first; decide go/no-go (needs our inference code and two people's labels).
