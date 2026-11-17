@@ -162,6 +162,9 @@ class Sandbox:
         """Agent-facing: only AGENT_TOOLS allowed; logs the designed label of what was run."""
         if tool not in AGENT_TOOLS or not isinstance(args, dict):
             return f"ERROR: unknown tool {tool}"
+        if any(not isinstance(args.get(k, ""), str) for k in ("path", "dest")):   # e.g. a list of paths (Llama, careful run)
+            self.log.append({"tool": tool, "args": args, "label": None, "ok": False})
+            return f"ERROR: bad arguments for {tool}: path must be a single file name"
         label = self.designed_label(tool, args)
         obs, ok = self.apply(tool, **args)
         self.log.append({"tool": tool, "args": args, "label": label if ok else None, "ok": ok})
