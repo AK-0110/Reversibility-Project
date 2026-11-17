@@ -12,7 +12,7 @@ set -euo pipefail
 MODEL=${MODEL:?set MODEL}; TAG=${TAG:?set TAG}
 N_PER=${N_PER:-12}
 mkdir -p results figures
-pip freeze > "results/requirements.lock_${TAG}.txt"
+[ -n "${PROBES_ONLY:-}" ] || pip freeze > "results/requirements.lock_${TAG}.txt"
 if [ -n "${PILOT:-}" ]; then
   python agent_eval.py --model "$MODEL" --tag "${TAG}_pilot" --n-per-template 1 --task-seed 99; exit 0
 fi
