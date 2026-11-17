@@ -1,7 +1,7 @@
 """Collect everything in results/ into the report tables and figures (Section 8):
   results/tables/probe_summary.md      probe vs baselines/controls per tag/task (RQ1)
   results/tables/ablations.md          per-verb, leave-one-verb-out, transfer, reworded test rows, behaviour runs
-  results/tables/stated_probe_behaviour.md   (RQ2/RQ3) incl. chance-corrected blindness gap
+  results/tables/stated_probe_behaviour_<tag>.md   (RQ2/RQ3) incl. chance-corrected blindness gap
   results/tables/steering.md           (RQ4, if run)
   figures/stated_probed_behaviour.png, figures/blindness_gap.png
 python make_tables.py [--model-tag qwen3b]"""
@@ -103,16 +103,16 @@ def comparison(tag):
     axs[1].bar(range(4), m, yerr=[[x - l for x, (l, _) in zip(m, c)], [h - x for x, (_, h) in zip(m, c)]], capsize=4)
     axs[1].axhline(0, color="k", lw=.5); axs[1].set_xticks(range(4)); axs[1].set_xticklabels([l for _, l in keys], rotation=15, fontsize=7)
     axs[1].set_ylim(-1.05, 1.05); axs[1].set_title("chance-corrected; 95% CI over templates", fontsize=8)
-    fig.tight_layout(); fig.savefig("figures/stated_probed_behaviour.png", dpi=200); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f"figures/stated_probed_behaviour_{tag}.png", dpi=200); plt.close(fig)
     runs = [(os.path.basename(p)[6:-5], load(p)) for p in sorted(glob.glob("results/agent_*.json"))]
-    runs = [(n, d) for n, d in runs if "gap_star" in d]
+    runs = [(n, d) for n, d in runs if "gap_star" in d and "_pilot" not in n]
     fig, ax = plt.subplots(figsize=(4.2, 3.2))
     ax.bar(range(len(runs)), [d["gap_star"] for _, d in runs],
            yerr=[[d["gap_star"] - d["gap_star_ci95"]["templates"][0] for _, d in runs],
                  [d["gap_star_ci95"]["templates"][1] - d["gap_star"] for _, d in runs]], capsize=4)
     ax.axhline(0, color="k", lw=.5); ax.set_xticks(range(len(runs))); ax.set_xticklabels([n for n, _ in runs], rotation=20, ha="right", fontsize=7)
     ax.set_ylabel("Gap* = K* − A*"); fig.tight_layout(); fig.savefig("figures/blindness_gap.png", dpi=200); plt.close(fig)
-    with open("results/tables/stated_probe_behaviour.md", "w") as f:
+    with open(f"results/tables/stated_probe_behaviour_{tag}.md", "w") as f:
         f.write("| quantity | value [95% CI] |\n|---|---|\n")
         rows = [("stated answer, binary bal-acc (strict: parse failures wrong)", fmt(st["binary_strict"]["bal_acc"])),
                 ("stated answer, 3-class bal-acc (strict)", fmt(st["three_strict"]["bal_acc"])),
