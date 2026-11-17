@@ -1,0 +1,23 @@
+{
+ "n": 100,
+ "kappa_annotator1_vs_2": 0.8469075321494183,
+ "kappa_annotator1_vs_2_binary": 0.9030538051381484,
+ "n_agreed": 90,
+ "disagreements": [
+  "sbx-00026-1",
+  "sbx-01070-0",
+  "sbx-01498-1",
+  "sbx-00309-2",
+  "sbx-01123-2",
+  "sbx-00004-1",
+  "sbx-01640-2",
+  "sbx-01707-1",
+  "sbx-00542-0",
+  "sbx-00689-2"
+ ],
+ "kappa_annotator1_vs_auto": 0.8616874135546335,
+ "kappa_annotator2_vs_auto": 0.9848691178695718,
+ "kappa_annotator1_vs_auto_binary": 0.9030538051381484,
+ "kappa_annotator2_vs_auto_binary": 1.0,
+ "kappa_consensus_vs_auto_agreed_rows_only": 1.0
+}

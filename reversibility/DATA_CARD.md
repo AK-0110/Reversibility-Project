@@ -29,7 +29,7 @@ Reworded copies of the sandbox test rows (same ids and labels, for frozen-probe 
 - **Split.** No scenario spans splits and there are no duplicate rows, but the sandbox label is a deterministic function of a few settings, so the test split mostly tests interpolation within seen setting combinations.
 
 ## Quality control
-- Two annotators, 100 random sandbox pairs, labels hidden (`ANNOTATION_GUIDE.md`): Cohen's kappa annotator1–2 = ___ (binary ___); each annotator vs automatic = ___ / ___ (`agreement.py`).
+- Two annotators, 100 random sandbox pairs, labels hidden (`ANNOTATION_GUIDE.md`, labelled with `label_tool.py`; `results/label_agreement.json`): Cohen's kappa annotator 1 vs 2 = 0.847 (three classes), 0.903 (irreversible vs not); the two annotators gave the same three-class label on 90 of 100 rows. Each annotator vs the automatic label: 0.862 / 0.985 (three classes), 0.903 / 1.000 (binary). The automatic labels come from the simulator's rules and a search over the same simulator, so these numbers show the labels match what people judge from the state text; they do not test the simulator itself.
 - ScienceWorld spot check by the team (`data/sciworld_check.csv`): ___ of ___ labels confirmed.
 
 ## Licences
