@@ -34,7 +34,8 @@ def vs_probe(rows, path):
     both = [r for r in rows if r["id"] in pr and r["stated"] is not None]
     s = np.array([conv(r["stated"]) for r in both]); q = np.array([pr[r["id"]] for r in both])
     t = np.array([conv(r["true"]) for r in both])
-    return {"n": len(both), "kappa_stated_vs_probe": float(cohen_kappa_score(s, q)),
+    return {"n": len(both), "n_dropped_parse_failures": sum(r["id"] in pr and r["stated"] is None for r in rows),
+            "kappa_stated_vs_probe": float(cohen_kappa_score(s, q)),
             "probe_bal_acc": float(balanced_accuracy_score(t, q)), "stated_bal_acc": float(balanced_accuracy_score(t, s)),
             "probe_accuracy": float((t == q).mean()), "stated_accuracy": float((t == s).mean()),
             "agreement_stated_probe": float((s == q).mean()), "both_correct": float(((s == t) & (q == t)).mean()),

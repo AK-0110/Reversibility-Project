@@ -3,7 +3,7 @@
   results/tables/ablations.md          per-verb, leave-one-verb-out, transfer, reworded test rows, behaviour runs
   results/tables/stated_probe_behaviour_<tag>.md   (RQ2/RQ3) incl. chance-corrected blindness gap
   results/tables/steering.md           (RQ4, if run)
-  figures/stated_probed_behaviour.png, figures/blindness_gap.png
+  figures/stated_probed_behaviour_<tag>.png, figures/blindness_gap.png (all models; copy every results/agent_*.json into one results/ first)
 python make_tables.py [--model-tag qwen3b]"""
 import argparse, glob, json, os
 import numpy as np
@@ -118,7 +118,7 @@ def comparison(tag):
                 ("stated answer, 3-class bal-acc (strict)", fmt(st["three_strict"]["bal_acc"])),
                 ("stated parse failures", f'{st["parse_failures"]} / {st["n"]}')]
         for task, v in st["vs_probe"].items():
-            rows += [(f"{task}: probe vs stated bal-acc on the same {v['n']} rows", f'{v["probe_bal_acc"]:.3f} vs {v["stated_bal_acc"]:.3f}'),
+            rows += [(f"{task}: probe vs stated bal-acc on the same {v['n']} rows ({v.get('n_dropped_parse_failures', '?')} parse failures dropped)", f'{v["probe_bal_acc"]:.3f} vs {v["stated_bal_acc"]:.3f}'),
                      (f"{task}: kappa(stated, probe)", fmt(v["kappa_stated_vs_probe"]))]
         T = lambda k: fmt(ag[k], None, ag[k + "_ci95"]["templates"])
         rows += [("K: names the irreversible version (both orders; chance 0.5)", fmt(ag["K_states_correct_version"], None, ag["K_ci95"])),
