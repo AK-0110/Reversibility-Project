@@ -24,6 +24,7 @@ def scores(y, p, k):
     """p may hold -1 (parse failure): counted as wrong."""
     return {"accuracy": float((y == p).mean()), "bal_acc": float(balanced_accuracy_score(y, p)),
             "accuracy_ci95": bootstrap_ci((y == p).astype(float)),
+            "bal_acc_ci95": bootstrap_ci(lambda i: balanced_accuracy_score(y[i], p[i]), size=len(y)),
             "confusion_true_by_stated": confusion_matrix(y, p, labels=list(range(k))).tolist()}
 
 
@@ -36,6 +37,9 @@ def vs_probe(rows, path):
     t = np.array([conv(r["true"]) for r in both])
     return {"n": len(both), "n_dropped_parse_failures": sum(r["id"] in pr and r["stated"] is None for r in rows),
             "kappa_stated_vs_probe": float(cohen_kappa_score(s, q)),
+            "kappa_ci95": bootstrap_ci(lambda i: cohen_kappa_score(s[i], q[i]), size=len(s)),
+            "stated_bal_acc_ci95": bootstrap_ci(lambda i: balanced_accuracy_score(t[i], s[i]), size=len(s)),
+            "probe_bal_acc_ci95": bootstrap_ci(lambda i: balanced_accuracy_score(t[i], q[i]), size=len(s)),
             "probe_bal_acc": float(balanced_accuracy_score(t, q)), "stated_bal_acc": float(balanced_accuracy_score(t, s)),
             "probe_accuracy": float((t == q).mean()), "stated_accuracy": float((t == s).mean()),
             "agreement_stated_probe": float((s == q).mean()), "both_correct": float(((s == t) & (q == t)).mean()),

@@ -106,20 +106,25 @@ def comparison(tag):
     fig.tight_layout(); fig.savefig(f"figures/stated_probed_behaviour_{tag}.png", dpi=200); plt.close(fig)
     runs = [(os.path.basename(p)[6:-5], load(p)) for p in sorted(glob.glob("results/agent_*.json"))]
     runs = [(n, d) for n, d in runs if "gap_star" in d and "_pilot" not in n]
-    fig, ax = plt.subplots(figsize=(4.2, 3.2))
-    ax.bar(range(len(runs)), [d["gap_star"] for _, d in runs],
-           yerr=[[d["gap_star"] - d["gap_star_ci95"]["templates"][0] for _, d in runs],
-                 [d["gap_star_ci95"]["templates"][1] - d["gap_star"] for _, d in runs]], capsize=4)
-    ax.axhline(0, color="k", lw=.5); ax.set_xticks(range(len(runs))); ax.set_xticklabels([n for n, _ in runs], rotation=20, ha="right", fontsize=7)
-    ax.set_ylabel("Gap* = K* − A*"); fig.tight_layout(); fig.savefig("figures/blindness_gap.png", dpi=200); plt.close(fig)
+    fig, ax = plt.subplots(figsize=(4.2, 3.2)); x = np.arange(len(runs)); w = .38
+    gci = lambda d: d["gap_ci95"] if isinstance(d["gap_ci95"], list) else d["gap_ci95"]["templates"]
+    for off, key, ci, lab, hatch in ((-w / 2, "blindness_gap", gci, "Gap = K − A (brief; ~0.5 if no knowledge)", "//"),
+                                     (w / 2, "gap_star", lambda d: d["gap_star_ci95"]["templates"], "Gap* = K* − A* (chance-corrected)", "")):
+        m = [d[key] for _, d in runs]
+        ax.bar(x + off, m, w, label=lab, hatch=hatch, edgecolor="k", lw=.5, capsize=3,
+               yerr=[[v - ci(d)[0] for v, (_, d) in zip(m, runs)], [ci(d)[1] - v for v, (_, d) in zip(m, runs)]])
+    ax.axhline(0, color="k", lw=.5); ax.axhline(.5, color="gray", ls="--", lw=.8)
+    ax.set_xticks(x); ax.set_xticklabels([n.replace("_neutral", "") for n, _ in runs], fontsize=8)
+    ax.set_ylabel("knowing − acting gap"); ax.set_ylim(-.3, 1.05); ax.legend(fontsize=6, loc="upper left")
+    fig.tight_layout(); fig.savefig("figures/blindness_gap.png", dpi=200); plt.close(fig)
     with open(f"results/tables/stated_probe_behaviour_{tag}.md", "w", encoding="utf-8") as f:
         f.write("| quantity | value [95% CI] |\n|---|---|\n")
-        rows = [("stated answer, binary bal-acc (strict: parse failures wrong)", fmt(st["binary_strict"]["bal_acc"])),
-                ("stated answer, 3-class bal-acc (strict)", fmt(st["three_strict"]["bal_acc"])),
+        rows = [("stated answer, binary bal-acc (strict: parse failures wrong)", fmt(st["binary_strict"]["bal_acc"], None, st["binary_strict"].get("bal_acc_ci95"))),
+                ("stated answer, 3-class bal-acc (strict)", fmt(st["three_strict"]["bal_acc"], None, st["three_strict"].get("bal_acc_ci95"))),
                 ("stated parse failures", f'{st["parse_failures"]} / {st["n"]}')]
         for task, v in st["vs_probe"].items():
             rows += [(f"{task}: probe vs stated bal-acc on the same {v['n']} rows ({v.get('n_dropped_parse_failures', '?')} parse failures dropped)", f'{v["probe_bal_acc"]:.3f} vs {v["stated_bal_acc"]:.3f}'),
-                     (f"{task}: kappa(stated, probe)", fmt(v["kappa_stated_vs_probe"]))]
+                     (f"{task}: kappa(stated, probe)", fmt(v["kappa_stated_vs_probe"], None, v.get("kappa_ci95")))]
         T = lambda k: fmt(ag[k], None, ag[k + "_ci95"]["templates"])
         rows += [("K: names the irreversible version (both orders; chance 0.5)", fmt(ag["K_states_correct_version"], None, ag["K_ci95"])),
                  ("K both orders correct (chance 0.25)", fmt(ag["K_both_orders_correct"])),
@@ -130,6 +135,13 @@ def comparison(tag):
                  ("Gap* = K* − A* (headline)", T("gap_star")), ("Gap*_outcome = K* − A_out*", T("gap_star_outcome")),
                  ("McNemar p (caution irr vs rev)", f'{ag["mcnemar_p"]:.3g}'), ("careful 2×2 (both / irr only / rev only / neither)",
                   " / ".join(str(ag["careful_2x2"][k]) for k in ("both", "irr_only", "rev_only", "neither")))]
+        sw, cl = f"results/stated_which_{tag}_neutral.jsonl", f"results/agent_{tag}_careful.jsonl"
+        if os.path.exists(sw) and os.path.exists(cl):          # K does not depend on the system prompt: reuse the neutral K
+            from agent_eval import summarize; from utils import read_jsonl
+            st = list(read_jsonl(sw)); c = summarize(list(read_jsonl(cl)), [r for r in st if "irr_shown_as" in r],
+                                                     [r for r in st if "irr_shown_as" not in r])
+            rows += [("careful prompt: Gap (brief), neutral K", fmt(c["blindness_gap"], None, c["gap_ci95"])),
+                     ("careful prompt: Gap*, neutral K", fmt(c["gap_star"], None, c["gap_star_ci95"]["templates"]))]
         for k, v in rows: f.write(f"| {k} | {v} |\n")
     s = load(f"results/steering_{tag}.json")
     if s:
