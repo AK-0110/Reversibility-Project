@@ -10,7 +10,7 @@ import numpy as np
 
 
 def load(p):
-    return json.load(open(p)) if os.path.exists(p) else None
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
 
 
 def fmt(m, s=None, ci=None):
@@ -49,12 +49,12 @@ def probe_tables():
            "macro-F1", "AUROC", "bal-acc minimal pairs", "action BoW all / minimal", "state BoW all / minimal",
            "state+action BoW all / minimal", "selectivity (verb control)", "selectivity (permuted setting)", "shuffled",
            "majority", "layer-0 probe")
-    with open("results/tables/probe_summary.md", "w") as f:
+    with open("results/tables/probe_summary.md", "w", encoding="utf-8") as f:
         f.write("Tags: *_last / *_mean / *_pre = token position (pre = last token before the action: sees the state, not the "
                 "action); *_minimal = minimal pairs only; *_h1 / *_h2 = horizon. An action-specific claim needs *_last > "
                 "*_pre and > state BoW on minimal pairs.\n\n")
         table(f, hdr, rows)
-    with open("results/tables/ablations.md", "w") as f:
+    with open("results/tables/ablations.md", "w", encoding="utf-8") as f:
         f.write("## Per verb (test, best layer, mean over splits) and leave-one-verb-out (binary, train on the other verbs)\n\n")
         table(f, ("tag", "task", "verb", "n test (split 0)", "bal-acc", "leave-one-verb-out bal-acc [95% CI]"), verbs)
         tr = []
@@ -112,7 +112,7 @@ def comparison(tag):
                  [d["gap_star_ci95"]["templates"][1] - d["gap_star"] for _, d in runs]], capsize=4)
     ax.axhline(0, color="k", lw=.5); ax.set_xticks(range(len(runs))); ax.set_xticklabels([n for n, _ in runs], rotation=20, ha="right", fontsize=7)
     ax.set_ylabel("Gap* = K* − A*"); fig.tight_layout(); fig.savefig("figures/blindness_gap.png", dpi=200); plt.close(fig)
-    with open(f"results/tables/stated_probe_behaviour_{tag}.md", "w") as f:
+    with open(f"results/tables/stated_probe_behaviour_{tag}.md", "w", encoding="utf-8") as f:
         f.write("| quantity | value [95% CI] |\n|---|---|\n")
         rows = [("stated answer, binary bal-acc (strict: parse failures wrong)", fmt(st["binary_strict"]["bal_acc"])),
                 ("stated answer, 3-class bal-acc (strict)", fmt(st["three_strict"]["bal_acc"])),
@@ -133,7 +133,7 @@ def comparison(tag):
         for k, v in rows: f.write(f"| {k} | {v} |\n")
     s = load(f"results/steering_{tag}.json")
     if s:
-        with open("results/tables/steering.md", "w") as f:
+        with open("results/tables/steering.md", "w", encoding="utf-8") as f:
             f.write(f"Layer {s['layer']}, ||v|| = {s['direction_norm']:.2f}, median ||h|| = {s['median_hidden_norm']:.2f}, {s['n_pairs']} pairs\n\n")
             table(f, ("direction", "fraction of median ||h||", "caution irr / rev", "target taken irr", "success irr / rev", "parse failures"),
                   [(r["direction"], r["fraction"], f'{r["caution_rate_irr"]:.2f} / {r["over_caution_rate_rev"]:.2f}',
