@@ -1,0 +1,4 @@
+1664 records | classes {'reversible': 607, 'irreversible': 607, 'partially_reversible': 450} | minimal-pair share 97% | test share 18%
+designed label vs BFS label agreement (all records): {'horizon_1': 0.8780048076923077, 'horizon_2': 1.0, 'horizon_3': 1.0}
+wrote manual sheets (fill 'your_label' with reversible / partially_reversible / irreversible)
+done
