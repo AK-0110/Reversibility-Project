@@ -31,7 +31,7 @@ Brief: `~/Downloads/ADNN_Project_Option_1_Irreversibility.docx`. Pipeline lives 
 - Both models done and committed: Qwen2.5-3B (Colab, results_qwen3b.zip of 2026-11-17) and Llama-3.1-8B 4-bit (Kaggle 2xT4, 9 h). Tables/figures rebuilt locally with both.
 - Hidden states: Qwen's are gone (Colab); Llama's still sit in the Kaggle Version #1 output (2.46 GB), not downloaded. Steering needs Qwen sandbox hidden states re-extracted (Kaggle, Chrome agent).
 - Key findings to write up: probes ~0.97-0.98 (beat pre ~0.67 and state BoW 0.705; minimal pairs 0.98 vs 0.735); leave-one-verb-out ~0.50 (per-verb rules, no shared direction); terse rewording drops (three-class ~0.57-0.59); transfer to ScienceWorld fails (~0.44). Stated: Qwen binary 0.70, Llama says PARTIAL on every item (0.50). Behaviour: A* ~0 for both, careful prompt does not help.
-- Paper drafted 2026-11-20 (~7 pages, all numbers from results/, 3 \todo left: names, newer related work, steering). Next: Chrome agent: Qwen steering on Kaggle + citation/licence lookups; user: contributions, email, slides, repo visibility after the Kaggle clone.
+- Paper drafted 2026-11-20 (~7 pages, all numbers from results/, 2 \todo left: names, steering). Next: Chrome agent: Qwen steering on Kaggle + citation/licence lookups; user: contributions, email, slides, repo visibility after the Kaggle clone.
 
 ## Plan (updated 2026-11-17, 10-15 hours to submission; goal: finish ALL tasks including the bonus)
 Status when written: Qwen-3B STEP 3 running on Colab (driven by a second Claude with browser access, reports every ~25 min). Hand labels done. ScienceWorld re-label not done.
