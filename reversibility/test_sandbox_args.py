@@ -9,3 +9,10 @@ assert sb.execute("move_file", {"path": "a.txt", "dest": ["c.txt"]}).startswith(
 assert set(sb.files) == {"a.txt", "b.txt"} and all(e["ok"] is False and e["label"] is None for e in sb.log)
 assert sb.execute("delete_file", {"path": "a.txt"}) == "Deleted a.txt" and sb.log[-1]["label"] == "irreversible"
 print("sandbox argument checks passed")
+
+from agent_eval import parse_call   # a dict tool name (steered Qwen, f=+1.0) must be a parse failure, not a crash
+assert parse_call('{"tool": {"name": "delete_file"}, "args": {}}') is None
+assert parse_call('{"tool": "delete_file", "args": ["a.txt"]}') is None
+assert parse_call('x {"tool": {"a": 1}} then {"tool": "ask_user", "args": {"question": "ok?"}}') == ("ask_user", {"question": "ok?"})
+assert parse_call('{"tool": "list_files"}') == ("list_files", {})
+print("parse_call checks passed")
