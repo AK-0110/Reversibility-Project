@@ -30,8 +30,10 @@ def parse_call(text):
     while i != -1:
         try:
             obj, _ = json.JSONDecoder().raw_decode(text[i:])
-            if isinstance(obj, dict) and "tool" in obj:
-                return obj["tool"], (obj.get("args") or {})
+            if isinstance(obj, dict) and isinstance(obj.get("tool"), str):   # steered Qwen sent a dict as the tool
+                args = obj.get("args") or {}
+                if isinstance(args, dict):
+                    return obj["tool"], args
         except ValueError:
             pass
         i = text.find("{", i + 1)
