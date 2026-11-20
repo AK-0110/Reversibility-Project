@@ -44,33 +44,24 @@ Status when written: Qwen-3B STEP 3 running on Colab (driven by a second Claude 
 7. **Last 2 hours:** ponytail review, final paper read, commit, push, submit. Do not make changes that cannot be checked.
 Cut order if time runs short: RQ5, then RQ4, then Llama results (report one family as a limitation), then ScienceWorld re-label. Never cut: Qwen probes + stated answers + blindness gap, hand-label agreement, paper, presentation and demo, contribution log.
 
-## Open tasks checklist (added 2026-11-17; tick off, do not forget)
+## Open tasks (rewritten 2026-11-20; everything else is done and committed)
+Done: both model runs, CIs, careful-prompt gap, both gaps in the figure, full paper draft (~7 pages, all numbers from results/), related work + verified citations (no published paper runs this experiment), README reproduce map, DATA_CARD/REPORT fixes, licences.
 User:
-- [ ] Send the instructor email (short version: Qwen 3B fp16 + Llama 4-bit, both because of the free T4; draft in `instructor_email_draft.txt`, fill in name/IDs).
-- [ ] Write `CONTRIBUTIONS.md`: one paragraph per team member (what they built, experiments run, sections written, bugs debugged). Only the user knows this.
-- [ ] Check the paper compiles: upload `paper/main.tex` + `paper/refs.bib` to Overleaf and report any LaTeX errors.
-- [ ] Read the Group A papers (Grinsztajn, Alain & Bengio, Hewitt & Liang, ToolEmu) if not done.
-- [ ] After Qwen STEP 3: save `results_qwen3b.zip`, paste the results to Claude; then start the Llama cell.
+- [ ] `CONTRIBUTIONS.md` (one paragraph per person; now a 39-word stub).
+- [ ] Names and student IDs in `paper/main.tex` (the `\todo` in the author line).
+- [ ] Overleaf compile check (upload `paper/` and `figures/`, keep the folder layout); report errors and the page count.
+- [ ] Make the GitHub repo private (Kaggle clone is done) and give the grader access.
+- [ ] Send the instructor email once Claude updates the draft.
+- [ ] Slides (15 min), demo recording, one timed rehearsal.
+- [ ] Check the course AI-use policy (CLAUDE.md is in the repo).
+- [ ] Optional: two people spot-check ~40 ScienceWorld labels (else it stays a listed deviation).
 Claude:
-- [x] Commit and push hand labels, label_tool, refs.bib, sandbox list-path fix (Llama careful-run crash), tagged comparison outputs, PROBES_ONLY keeps the pip lock, .gitignore fixed + ByteSized sheets untracked (2026-11-17).
-From the external critique (2026-11-17; checked items only):
-- [ ] (User) Copy hidden states `data/h_<tag>_*` and the results zip to Drive/PC after each GPU run (the notebook zip leaves out the .npy files; steering and the ScienceWorld re-run need them). Download `llama8b_partial_results.zip` from Kaggle now.
-- [ ] (User) Decide: the repo is public and ByteSized32 text is in old commits. Make it private until marking (grader gets access) or rewrite history.
-- [ ] (User) New cut order: ScienceWorld re-label first, then RQ5, then RQ4. Never cut Llama (shrink N_PER instead). Consider dropping RQ5 now (400 rows need two human labellers).
-- [ ] (Team) Block ~4 h to write the paper from real numbers (now ~2 pages, 0 figures/tables, 17 TODOs; brief needs 6-8 pages + the named figures/tables).
-- [ ] (Claude) 95% CIs for stated bal-acc, kappa, vs_probe, steering; label baseline spread as sd over 3 splits.
-- [ ] (Claude) Careful-prompt run gets a gap (reuse the neutral K); brief's Gap next to Gap* in the figure.
-- [ ] (Claude) Paper fixes (done: "two amendments", parse-failure sentence): deviations + every run (OOM attempt, old-code pilot, killed re-labels, Kaggle crash + fix, N_PER changes); selectivity explanation; CI method wording; caution = before the first shortcut call; replace pre-run 0.745; SW horizon counts h1/h2/h3; ScienceWorld spot check done or listed as a deviation.
-- [ ] (Claude) arXiv search before the email; update the email (Llama granted, Phi not needed, why not course GPUs). (User) send it.
-- [ ] (Claude) README figure/table -> command map; REPORT.md points to the PDF; commit results/, figures/, *_prompts.jsonl, main.pdf (no .npy, every file < 100 MB).
-- [ ] (User) SafeAgentBench version read; check wang2022scienceworld; ScienceWorld licence; course AI-use policy.
-- [ ] Draft the 15-minute presentation outline and the demo plan (slides need real numbers later).
-- [ ] Search arXiv for newer work on reversibility in LLM agents; cite it or rule it out (paper Related Work TODO; the brief requires telling the instructor at once if someone published this exact experiment).
-- [ ] Look into RQ5 (ByteSized32): download and check feasibility first; decide go/no-go (needs our inference code and two people's labels).
-- [ ] When Qwen results arrive: read numbers with rule 1, fill the paper from real numbers only, run `make_tables.py`, `demo.py`.
-- [ ] Pin library versions in `requirements.txt` from the Colab pip freeze; update DATA_CARD/README/REPORT with real results.
-- [ ] Optional spare-time job: ScienceWorld re-label (not a bonus item; it only improves the weak ScienceWorld labels). Run it on the user's second desktop if available.
-Bonus (up to 2 marks): RQ4 steering with controls (after Llama, if at least ~5 h remain), RQ5 uncertainty (lowest priority).
+- [ ] Update `instructor_email_draft.txt` (Llama granted, Phi not needed, Kaggle/Colab, no prior publication found).
+- [ ] Steering zip from Kaggle: check it, CIs over pairs, steering figure, fill the paper's RQ4 section (or write "not run").
+- [ ] Presentation outline + demo plan; run `demo.py` on the saved logs.
+- [ ] Pin `requirements.txt` from `results/requirements.lock_*.txt`.
+- [ ] Final read of the paper against the tables, then commit and push.
+Dropped: RQ5 (needs 400 rows labelled by two people), ScienceWorld re-label (listed as a deviation).
 
 ## Compute facts
 - Free Colab T4 (about 14.5 GB usable) OOMs on Qwen2.5-7B bf16 (tested). Use Qwen2.5-3B-Instruct; Llama 8B needs `LOAD_4BIT=1`.
