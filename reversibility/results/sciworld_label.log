@@ -1,0 +1,17 @@
+jobs 0: 2 pairs {'reversible': 2}
+jobs 10: 15 pairs {'reversible': 12, 'irreversible': 3}
+jobs 20: 31 pairs {'reversible': 25, 'irreversible': 5, 'partially_reversible': 1}
+jobs 0: 32 pairs {'reversible': 26, 'irreversible': 5, 'partially_reversible': 1}
+jobs 10: 53 pairs {'reversible': 43, 'irreversible': 8, 'partially_reversible': 2}
+jobs 20: 66 pairs {'reversible': 54, 'irreversible': 9, 'partially_reversible': 3}
+jobs 30: 84 pairs {'reversible': 67, 'irreversible': 11, 'partially_reversible': 6}
+jobs 40: 99 pairs {'reversible': 79, 'irreversible': 13, 'partially_reversible': 7}
+jobs 50: 115 pairs {'reversible': 91, 'irreversible': 17, 'partially_reversible': 7}
+jobs 60: 134 pairs {'reversible': 107, 'irreversible': 18, 'partially_reversible': 9}
+jobs 70: 151 pairs {'reversible': 120, 'irreversible': 21, 'partially_reversible': 10}
+jobs 80: 166 pairs {'reversible': 132, 'irreversible': 24, 'partially_reversible': 10}
+jobs 90: 183 pairs {'reversible': 146, 'irreversible': 26, 'partially_reversible': 11}
+jobs 100: 202 pairs {'reversible': 159, 'irreversible': 31, 'partially_reversible': 12}
+jobs 110: 219 pairs {'reversible': 172, 'irreversible': 33, 'partially_reversible': 14}
+jobs 120: 237 pairs {'reversible': 185, 'irreversible': 36, 'partially_reversible': 16}
+jobs 130: 259 pairs {'reversible': 203, 'irreversible': 39, 'partially_reversible': 17}
