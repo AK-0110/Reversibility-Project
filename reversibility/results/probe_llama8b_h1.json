@@ -1,0 +1,2946 @@
+{
+ "config": {
+  "data": [
+   "data/sandbox.jsonl",
+   "data/sandbox_extra.jsonl"
+  ],
+  "hidden": [
+   "data/h_llama8b_sandbox",
+   "data/h_llama8b_sandbox_extra"
+  ],
+  "pos": "last",
+  "tag": "llama8b_h1",
+  "label_key": "label_h1",
+  "minimal_only": false,
+  "transfer": false,
+  "lovo": false,
+  "eval_data": null,
+  "eval_hidden": null,
+  "layer_step": 2,
+  "C": 0.05,
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "layers": [
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32
+ ],
+ "tasks": {
+  "binary": {
+   "per_seed": [
+    {
+     "seed": 0,
+     "baselines": {
+      "majority": 0.5,
+      "lexical": {
+       "bal_acc": 0.6339934593023255,
+       "bal_acc_minimal": 0.5674135723431498
+      },
+      "state_bow": {
+       "bal_acc": 0.6769622093023255,
+       "bal_acc_minimal": 0.6693982074263765
+      },
+      "state_action_bow": {
+       "bal_acc": 0.7275012112403101,
+       "bal_acc_minimal": 0.6444302176696544
+      },
+      "n_train": 872,
+      "n_val": 208,
+      "n_test": 257,
+      "class_counts_test": [
+       128,
+       129
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.5719371243643088,
+       "test_bal_acc": 0.5603803294573644,
+       "test_macro_f1": 0.5602047461117926,
+       "test_auroc": 0.5603803294573644,
+       "test_bal_acc_ci": [
+        0.4976286389137758,
+        0.6186418508846546
+       ],
+       "test_bal_acc_minimal": 0.5146606914212548,
+       "shuffled_bal_acc": 0.5,
+       "control_bal_acc": 0.8481675392670157,
+       "selectivity": -0.28778720980965133,
+       "setting_control_bal_acc": 0.5,
+       "setting_real_same_rows": 0.49580762537573164,
+       "selectivity_setting": -0.004192374624268358
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.8023578363384188,
+       "test_bal_acc": 0.7623849321705427,
+       "test_macro_f1": 0.7614758463294028,
+       "test_auroc": 0.8273376937984496,
+       "test_bal_acc_ci": [
+        0.7095868765694131,
+        0.8101972046641082
+       ],
+       "test_bal_acc_minimal": 0.6994238156209986,
+       "shuffled_bal_acc": 0.49391351744186046,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.2376150678294573,
+       "setting_control_bal_acc": 0.6907450980392157,
+       "setting_real_same_rows": 0.715749090333808,
+       "selectivity_setting": 0.02500399229459227
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.8699491447064263,
+       "test_bal_acc": 0.8443253391472868,
+       "test_macro_f1": 0.8443367655966081,
+       "test_auroc": 0.9311409883720931,
+       "test_bal_acc_ci": [
+        0.7998063121063284,
+        0.8867291301793971
+       ],
+       "test_bal_acc_minimal": 0.8191421254801536,
+       "shuffled_bal_acc": 0.49355014534883723,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.1556746608527132,
+       "setting_control_bal_acc": 0.6969411764705882,
+       "setting_real_same_rows": 0.8192137320044297,
+       "selectivity_setting": 0.12227255553384153
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.8699491447064263,
+       "test_bal_acc": 0.8793301841085271,
+       "test_macro_f1": 0.8793482046855361,
+       "test_auroc": 0.938953488372093,
+       "test_bal_acc_ci": [
+        0.8402159636932055,
+        0.9149238563281155
+       ],
+       "test_bal_acc_minimal": 0.8629961587708066,
+       "shuffled_bal_acc": 0.5250121124031008,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.12066981589147285,
+       "setting_control_bal_acc": 0.7071372549019608,
+       "setting_real_same_rows": 0.8590017402309762,
+       "selectivity_setting": 0.15186448532901542
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.9521035598705502,
+       "test_bal_acc": 0.9377422480620154,
+       "test_macro_f1": 0.9377422480620154,
+       "test_auroc": 0.9866157945736435,
+       "test_bal_acc_ci": [
+        0.9036279281521853,
+        0.9656617401192874
+       ],
+       "test_bal_acc_minimal": 0.9400128040973111,
+       "shuffled_bal_acc": 0.5639232073643411,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06225775193798455,
+       "setting_control_bal_acc": 0.7681568627450981,
+       "setting_real_same_rows": 0.9281759215314033,
+       "selectivity_setting": 0.16001905878630518
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.9423023578363384,
+       "test_bal_acc": 0.9416484980620154,
+       "test_macro_f1": 0.9416342412451362,
+       "test_auroc": 0.9825581395348837,
+       "test_bal_acc_ci": [
+        0.9105452948626177,
+        0.9686633123849625
+       ],
+       "test_bal_acc_minimal": 0.9375160051216389,
+       "shuffled_bal_acc": 0.4005268895348837,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05835150193798455,
+       "setting_control_bal_acc": 0.7886666666666666,
+       "setting_real_same_rows": 0.9332779623477299,
+       "selectivity_setting": 0.14461129568106323
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.9617198335644938,
+       "test_bal_acc": 0.9416787790697674,
+       "test_macro_f1": 0.9416307063365887,
+       "test_auroc": 0.9884932170542635,
+       "test_bal_acc_ci": [
+        0.910327332485157,
+        0.968402665185452
+       ],
+       "test_bal_acc_minimal": 0.9586427656850192,
+       "shuffled_bal_acc": 0.48216448643410853,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05832122093023262,
+       "setting_control_bal_acc": 0.8082745098039216,
+       "setting_real_same_rows": 0.9345040341718083,
+       "selectivity_setting": 0.1262295243678867
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.9760055478502081,
+       "test_bal_acc": 0.9728076550387597,
+       "test_macro_f1": 0.972760996290408,
+       "test_auroc": 0.9971535852713178,
+       "test_bal_acc_ci": [
+        0.9504709050418447,
+        0.9889007092198582
+       ],
+       "test_bal_acc_minimal": 0.9793213828425096,
+       "shuffled_bal_acc": 0.5211664244186047,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.027192344961240345,
+       "setting_control_bal_acc": 0.854078431372549,
+       "setting_real_same_rows": 0.9704160734061067,
+       "selectivity_setting": 0.11633764203355768
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.975913083680074,
+       "test_bal_acc": 0.9610283430232558,
+       "test_macro_f1": 0.9610747606930814,
+       "test_auroc": 0.9947311046511628,
+       "test_bal_acc_ci": [
+        0.9333802714628348,
+        0.9825377983256278
+       ],
+       "test_bal_acc_minimal": 0.9627400768245838,
+       "shuffled_bal_acc": 0.5057533914728682,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03897165697674421,
+       "setting_control_bal_acc": 0.8233725490196079,
+       "setting_real_same_rows": 0.9526578073089701,
+       "selectivity_setting": 0.12928525828936221
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.9566805362921869,
+       "test_bal_acc": 0.9532764050387597,
+       "test_macro_f1": 0.9533010296789824,
+       "test_auroc": 0.991703003875969,
+       "test_bal_acc_ci": [
+        0.9271061433916001,
+        0.9771430891778196
+       ],
+       "test_bal_acc_minimal": 0.9606914212548014,
+       "shuffled_bal_acc": 0.4666303294573643,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.046723594961240345,
+       "setting_control_bal_acc": 0.7895686274509803,
+       "setting_real_same_rows": 0.9500079101408005,
+       "selectivity_setting": 0.16043928268982022
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.951918631530282,
+       "test_bal_acc": 0.9454941860465116,
+       "test_macro_f1": 0.9455178679588128,
+       "test_auroc": 0.9895833333333333,
+       "test_bal_acc_ci": [
+        0.9181261972014021,
+        0.972828062522719
+       ],
+       "test_bal_acc_minimal": 0.9491037131882203,
+       "shuffled_bal_acc": 0.47447311046511625,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05450581395348841,
+       "setting_control_bal_acc": 0.7735686274509803,
+       "setting_real_same_rows": 0.941029900332226,
+       "selectivity_setting": 0.16746127288124568
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.951918631530282,
+       "test_bal_acc": 0.9376816860465116,
+       "test_macro_f1": 0.9377196171089301,
+       "test_auroc": 0.9866763565891472,
+       "test_bal_acc_ci": [
+        0.908110399230826,
+        0.9650742039037258
+       ],
+       "test_bal_acc_minimal": 0.9350192061459668,
+       "shuffled_bal_acc": 0.5328548934108528,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06231831395348841,
+       "setting_control_bal_acc": 0.7677647058823529,
+       "setting_real_same_rows": 0.9308258186995728,
+       "selectivity_setting": 0.1630611128172199
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.951918631530282,
+       "test_bal_acc": 0.9300508720930232,
+       "test_macro_f1": 0.9299345692475464,
+       "test_auroc": 0.9826187015503876,
+       "test_bal_acc_ci": [
+        0.8984548179079918,
+        0.9569686338830647
+       ],
+       "test_bal_acc_minimal": 0.9193341869398207,
+       "shuffled_bal_acc": 0.4980014534883721,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06994912790697683,
+       "setting_control_bal_acc": 0.7632549019607844,
+       "setting_real_same_rows": 0.9228761271950641,
+       "selectivity_setting": 0.15962122523427968
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.9423023578363384,
+       "test_bal_acc": 0.9338662790697674,
+       "test_macro_f1": 0.933852140077821,
+       "test_auroc": 0.9842538759689923,
+       "test_bal_acc_ci": [
+        0.9021505989557517,
+        0.960600844414771
+       ],
+       "test_bal_acc_minimal": 0.9284250960307299,
+       "shuffled_bal_acc": 0.5210453003875969,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06613372093023262,
+       "setting_control_bal_acc": 0.7432549019607844,
+       "setting_real_same_rows": 0.9242999525391552,
+       "selectivity_setting": 0.18104505057837084
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.951918631530282,
+       "test_bal_acc": 0.9261143410852712,
+       "test_macro_f1": 0.9260655613596791,
+       "test_auroc": 0.9792272286821706,
+       "test_bal_acc_ci": [
+        0.8915173193177867,
+        0.956675920209404
+       ],
+       "test_bal_acc_minimal": 0.912291933418694,
+       "shuffled_bal_acc": 0.5173207364341086,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.07388565891472876,
+       "setting_control_bal_acc": 0.7334509803921568,
+       "setting_real_same_rows": 0.9165480145546591,
+       "selectivity_setting": 0.18309703416250223
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9374479889042996,
+       "test_bal_acc": 0.9416787790697674,
+       "test_macro_f1": 0.9416307063365887,
+       "test_auroc": 0.9785610465116279,
+       "test_bal_acc_ci": [
+        0.9109000522324353,
+        0.9683970856102003
+       ],
+       "test_bal_acc_minimal": 0.9354673495518566,
+       "shuffled_bal_acc": 0.5018774224806202,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05832122093023262,
+       "setting_control_bal_acc": 0.7205490196078431,
+       "setting_real_same_rows": 0.9345040341718083,
+       "selectivity_setting": 0.21395501456396515
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.9229773462783172,
+       "test_bal_acc": 0.9300508720930232,
+       "test_macro_f1": 0.9299345692475464,
+       "test_auroc": 0.9803173449612403,
+       "test_bal_acc_ci": [
+        0.896982572296676,
+        0.958316605839416
+       ],
+       "test_bal_acc_minimal": 0.9147887323943662,
+       "shuffled_bal_acc": 0.4200884205426356,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06994912790697683,
+       "setting_control_bal_acc": 0.7303529411764705,
+       "setting_real_same_rows": 0.9228761271950641,
+       "selectivity_setting": 0.19252318601859353
+      }
+     ]
+    },
+    {
+     "seed": 1,
+     "baselines": {
+      "majority": 0.5,
+      "lexical": {
+       "bal_acc": 0.609599395313681,
+       "bal_acc_minimal": 0.5481781376518219
+      },
+      "state_bow": {
+       "bal_acc": 0.6333333333333333,
+       "bal_acc_minimal": 0.6307692307692307
+      },
+      "state_action_bow": {
+       "bal_acc": 0.7047619047619047,
+       "bal_acc_minimal": 0.6287449392712551
+      },
+      "n_train": 844,
+      "n_val": 211,
+      "n_test": 282,
+      "class_counts_test": [
+       135,
+       147
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.5487837837837838,
+       "test_bal_acc": 0.554875283446712,
+       "test_macro_f1": 0.5547162184353802,
+       "test_auroc": 0.5523053665910809,
+       "test_bal_acc_ci": [
+        0.5025323543322037,
+        0.6134395158831778
+       ],
+       "test_bal_acc_minimal": 0.4975708502024292,
+       "shuffled_bal_acc": 0.5,
+       "control_bal_acc": 0.8347826086956522,
+       "selectivity": -0.27990732524894024,
+       "setting_control_bal_acc": 0.5,
+       "setting_real_same_rows": 0.49656743431317485,
+       "selectivity_setting": -0.003432565686825151
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.7463963963963964,
+       "test_bal_acc": 0.7133786848072563,
+       "test_macro_f1": 0.7134874269748539,
+       "test_auroc": 0.7758629377676997,
+       "test_bal_acc_ci": [
+        0.6614733229058047,
+        0.7651070417563709
+       ],
+       "test_bal_acc_minimal": 0.668421052631579,
+       "shuffled_bal_acc": 0.5220710506424793,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.2866213151927437,
+       "setting_control_bal_acc": 0.71875,
+       "setting_real_same_rows": 0.6847344442364102,
+       "selectivity_setting": -0.03401555576358983
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.8469369369369368,
+       "test_bal_acc": 0.8313681027966742,
+       "test_macro_f1": 0.8322172289385404,
+       "test_auroc": 0.9166540690350213,
+       "test_bal_acc_ci": [
+        0.785193113708616,
+        0.8722346998883107
+       ],
+       "test_bal_acc_minimal": 0.7910931174089069,
+       "shuffled_bal_acc": 0.5489040060468632,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.16863189720332583,
+       "setting_control_bal_acc": 0.75,
+       "setting_real_same_rows": 0.8103351432316046,
+       "selectivity_setting": 0.060335143231604604
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.8274324324324325,
+       "test_bal_acc": 0.8396825396825396,
+       "test_macro_f1": 0.8399727613210759,
+       "test_auroc": 0.9323255228017132,
+       "test_bal_acc_ci": [
+        0.7944083289424124,
+        0.8794362773751071
+       ],
+       "test_bal_acc_minimal": 0.8058704453441295,
+       "shuffled_bal_acc": 0.508843537414966,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.16031746031746041,
+       "setting_control_bal_acc": 0.7890625,
+       "setting_real_same_rows": 0.8184796854521625,
+       "selectivity_setting": 0.029417185452162542
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.941981981981982,
+       "test_bal_acc": 0.9360544217687075,
+       "test_macro_f1": 0.9360544217687075,
+       "test_auroc": 0.9876039304610733,
+       "test_bal_acc_ci": [
+        0.9036642541594124,
+        0.9644954309864019
+       ],
+       "test_bal_acc_minimal": 0.9218623481781376,
+       "shuffled_bal_acc": 0.4857142857142857,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06394557823129254,
+       "setting_control_bal_acc": 0.84765625,
+       "setting_real_same_rows": 0.928103351432316,
+       "selectivity_setting": 0.08044710143231604
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.9534684684684684,
+       "test_bal_acc": 0.953363567649282,
+       "test_macro_f1": 0.9537699088260886,
+       "test_auroc": 0.9928949357520787,
+       "test_bal_acc_ci": [
+        0.9265608477028558,
+        0.975291701086021
+       ],
+       "test_bal_acc_minimal": 0.9477732793522267,
+       "shuffled_bal_acc": 0.49954648526077094,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.046636432350718016,
+       "setting_control_bal_acc": 0.859375,
+       "setting_real_same_rows": 0.9462959495724895,
+       "selectivity_setting": 0.08692094957248953
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.9764864864864865,
+       "test_bal_acc": 0.963869992441421,
+       "test_macro_f1": 0.964424484028864,
+       "test_auroc": 0.9955656336608718,
+       "test_bal_acc_ci": [
+        0.9417984930203448,
+        0.9842668814125507
+       ],
+       "test_bal_acc_minimal": 0.9607287449392713,
+       "shuffled_bal_acc": 0.4640967498110355,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03613000755857898,
+       "setting_control_bal_acc": 0.8515625,
+       "setting_real_same_rows": 0.9576858266242276,
+       "selectivity_setting": 0.10612332662422763
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.976981981981982,
+       "test_bal_acc": 0.9601662887377174,
+       "test_macro_f1": 0.9608506341894365,
+       "test_auroc": 0.9970269589317209,
+       "test_bal_acc_ci": [
+        0.9371366462767301,
+        0.9816305732484076
+       ],
+       "test_bal_acc_minimal": 0.9554655870445344,
+       "shuffled_bal_acc": 0.4958427815570673,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.039833711262282634,
+       "setting_control_bal_acc": 0.84375,
+       "setting_real_same_rows": 0.9530986706609249,
+       "selectivity_setting": 0.10934867066092491
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.9724774774774775,
+       "test_bal_acc": 0.9607709750566893,
+       "test_macro_f1": 0.9609098355491148,
+       "test_auroc": 0.9939531368102796,
+       "test_bal_acc_ci": [
+        0.936938869724026,
+        0.9806223114322884
+       ],
+       "test_bal_acc_minimal": 0.9582995951417004,
+       "shuffled_bal_acc": 0.526077097505669,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03922902494331071,
+       "setting_control_bal_acc": 0.84375,
+       "setting_real_same_rows": 0.9554702614990951,
+       "selectivity_setting": 0.11172026149909509
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.9724774774774775,
+       "test_bal_acc": 0.9601662887377174,
+       "test_macro_f1": 0.9608506341894365,
+       "test_auroc": 0.9922398589065256,
+       "test_bal_acc_ci": [
+        0.9361617192911569,
+        0.9792618551737751
+       ],
+       "test_bal_acc_minimal": 0.9568825910931174,
+       "shuffled_bal_acc": 0.46802721088435373,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.039833711262282634,
+       "setting_control_bal_acc": 0.83984375,
+       "setting_real_same_rows": 0.9576858266242276,
+       "selectivity_setting": 0.11784207662422763
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.9724774774774775,
+       "test_bal_acc": 0.9524565381708239,
+       "test_macro_f1": 0.9536436402260916,
+       "test_auroc": 0.9918871252204586,
+       "test_bal_acc_ci": [
+        0.9266254746391427,
+        0.9751116754877089
+       ],
+       "test_bal_acc_minimal": 0.9502024291497976,
+       "shuffled_bal_acc": 0.48715041572184425,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.047543461829176126,
+       "setting_control_bal_acc": 0.84375,
+       "setting_real_same_rows": 0.9519128752418399,
+       "selectivity_setting": 0.10816287524183987
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.952972972972973,
+       "test_bal_acc": 0.9487528344671201,
+       "test_macro_f1": 0.9500506072874494,
+       "test_auroc": 0.9911816578483246,
+       "test_bal_acc_ci": [
+        0.9223154381107134,
+        0.9737879783630756
+       ],
+       "test_bal_acc_minimal": 0.9449392712550608,
+       "shuffled_bal_acc": 0.5464852607709751,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05124716553287989,
+       "setting_control_bal_acc": 0.8125,
+       "setting_real_same_rows": 0.9473257192785371,
+       "selectivity_setting": 0.13482571927853715
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.948963963963964,
+       "test_bal_acc": 0.9564625850340136,
+       "test_macro_f1": 0.9572727272727273,
+       "test_auroc": 0.9892164273116655,
+       "test_bal_acc_ci": [
+        0.9310102100064788,
+        0.9810261620523241
+       ],
+       "test_bal_acc_minimal": 0.9463562753036436,
+       "shuffled_bal_acc": 0.4609221466364324,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.0435374149659864,
+       "setting_control_bal_acc": 0.859375,
+       "setting_real_same_rows": 0.9485115146976222,
+       "selectivity_setting": 0.08913651469762218
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.934954954954955,
+       "test_bal_acc": 0.9490551776266062,
+       "test_macro_f1": 0.9501036348010717,
+       "test_auroc": 0.9916351725875536,
+       "test_bal_acc_ci": [
+        0.9219690047509592,
+        0.9743768552875696
+       ],
+       "test_bal_acc_minimal": 0.9410931174089069,
+       "shuffled_bal_acc": 0.5149659863945578,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05094482237339382,
+       "setting_control_bal_acc": 0.8515625,
+       "setting_real_same_rows": 0.9439243587343193,
+       "selectivity_setting": 0.09236185873431935
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.948963963963964,
+       "test_bal_acc": 0.9456538170823885,
+       "test_macro_f1": 0.9465659462122455,
+       "test_auroc": 0.9883597883597883,
+       "test_bal_acc_ci": [
+        0.917889595851974,
+        0.9705882352941176
+       ],
+       "test_bal_acc_minimal": 0.937246963562753,
+       "shuffled_bal_acc": 0.46084656084656084,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05434618291761151,
+       "setting_control_bal_acc": 0.828125,
+       "setting_real_same_rows": 0.9405229981901018,
+       "selectivity_setting": 0.11239799819010177
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9404504504504505,
+       "test_bal_acc": 0.9388510959939531,
+       "test_macro_f1": 0.9394964346564019,
+       "test_auroc": 0.9887125220458555,
+       "test_bal_acc_ci": [
+        0.91100403195567,
+        0.9633761416965231
+       ],
+       "test_bal_acc_minimal": 0.9334008097165992,
+       "shuffled_bal_acc": 0.5045351473922902,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06114890400604689,
+       "setting_control_bal_acc": 0.828125,
+       "setting_real_same_rows": 0.9337202771016664,
+       "selectivity_setting": 0.10559527710166638
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.9259459459459459,
+       "test_bal_acc": 0.9456538170823885,
+       "test_macro_f1": 0.9465659462122455,
+       "test_auroc": 0.9891660367850844,
+       "test_bal_acc_ci": [
+        0.9164839135365505,
+        0.9713191209726048
+       ],
+       "test_bal_acc_minimal": 0.9267206477732793,
+       "shuffled_bal_acc": 0.4207860922146637,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05434618291761151,
+       "setting_control_bal_acc": 0.81640625,
+       "setting_real_same_rows": 0.9359358422267989,
+       "selectivity_setting": 0.11952959222679893
+      }
+     ]
+    },
+    {
+     "seed": 2,
+     "baselines": {
+      "majority": 0.5,
+      "lexical": {
+       "bal_acc": 0.5890044720979972,
+       "bal_acc_minimal": 0.5340476190476191
+      },
+      "state_bow": {
+       "bal_acc": 0.6601691619677231,
+       "bal_acc_minimal": 0.6642063492063492
+      },
+      "state_action_bow": {
+       "bal_acc": 0.7098726424265993,
+       "bal_acc_minimal": 0.6568253968253968
+      },
+      "n_train": 842,
+      "n_val": 208,
+      "n_test": 287,
+      "class_counts_test": [
+       148,
+       139
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.5387823185988323,
+       "test_bal_acc": 0.5566303713785729,
+       "test_macro_f1": 0.5520437030533607,
+       "test_auroc": 0.5532519930001945,
+       "test_bal_acc_ci": [
+        0.5029994013422523,
+        0.6142034795779358
+       ],
+       "test_bal_acc_minimal": 0.49746031746031744,
+       "shuffled_bal_acc": 0.5,
+       "control_bal_acc": 0.5,
+       "selectivity": 0.05663037137857285,
+       "setting_control_bal_acc": 0.4241640712228948,
+       "setting_real_same_rows": 0.503070714160379,
+       "selectivity_setting": 0.07890664293748417
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.7796775090353072,
+       "test_bal_acc": 0.7474722924363212,
+       "test_macro_f1": 0.745335424035785,
+       "test_auroc": 0.8077970056387324,
+       "test_bal_acc_ci": [
+        0.6948951570678022,
+        0.7931688084493232
+       ],
+       "test_bal_acc_minimal": 0.6847619047619048,
+       "shuffled_bal_acc": 0.4710771923002139,
+       "control_bal_acc": 0.9805988660524452,
+       "selectivity": -0.233126573616124,
+       "setting_control_bal_acc": 0.6710642298877594,
+       "setting_real_same_rows": 0.7158858279230274,
+       "selectivity_setting": 0.04482159803526797
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.8976461866370123,
+       "test_bal_acc": 0.8408759478903364,
+       "test_macro_f1": 0.839703739679456,
+       "test_auroc": 0.9229535290686369,
+       "test_bal_acc_ci": [
+        0.7959040543224589,
+        0.8815032060623725
+       ],
+       "test_bal_acc_minimal": 0.8254761904761905,
+       "shuffled_bal_acc": 0.4760839976667315,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.15912405210966363,
+       "setting_control_bal_acc": 0.7053534700593524,
+       "setting_real_same_rows": 0.8250277826519272,
+       "selectivity_setting": 0.11967431259257477
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.8728570104716894,
+       "test_bal_acc": 0.8453480458876141,
+       "test_macro_f1": 0.8429309820614168,
+       "test_auroc": 0.9282519930001945,
+       "test_bal_acc_ci": [
+        0.8017304976626412,
+        0.8842290546682249
+       ],
+       "test_bal_acc_minimal": 0.8213492063492063,
+       "shuffled_bal_acc": 0.504204744312658,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.15465195411238586,
+       "setting_control_bal_acc": 0.7200152788388083,
+       "setting_real_same_rows": 0.822688190910686,
+       "selectivity_setting": 0.10267291207187768
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.9417106848299509,
+       "test_bal_acc": 0.9412551040248882,
+       "test_macro_f1": 0.9407550423178269,
+       "test_auroc": 0.9731674120163329,
+       "test_bal_acc_ci": [
+        0.9128943610373811,
+        0.9667620957951784
+       ],
+       "test_bal_acc_minimal": 0.9351587301587302,
+       "shuffled_bal_acc": 0.46235174022943804,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05874489597511179,
+       "setting_control_bal_acc": 0.8096021625433389,
+       "setting_real_same_rows": 0.9337018190325788,
+       "selectivity_setting": 0.12409965648923982
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.956862199981466,
+       "test_bal_acc": 0.9412551040248882,
+       "test_macro_f1": 0.9407550423178269,
+       "test_auroc": 0.9788547540346101,
+       "test_bal_acc_ci": [
+        0.9116094993715962,
+        0.9658642626008246
+       ],
+       "test_bal_acc_minimal": 0.9491269841269842,
+       "shuffled_bal_acc": 0.5107427571456349,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05874489597511179,
+       "setting_control_bal_acc": 0.7900628782981725,
+       "setting_real_same_rows": 0.9337018190325788,
+       "selectivity_setting": 0.1436389407344063
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.9655731628208692,
+       "test_bal_acc": 0.9659974722924363,
+       "test_macro_f1": 0.9651563714063713,
+       "test_auroc": 0.9938751701341629,
+       "test_bal_acc_ci": [
+        0.9449506676716373,
+        0.9860188087774295
+       ],
+       "test_bal_acc_minimal": 0.971031746031746,
+       "shuffled_bal_acc": 0.48152829088080884,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.034002527707563734,
+       "setting_control_bal_acc": 0.8509431744725862,
+       "setting_real_same_rows": 0.9598175118441832,
+       "selectivity_setting": 0.10887433737159702
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.9853118339356872,
+       "test_bal_acc": 0.9761326074275715,
+       "test_macro_f1": 0.9756050174249875,
+       "test_auroc": 0.9977153412405211,
+       "test_bal_acc_ci": [
+        0.9581304112554112,
+        0.9930246179158511
+       ],
+       "test_bal_acc_minimal": 0.976031746031746,
+       "shuffled_bal_acc": 0.4407690064164884,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.023867392572428536,
+       "setting_control_bal_acc": 0.8656343656343657,
+       "setting_real_same_rows": 0.9720126337954027,
+       "selectivity_setting": 0.10637826816103702
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.9706236678713742,
+       "test_bal_acc": 0.9444147384794866,
+       "test_macro_f1": 0.94421768707483,
+       "test_auroc": 0.9942640482208828,
+       "test_bal_acc_ci": [
+        0.9175975649239467,
+        0.969153198789335
+       ],
+       "test_bal_acc_minimal": 0.9561904761904761,
+       "shuffled_bal_acc": 0.5094302936029556,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05558526152051335,
+       "setting_control_bal_acc": 0.8558500323206206,
+       "setting_real_same_rows": 0.94229981868164,
+       "selectivity_setting": 0.08644978636101941
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.975210823834677,
+       "test_bal_acc": 0.9549873614621815,
+       "test_macro_f1": 0.9546840270608383,
+       "test_auroc": 0.989840559984445,
+       "test_bal_acc_ci": [
+        0.9297511353693456,
+        0.97619744415179
+       ],
+       "test_bal_acc_minimal": 0.9651587301587301,
+       "shuffled_bal_acc": 0.4752090219716119,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04501263853781845,
+       "setting_control_bal_acc": 0.820855614973262,
+       "setting_real_same_rows": 0.9535591039363631,
+       "selectivity_setting": 0.13270348896310113
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.9559355018070614,
+       "test_bal_acc": 0.9552061053859615,
+       "test_macro_f1": 0.9546950323606912,
+       "test_auroc": 0.9912502430488042,
+       "test_bal_acc_ci": [
+        0.9295096228806361,
+        0.9766771180428335
+       ],
+       "test_bal_acc_minimal": 0.9641269841269842,
+       "shuffled_bal_acc": 0.5044234882364379,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04479389461403849,
+       "setting_control_bal_acc": 0.8047540694599518,
+       "setting_real_same_rows": 0.9530911855881148,
+       "selectivity_setting": 0.14833711612816303
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.9513483458437587,
+       "test_bal_acc": 0.9416925918724479,
+       "test_macro_f1": 0.9407665505226481,
+       "test_auroc": 0.9891114135718453,
+       "test_bal_acc_ci": [
+        0.9133471029621315,
+        0.9668587598682548
+       ],
+       "test_bal_acc_minimal": 0.9620634920634921,
+       "shuffled_bal_acc": 0.4245333462959362,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.058307408127552085,
+       "setting_control_bal_acc": 0.8012575659634483,
+       "setting_real_same_rows": 0.9368310229864889,
+       "selectivity_setting": 0.13557345702304058
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.956862199981466,
+       "test_bal_acc": 0.9344983472681314,
+       "test_macro_f1": 0.9337946943483275,
+       "test_auroc": 0.9881392183550457,
+       "test_bal_acc_ci": [
+        0.9043755209037257,
+        0.9611303565221709
+       ],
+       "test_bal_acc_minimal": 0.9541269841269842,
+       "shuffled_bal_acc": 0.48121232743534903,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06550165273186859,
+       "setting_control_bal_acc": 0.7935593817946759,
+       "setting_real_same_rows": 0.9296367783821724,
+       "selectivity_setting": 0.1360773965874965
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.9609860068575665,
+       "test_bal_acc": 0.9342796033443516,
+       "test_macro_f1": 0.9337850472963948,
+       "test_auroc": 0.989597511180245,
+       "test_bal_acc_ci": [
+        0.9036312640272001,
+        0.9636772271395994
+       ],
+       "test_bal_acc_minimal": 0.9411904761904761,
+       "shuffled_bal_acc": 0.5314505152634649,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06572039665564844,
+       "setting_control_bal_acc": 0.7830698713051654,
+       "setting_real_same_rows": 0.926039656080014,
+       "selectivity_setting": 0.14296978477484867
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.956862199981466,
+       "test_bal_acc": 0.9441959945557068,
+       "test_macro_f1": 0.9441959945557068,
+       "test_auroc": 0.9907155356795645,
+       "test_bal_acc_ci": [
+        0.9161562323604939,
+        0.9687348690140726
+       ],
+       "test_bal_acc_minimal": 0.9472222222222222,
+       "shuffled_bal_acc": 0.49679175578456153,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.0558040054442932,
+       "setting_control_bal_acc": 0.7697596521125933,
+       "setting_real_same_rows": 0.9387026963794818,
+       "selectivity_setting": 0.16894304426688844
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9614493559447688,
+       "test_bal_acc": 0.93765798172273,
+       "test_macro_f1": 0.9372631885747595,
+       "test_auroc": 0.9890628038110053,
+       "test_bal_acc_ci": [
+        0.9082595184719608,
+        0.9650347941256204
+       ],
+       "test_bal_acc_minimal": 0.9461904761904761,
+       "shuffled_bal_acc": 0.5121524402099942,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.06234201827727004,
+       "setting_control_bal_acc": 0.8201504377974966,
+       "setting_real_same_rows": 0.9301046967304205,
+       "selectivity_setting": 0.10995425893292388
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.9619127050319711,
+       "test_bal_acc": 0.9205473459070581,
+       "test_macro_f1": 0.919856735263765,
+       "test_auroc": 0.9842990472486874,
+       "test_bal_acc_ci": [
+        0.8881059858428739,
+        0.9496047028162005
+       ],
+       "test_bal_acc_minimal": 0.9272222222222222,
+       "shuffled_bal_acc": 0.4866566206494264,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.07945265409294189,
+       "setting_control_bal_acc": 0.8005523887876829,
+       "setting_real_same_rows": 0.9102474118266363,
+       "selectivity_setting": 0.1096950230389534
+      }
+     ]
+    }
+   ],
+   "agg": {
+    "val_bal_acc": {
+     "mean": [
+      0.553167742248975,
+      0.7761439139233741,
+      0.8715107560934584,
+      0.8567461958701826,
+      0.9452654088941611,
+      0.9508776754287577,
+      0.9679264942906164,
+      0.9794331212559592,
+      0.9730047430096418,
+      0.9681229458681138,
+      0.9601105369382736,
+      0.9520799834490047,
+      0.952581598491904,
+      0.9460811065496201,
+      0.952581598491904,
+      0.9464492650998396,
+      0.9369453324187447
+     ],
+     "std": [
+      0.013885834633539531,
+      0.02298239051835779,
+      0.0207313928440137,
+      0.02076192775234651,
+      0.004836571245424033,
+      0.006219936079720815,
+      0.006253912715760502,
+      0.00417594723637805,
+      0.0021913445804478573,
+      0.008167592393296508,
+      0.00889718028105051,
+      0.0006729928966942435,
+      0.003258340778289203,
+      0.010957892807400199,
+      0.003258340778289203,
+      0.010677257383527044,
+      0.017696146800973866
+     ]
+    },
+    "test_bal_acc": {
+     "mean": [
+      0.5572953280942164,
+      0.7410786364713734,
+      0.8388564632780992,
+      0.854786923226227,
+      0.9383505912852037,
+      0.9454223899120618,
+      0.957182081267875,
+      0.9697021837346829,
+      0.9554046855198105,
+      0.9561433517462196,
+      0.9510522765344324,
+      0.9427090374620265,
+      0.9403372681317227,
+      0.939067020013575,
+      0.9386547175744555,
+      0.9393959522621502,
+      0.9320840116941566
+     ],
+     "std": [
+      0.00229608485181617,
+      0.02051117090118599,
+      0.005479125966533145,
+      0.01750815488455631,
+      0.002166307932918378,
+      0.005617556859685651,
+      0.010996842786712398,
+      0.00687816822232148,
+      0.007771776353335496,
+      0.0029291477143682876,
+      0.004087322462735735,
+      0.004576567350115588,
+      0.011545977445493929,
+      0.00706470941209682,
+      0.008887335314843226,
+      0.0016860909606208458,
+      0.010350006962886436
+     ]
+    },
+    "test_macro_f1": {
+     "mean": [
+      0.5556548892001779,
+      0.7400995657800139,
+      0.8387525780715349,
+      0.8540839826893429,
+      0.9381839040495166,
+      0.9453863974630172,
+      0.9570705205906082,
+      0.9697388826349439,
+      0.9554007611056754,
+      0.9562785636430857,
+      0.9512855135151984,
+      0.9428455916396757,
+      0.9403339969562005,
+      0.9392469407250958,
+      0.9389425007092105,
+      0.93946344318925,
+      0.932119083574519
+     ],
+     "std": [
+      0.0033972030705576232,
+      0.019937949690525782,
+      0.004993283722818664,
+      0.017905277663151788,
+      0.0019442656531747837,
+      0.00593889410409634,
+      0.010921685246404722,
+      0.006391287526796859,
+      0.007907914122797264,
+      0.003281873677252173,
+      0.00410086639652702,
+      0.005244370866011387,
+      0.012080716866158801,
+      0.00767689086609188,
+      0.009156631220859008,
+      0.001783184263735711,
+      0.011012858076090567
+     ]
+    },
+    "test_auroc": {
+     "mean": [
+      0.5553125630162132,
+      0.8036658790682939,
+      0.9235828621585838,
+      0.9331770013913335,
+      0.9824623790170165,
+      0.9847692764405241,
+      0.9926446736164327,
+      0.9972986284811866,
+      0.994316096560775,
+      0.9912611409223132,
+      0.9909069005341987,
+      0.988989809336439,
+      0.9866581157390328,
+      0.9884955199122637,
+      0.9861008509071745,
+      0.985445457456163,
+      0.9845941429983375
+     ],
+     "std": [
+      0.003604230654490278,
+      0.02121653886573779,
+      0.005930978169649184,
+      0.004410159682681799,
+      0.0065849025196963425,
+      0.005941297303703887,
+      0.003015555274955372,
+      0.0002991607152396533,
+      0.00031972932575982427,
+      0.0010281345507712279,
+      0.0009713486591840164,
+      0.0018412904082984556,
+      0.002889953289660296,
+      0.00311252025523012,
+      0.004954620619698246,
+      0.004870113610493705,
+      0.0036184847541880765
+     ]
+    },
+    "test_bal_acc_minimal": {
+     "mean": [
+      0.5032306196946671,
+      0.6842022576714942,
+      0.8119038111217503,
+      0.8300719368213808,
+      0.9323446274780597,
+      0.9448054228669499,
+      0.9634677522186789,
+      0.9702729053062633,
+      0.9590767160522535,
+      0.960910914168883,
+      0.9544777088216674,
+      0.9473406564881732,
+      0.9399391487901495,
+      0.936902896543371,
+      0.9322537064012231,
+      0.9383528784863105,
+      0.9229105341299558
+     ],
+     "std": [
+      0.008082407196208058,
+      0.01266300996061325,
+      0.01494085728131291,
+      0.02412331242863577,
+      0.007672424342691305,
+      0.0051839391363159015,
+      0.005415922769352218,
+      0.010556133546104228,
+      0.0027297441636888646,
+      0.003382282494888068,
+      0.0068377959231223995,
+      0.011170596476929116,
+      0.01491127802580794,
+      0.005994841995815534,
+      0.014690830060173594,
+      0.005605865978415312,
+      0.0057466304217415965
+     ]
+    },
+    "shuffled_bal_acc": {
+     "mean": [
+      0.5,
+      0.49568725346151793,
+      0.5061793830208107,
+      0.512686798043575,
+      0.5039964111026882,
+      0.4702720439804298,
+      0.4759298423753176,
+      0.48592607079738676,
+      0.5137535941938309,
+      0.46995552077110997,
+      0.4886823381411329,
+      0.5012911668259213,
+      0.48004530918671784,
+      0.5224872673485398,
+      0.49165301768841035,
+      0.5061883366943015,
+      0.4425103778022419
+     ],
+     "std": [
+      0.0,
+      0.02085590247001761,
+      0.031040958299769106,
+      0.00891869313697752,
+      0.04343476192730218,
+      0.04952863853371275,
+      0.008371290060743778,
+      0.03356279755493301,
+      0.008842377234138755,
+      0.003758304190103417,
+      0.012275079684337657,
+      0.05456048012971802,
+      0.015160039530501553,
+      0.006806583800252804,
+      0.0233400671091426,
+      0.004354597071750802,
+      0.031217407052075166
+     ]
+    },
+    "control_bal_acc": {
+     "mean": [
+      0.7276500493208893,
+      0.9935329553508151,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "std": [
+      0.16106561356261523,
+      0.0091457822513497,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "selectivity": {
+     "mean": [
+      -0.17035472122667292,
+      -0.25245431887944164,
+      -0.16114353672190088,
+      -0.14521307677377304,
+      -0.061649408714796294,
+      -0.05457761008793812,
+      -0.042817918732125114,
+      -0.030297816265317173,
+      -0.04459531448018942,
+      -0.043856648253780474,
+      -0.04894772346556767,
+      -0.057290962537973465,
+      -0.05966273186827727,
+      -0.06093297998642496,
+      -0.06134528242554449,
+      -0.06060404773784985,
+      -0.0679159883058434
+     ],
+     "std": [
+      0.1605349335688477,
+      0.024229106089999522,
+      0.005479125966533145,
+      0.01750815488455631,
+      0.002166307932918378,
+      0.005617556859685651,
+      0.010996842786712398,
+      0.006878168222321479,
+      0.007771776353335496,
+      0.0029291477143682876,
+      0.004087322462735735,
+      0.004576567350115588,
+      0.01154597744549393,
+      0.00706470941209682,
+      0.008887335314843226,
+      0.001686090960620846,
+      0.010350006962886436
+     ]
+    },
+    "setting_control_bal_acc": {
+     "mean": [
+      0.4747213570742983,
+      0.6935197759756583,
+      0.7174315488433135,
+      0.7387383445802564,
+      0.808471758429479,
+      0.8127015149882797,
+      0.8369267280921693,
+      0.854487599002305,
+      0.8409908604467429,
+      0.8167559974747475,
+      0.8073575656369774,
+      0.7938407572819338,
+      0.8053964279184868,
+      0.7926290910886499,
+      0.7771118775015834,
+      0.7896081524684465,
+      0.7824371933213845
+     ],
+     "std": [
+      0.03574939966391409,
+      0.019566251489705457,
+      0.02328403858032357,
+      0.03597083391825836,
+      0.03246533026241674,
+      0.033008059663102975,
+      0.02026175544641139,
+      0.008938938356672322,
+      0.013401650860936289,
+      0.02072843674046729,
+      0.028710508035374012,
+      0.01900120036930545,
+      0.04012360117993752,
+      0.04473006416574724,
+      0.03899858040838966,
+      0.04894058495886796,
+      0.03739352189846152
+     ]
+    },
+    "setting_real_same_rows": {
+     "mean": [
+      0.4984819246164285,
+      0.7054564541644153,
+      0.8181922192959871,
+      0.8333898721979415,
+      0.9299936973320994,
+      0.9377585769842661,
+      0.9506691242134063,
+      0.9651757926208114,
+      0.950142629163235,
+      0.9537509469004638,
+      0.9486779870540603,
+      0.938327520321533,
+      0.9336748067582862,
+      0.9314213224511629,
+      0.9319245697080808,
+      0.9327763360012984,
+      0.9230197937494998
+     ],
+     "std": [
+      0.0032595571799818217,
+      0.014652780074882932,
+      0.006041579784793418,
+      0.018191641261025914,
+      0.0026222053713105807,
+      0.006039313518104244,
+      0.01146352541786265,
+      0.00856465245041686,
+      0.005663316568381149,
+      0.0031374302832919937,
+      0.00542936624273081,
+      0.006818665948911724,
+      0.01084811897600389,
+      0.008869463693894344,
+      0.01089823260778565,
+      0.0019160395057726085,
+      0.010487749811570574
+     ]
+    },
+    "selectivity_setting": {
+     "mean": [
+      0.023760567542130222,
+      0.011936678188756803,
+      0.10076067045267363,
+      0.09465152761768521,
+      0.12152193890262035,
+      0.12505706199598635,
+      0.11374239612123711,
+      0.11068819361850653,
+      0.10915176871649224,
+      0.13699494942571633,
+      0.14132042141708287,
+      0.1444867630395992,
+      0.12827837883979945,
+      0.13879223136251295,
+      0.1548126922064975,
+      0.1431681835328518,
+      0.1405826004281153
+     ],
+     "std": [
+      0.03899539760055368,
+      0.03348522289241046,
+      0.028604838226210447,
+      0.05030965625142258,
+      0.03253621131655766,
+      0.02696922532095628,
+      0.008900872388675953,
+      0.004174767322744104,
+      0.017581567624677715,
+      0.017653006652792066,
+      0.024711677322697023,
+      0.01313759567500049,
+      0.0292989432486426,
+      0.03632507025271388,
+      0.030543286866016237,
+      0.050085472053426505,
+      0.03694633956960624
+     ]
+    },
+    "test_bal_acc_ci95": [
+     [
+      0.5010534648627439,
+      0.6154282821152561
+     ],
+     [
+      0.68865178551434,
+      0.7894910182899341
+     ],
+     [
+      0.7936344933791345,
+      0.8801556787100268
+     ],
+     [
+      0.8121182634327532,
+      0.8928630627904824
+     ],
+     [
+      0.9067288477829929,
+      0.9656397556336226
+     ],
+     [
+      0.9162385473123565,
+      0.9699397586906028
+     ],
+     [
+      0.9323588310590463,
+      0.979562785125144
+     ],
+     [
+      0.9485793208579953,
+      0.9878519667947057
+     ],
+     [
+      0.9293055687036024,
+      0.9774377695157505
+     ],
+     [
+      0.9310063326840342,
+      0.9775341295011283
+     ],
+     [
+      0.9247537649070603,
+      0.9748722853510872
+     ],
+     [
+      0.9145909801012236,
+      0.968573647378352
+     ],
+     [
+      0.9112801829393988,
+      0.9663750508191867
+     ],
+     [
+      0.9092502892446369,
+      0.9662183089473132
+     ],
+     [
+      0.9085210491767516,
+      0.9653330081725314
+     ],
+     [
+      0.910054534220022,
+      0.9656026738107814
+     ],
+     [
+      0.9005241572253668,
+      0.9597468098760737
+     ]
+    ]
+   },
+   "best_layer": 14,
+   "per_verb_at_best_layer": {
+    "delete_file": {
+     "bal_acc_mean": 0.8574085760786528,
+     "n_test_per_seed": [
+      44,
+      35,
+      38
+     ]
+    },
+    "edit_file": {
+     "bal_acc_mean": 0.9776850655327335,
+     "n_test_per_seed": [
+      117,
+      145,
+      137
+     ]
+    },
+    "move_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      15,
+      9,
+      12
+     ]
+    },
+    "read_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      7,
+      5,
+      8
+     ]
+    },
+    "send_email": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      33,
+      36,
+      37
+     ]
+    },
+    "transfer_money": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      33,
+      40,
+      50
+     ]
+    },
+    "trash_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      8,
+      12,
+      5
+     ]
+    }
+   },
+   "leave_one_verb_out": null,
+   "baselines_mean": {
+    "majority": 0.5,
+    "lexical": 0.6108657755713346,
+    "lexical_minimal": 0.5498797763475303,
+    "state_bow": 0.6568215682011274,
+    "state_bow_minimal": 0.6547912624673188,
+    "state_action_bow": 0.7140452528096047,
+    "state_action_bow_minimal": 0.643333517922102
+   }
+  },
+  "three": {
+   "per_seed": [
+    {
+     "seed": 0,
+     "baselines": {
+      "majority": 0.3333333333333333,
+      "lexical": {
+       "bal_acc": 0.5466327519379844,
+       "bal_acc_minimal": 0.4826717883055911
+      },
+      "state_bow": {
+       "bal_acc": 0.6419702108292225,
+       "bal_acc_minimal": 0.6560168025698049
+      },
+      "state_action_bow": {
+       "bal_acc": 0.8183341408268734,
+       "bal_acc_minimal": 0.7629534784464362
+      },
+      "n_train": 1292,
+      "n_val": 333,
+      "n_test": 389,
+      "class_counts_test": [
+       128,
+       132,
+       129
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.37762237762237766,
+       "test_bal_acc": 0.3735868863049096,
+       "test_macro_f1": 0.2972761402667945,
+       "test_auroc": 0.5405284750103901,
+       "test_bal_acc_ci": [
+        0.3351479960548375,
+        0.41120952491875457
+       ],
+       "test_bal_acc_minimal": 0.3431071276141699,
+       "shuffled_bal_acc": 0.3342729621799389,
+       "control_bal_acc": 0.3333333333333333,
+       "selectivity": 0.04025355297157629
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.8282828282828283,
+       "test_bal_acc": 0.8519460594315245,
+       "test_macro_f1": 0.8512391658669592,
+       "test_auroc": 0.9455971004199252,
+       "test_bal_acc_ci": [
+        0.8205880371372408,
+        0.885089662304605
+       ],
+       "test_bal_acc_minimal": 0.7932565087494665,
+       "shuffled_bal_acc": 0.3389344021611464,
+       "control_bal_acc": 0.9974747474747474,
+       "selectivity": -0.14552868804322294
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.9124579124579125,
+       "test_bal_acc": 0.9040679322292694,
+       "test_macro_f1": 0.904212713651318,
+       "test_auroc": 0.9769872801561355,
+       "test_bal_acc_ci": [
+        0.8755453325917657,
+        0.9317354596622889
+       ],
+       "test_bal_acc_minimal": 0.8919543844673571,
+       "shuffled_bal_acc": 0.3684207628611698,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.0959320677707306
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.923853923853924,
+       "test_bal_acc": 0.9144827636833451,
+       "test_macro_f1": 0.9147233880058309,
+       "test_auroc": 0.9796356359010376,
+       "test_bal_acc_ci": [
+        0.8871537198192684,
+        0.9408095336260064
+       ],
+       "test_bal_acc_minimal": 0.8917619486188796,
+       "shuffled_bal_acc": 0.3062437602771905,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.08551723631665487
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.96995596995597,
+       "test_bal_acc": 0.9662669573643411,
+       "test_macro_f1": 0.9662755192166957,
+       "test_auroc": 0.9969825051633893,
+       "test_bal_acc_ci": [
+        0.9478312282052352,
+        0.9834762740990178
+       ],
+       "test_bal_acc_minimal": 0.961374306444729,
+       "shuffled_bal_acc": 0.3160676532769556,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.033733042635658905
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.96995596995597,
+       "test_bal_acc": 0.9637031653746769,
+       "test_macro_f1": 0.9636829780361756,
+       "test_auroc": 0.9959768829806922,
+       "test_bal_acc_ci": [
+        0.9446727681460019,
+        0.9809577768349076
+       ],
+       "test_bal_acc_minimal": 0.9536491677336748,
+       "shuffled_bal_acc": 0.3495033914728682,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03629683462532307
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.975135975135975,
+       "test_bal_acc": 0.9818717700258398,
+       "test_macro_f1": 0.9818406641936054,
+       "test_auroc": 0.997819214119585,
+       "test_bal_acc_ci": [
+        0.9674084595959594,
+        0.9943055169645889
+       ],
+       "test_bal_acc_minimal": 0.9909090909090909,
+       "shuffled_bal_acc": 0.3214962121212121,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.018128229974160193
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.9678839678839678,
+       "test_bal_acc": 0.9793263301620859,
+       "test_macro_f1": 0.9793175375358637,
+       "test_auroc": 0.9991533526617729,
+       "test_bal_acc_ci": [
+        0.9643732077826143,
+        0.9919467456369896
+       ],
+       "test_bal_acc_minimal": 0.9863205816504556,
+       "shuffled_bal_acc": 0.33688263448437866,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.020673669837914077
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.9645169645169646,
+       "test_bal_acc": 0.9663054968287526,
+       "test_macro_f1": 0.966337597568045,
+       "test_auroc": 0.9975800253942797,
+       "test_bal_acc_ci": [
+        0.9467011726185417,
+        0.9827860642941705
+       ],
+       "test_bal_acc_minimal": 0.9739006072586501,
+       "shuffled_bal_acc": 0.3632197703782006,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03369450317124745
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.9606319606319605,
+       "test_bal_acc": 0.9558686428235846,
+       "test_macro_f1": 0.9558901050542303,
+       "test_auroc": 0.9972712679947544,
+       "test_bal_acc_ci": [
+        0.9348013674810555,
+        0.9746778164099559
+       ],
+       "test_bal_acc_minimal": 0.9581515675659485,
+       "shuffled_bal_acc": 0.32938762626262624,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.044131357176415364
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.9606319606319605,
+       "test_bal_acc": 0.9610182493540051,
+       "test_macro_f1": 0.9610517541865576,
+       "test_auroc": 0.9968632445790124,
+       "test_bal_acc_ci": [
+        0.9416636004801725,
+        0.9794876688197299
+       ],
+       "test_bal_acc_minimal": 0.9627400768245838,
+       "shuffled_bal_acc": 0.3084001350716467,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03898175064599485
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.9606319606319605,
+       "test_bal_acc": 0.9558502906976744,
+       "test_macro_f1": 0.9558773776882331,
+       "test_auroc": 0.9961659085794512,
+       "test_bal_acc_ci": [
+        0.9332217128801431,
+        0.9758640947206019
+       ],
+       "test_bal_acc_minimal": 0.961374306444729,
+       "shuffled_bal_acc": 0.33147609819121443,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.044149709302325646
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.963998963998964,
+       "test_bal_acc": 0.958515019379845,
+       "test_macro_f1": 0.9584948320413437,
+       "test_auroc": 0.9951305497867245,
+       "test_bal_acc_ci": [
+        0.9378094703993292,
+        0.9769684370310563
+       ],
+       "test_bal_acc_minimal": 0.955313700384123,
+       "shuffled_bal_acc": 0.3243573085506225,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04148498062015504
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.9616679616679616,
+       "test_bal_acc": 0.9584544573643411,
+       "test_macro_f1": 0.9584797447392868,
+       "test_auroc": 0.9958973759244408,
+       "test_bal_acc_ci": [
+        0.9374268205881044,
+        0.9787312002666333
+       ],
+       "test_bal_acc_minimal": 0.9519846350832267,
+       "shuffled_bal_acc": 0.3061685165609584,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.041545542635658905
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.965034965034965,
+       "test_bal_acc": 0.950702519379845,
+       "test_macro_f1": 0.9507103742397861,
+       "test_auroc": 0.9940252689074862,
+       "test_bal_acc_ci": [
+        0.927961448723163,
+        0.9718952716520726
+       ],
+       "test_bal_acc_minimal": 0.9381988903115664,
+       "shuffled_bal_acc": 0.2829897815362932,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04929748062015504
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9611499611499612,
+       "test_bal_acc": 0.9533470607235142,
+       "test_macro_f1": 0.9532410692416636,
+       "test_auroc": 0.994015526865617,
+       "test_bal_acc_ci": [
+        0.9316456589858229,
+        0.9728435267953185
+       ],
+       "test_bal_acc_minimal": 0.9462227912932138,
+       "shuffled_bal_acc": 0.27795579339910736,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04665293927648584
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.9616679616679616,
+       "test_bal_acc": 0.9611191860465116,
+       "test_macro_f1": 0.9610464399303673,
+       "test_auroc": 0.9943938423246057,
+       "test_bal_acc_ci": [
+        0.9406587192496995,
+        0.9784166718268963
+       ],
+       "test_bal_acc_minimal": 0.95228339735382,
+       "shuffled_bal_acc": 0.33173486316654915,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03888081395348841
+      }
+     ]
+    },
+    {
+     "seed": 1,
+     "baselines": {
+      "majority": 0.3333333333333333,
+      "lexical": {
+       "bal_acc": 0.5738636363636364,
+       "bal_acc_minimal": 0.4969194578245772
+      },
+      "state_bow": {
+       "bal_acc": 0.6206912878787879,
+       "bal_acc_minimal": 0.6512010875818905
+      },
+      "state_action_bow": {
+       "bal_acc": 0.8257575757575758,
+       "bal_acc_minimal": 0.8009409656099473
+      },
+      "n_train": 1323,
+      "n_val": 311,
+      "n_test": 380,
+      "class_counts_test": [
+       132,
+       120,
+       128
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.378373563730293,
+       "test_bal_acc": 0.3746843434343434,
+       "test_macro_f1": 0.3044267669840772,
+       "test_auroc": 0.543051993556026,
+       "test_bal_acc_ci": [
+        0.3361535287098151,
+        0.416727652396029
+       ],
+       "test_bal_acc_minimal": 0.33856092005526306,
+       "shuffled_bal_acc": 0.3354166666666667,
+       "control_bal_acc": 0.3333333333333333,
+       "selectivity": 0.04135101010101011
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.8577536296428253,
+       "test_bal_acc": 0.8687657828282829,
+       "test_macro_f1": 0.8687940630797772,
+       "test_auroc": 0.9511269024247855,
+       "test_bal_acc_ci": [
+        0.8376094264295133,
+        0.8999467619147093
+       ],
+       "test_bal_acc_minimal": 0.8456741719876031,
+       "shuffled_bal_acc": 0.364520202020202,
+       "control_bal_acc": 0.7590561648388169,
+       "selectivity": 0.10970961798946599
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.9239333748997952,
+       "test_bal_acc": 0.9279513888888888,
+       "test_macro_f1": 0.9280987654320988,
+       "test_auroc": 0.9796899425805675,
+       "test_bal_acc_ci": [
+        0.9016611751770355,
+        0.9510049059467663
+       ],
+       "test_bal_acc_minimal": 0.9177775288450767,
+       "shuffled_bal_acc": 0.286395202020202,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.07204861111111116
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.9210534129034174,
+       "test_bal_acc": 0.9281881313131314,
+       "test_macro_f1": 0.9281881313131314,
+       "test_auroc": 0.9832154106347656,
+       "test_bal_acc_ci": [
+        0.9024471031319029,
+        0.9544133533042847
+       ],
+       "test_bal_acc_minimal": 0.9181882678017997,
+       "shuffled_bal_acc": 0.3649621212121212,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.07181186868686862
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.9591757964430986,
+       "test_bal_acc": 0.9562815656565657,
+       "test_macro_f1": 0.9563786373752178,
+       "test_auroc": 0.9924175753308818,
+       "test_bal_acc_ci": [
+        0.9349143205055475,
+        0.9759322580645161
+       ],
+       "test_bal_acc_minimal": 0.9481348717374258,
+       "shuffled_bal_acc": 0.2743055555555556,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.043718434343434254
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.9652920043941688,
+       "test_bal_acc": 0.9615688131313131,
+       "test_macro_f1": 0.9615333402376057,
+       "test_auroc": 0.9959182842247358,
+       "test_bal_acc_ci": [
+        0.9434251233503965,
+        0.980317369239668
+       ],
+       "test_bal_acc_minimal": 0.9527650199768493,
+       "shuffled_bal_acc": 0.3590277777777778,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03843118686868685
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.9877675840978594,
+       "test_bal_acc": 0.9640151515151515,
+       "test_macro_f1": 0.9640834369388037,
+       "test_auroc": 0.9968003406763488,
+       "test_bal_acc_ci": [
+        0.9431252930928933,
+        0.9814059459070962
+       ],
+       "test_bal_acc_minimal": 0.9624733953175758,
+       "shuffled_bal_acc": 0.2841224747474747,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03598484848484851
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.9845313381431667,
+       "test_bal_acc": 0.9690656565656566,
+       "test_macro_f1": 0.9692016109926559,
+       "test_auroc": 0.9981241829780138,
+       "test_bal_acc_ci": [
+        0.9528833223013714,
+        0.985781220657277
+       ],
+       "test_bal_acc_minimal": 0.9624733953175758,
+       "shuffled_bal_acc": 0.3541824494949495,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.030934343434343425
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.9845313381431667,
+       "test_bal_acc": 0.9638573232323232,
+       "test_macro_f1": 0.9640493827160493,
+       "test_auroc": 0.9955910814655775,
+       "test_bal_acc_ci": [
+        0.944946276646003,
+        0.9817811251759109
+       ],
+       "test_bal_acc_minimal": 0.960793099585527,
+       "shuffled_bal_acc": 0.35654987373737373,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.036142676767676796
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.9712774549329284,
+       "test_bal_acc": 0.9561237373737373,
+       "test_macro_f1": 0.9563320934414165,
+       "test_auroc": 0.991546004398827,
+       "test_bal_acc_ci": [
+        0.9358799157208827,
+        0.9759682691334612
+       ],
+       "test_bal_acc_minimal": 0.953623837795452,
+       "shuffled_bal_acc": 0.3611426767676768,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04387626262626265
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.9778807042546243,
+       "test_bal_acc": 0.9535984848484849,
+       "test_macro_f1": 0.953551198794778,
+       "test_auroc": 0.9915368826029107,
+       "test_bal_acc_ci": [
+        0.9317347631760725,
+        0.974515503875969
+       ],
+       "test_bal_acc_minimal": 0.9494044285127515,
+       "shuffled_bal_acc": 0.3694128787878788,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04640151515151514
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.9748226002790892,
+       "test_bal_acc": 0.9535984848484849,
+       "test_macro_f1": 0.953551198794778,
+       "test_auroc": 0.9906531593779576,
+       "test_bal_acc_ci": [
+        0.9310433179723502,
+        0.9741000227842334
+       ],
+       "test_bal_acc_minimal": 0.953623837795452,
+       "shuffled_bal_acc": 0.3481376262626263,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04640151515151514
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.9748226002790892,
+       "test_bal_acc": 0.9508996212121211,
+       "test_macro_f1": 0.9512517859642653,
+       "test_auroc": 0.989691461465655,
+       "test_bal_acc_ci": [
+        0.9287420946156241,
+        0.9710737861811392
+       ],
+       "test_bal_acc_minimal": 0.9489529204759085,
+       "shuffled_bal_acc": 0.3188289141414142,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04910037878787887
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.9714555969120857,
+       "test_bal_acc": 0.9508207070707071,
+       "test_macro_f1": 0.9512350661581929,
+       "test_auroc": 0.9907063445999938,
+       "test_bal_acc_ci": [
+        0.9282769395354902,
+        0.9704082917048504
+       ],
+       "test_bal_acc_minimal": 0.9531723297586089,
+       "shuffled_bal_acc": 0.2978219696969697,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.049179292929292906
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.9615687170688507,
+       "test_bal_acc": 0.9561237373737373,
+       "test_macro_f1": 0.9563320934414165,
+       "test_auroc": 0.99134053670344,
+       "test_bal_acc_ci": [
+        0.9342192435315403,
+        0.9752685470879504
+       ],
+       "test_bal_acc_minimal": 0.960793099585527,
+       "shuffled_bal_acc": 0.3817392676767677,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04387626262626265
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9556306510969378,
+       "test_bal_acc": 0.9455176767676767,
+       "test_macro_f1": 0.9460524950721029,
+       "test_auroc": 0.9911239773890984,
+       "test_bal_acc_ci": [
+        0.9207533536706699,
+        0.9669557391294732
+       ],
+       "test_bal_acc_minimal": 0.946003067968534,
+       "shuffled_bal_acc": 0.33478535353535355,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05448232323232327
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.961877616460319,
+       "test_bal_acc": 0.9482007575757576,
+       "test_macro_f1": 0.9486419286815849,
+       "test_auroc": 0.9911209468921163,
+       "test_bal_acc_ci": [
+        0.9235045247544958,
+        0.9697839559869691
+       ],
+       "test_bal_acc_minimal": 0.9476833637005827,
+       "shuffled_bal_acc": 0.35198863636363636,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.05179924242424239
+      }
+     ]
+    },
+    {
+     "seed": 2,
+     "baselines": {
+      "majority": 0.3333333333333333,
+      "lexical": {
+       "bal_acc": 0.5565436978480457,
+       "bal_acc_minimal": 0.5001327492366919
+      },
+      "state_bow": {
+       "bal_acc": 0.6205044734876534,
+       "bal_acc_minimal": 0.6435480633181481
+      },
+      "state_action_bow": {
+       "bal_acc": 0.8145586297760211,
+       "bal_acc_minimal": 0.7604540023894862
+      },
+      "n_train": 1279,
+      "n_val": 328,
+      "n_test": 407,
+      "class_counts_test": [
+       132,
+       137,
+       138
+      ]
+     },
+     "rows": [
+      {
+       "layer": 0,
+       "val_bal_acc": 0.3723356768217833,
+       "test_bal_acc": 0.3674791392182697,
+       "test_macro_f1": 0.2930739943910957,
+       "test_auroc": 0.5260736552564741,
+       "test_bal_acc_ci": [
+        0.33218352288132347,
+        0.4081526599208779
+       ],
+       "test_bal_acc_minimal": 0.3266626841895659,
+       "shuffled_bal_acc": 0.3674791392182697,
+       "control_bal_acc": 0.3333333333333333,
+       "selectivity": 0.034145805884936375
+      },
+      {
+       "layer": 2,
+       "val_bal_acc": 0.8476174534092178,
+       "test_bal_acc": 0.8564997804128239,
+       "test_macro_f1": 0.8565934065934065,
+       "test_auroc": 0.9472093430892673,
+       "test_bal_acc_ci": [
+        0.8226800874421668,
+        0.8896356217925767
+       ],
+       "test_bal_acc_minimal": 0.8107659630957121,
+       "shuffled_bal_acc": 0.3781283158465006,
+       "control_bal_acc": 0.9485286073733729,
+       "selectivity": -0.09202882696054893
+      },
+      {
+       "layer": 4,
+       "val_bal_acc": 0.911951791094744,
+       "test_bal_acc": 0.9188625384277559,
+       "test_macro_f1": 0.9185174007873909,
+       "test_auroc": 0.9843936076755625,
+       "test_bal_acc_ci": [
+        0.891628057868229,
+        0.9435427753574795
+       ],
+       "test_bal_acc_minimal": 0.899542015133413,
+       "shuffled_bal_acc": 0.36237894655857206,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.08113746157224411
+      },
+      {
+       "layer": 6,
+       "val_bal_acc": 0.9216605289588214,
+       "test_bal_acc": 0.9210584101888449,
+       "test_macro_f1": 0.9208647277067605,
+       "test_auroc": 0.9826053487844341,
+       "test_bal_acc_ci": [
+        0.8919530538142262,
+        0.9444905647481406
+       ],
+       "test_bal_acc_minimal": 0.900803132881986,
+       "shuffled_bal_acc": 0.2949953357760403,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.07894158981115507
+      },
+      {
+       "layer": 8,
+       "val_bal_acc": 0.9784343265260573,
+       "test_bal_acc": 0.9678304787000439,
+       "test_macro_f1": 0.9678796447543615,
+       "test_auroc": 0.9954323240337904,
+       "test_bal_acc_ci": [
+        0.9499554236965343,
+        0.9843733444278995
+       ],
+       "test_bal_acc_minimal": 0.9674100623921413,
+       "shuffled_bal_acc": 0.3689625547765821,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.032169521299956094
+      },
+      {
+       "layer": 10,
+       "val_bal_acc": 0.965852025443589,
+       "test_bal_acc": 0.9754062362758015,
+       "test_macro_f1": 0.9753032215575436,
+       "test_auroc": 0.9975283225899622,
+       "test_bal_acc_ci": [
+        0.9581848135106937,
+        0.9887492675602432
+       ],
+       "test_bal_acc_minimal": 0.9756405150670383,
+       "shuffled_bal_acc": 0.3330424203956416,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.024593763724198525
+      },
+      {
+       "layer": 12,
+       "val_bal_acc": 0.9719618346166722,
+       "test_bal_acc": 0.9853974527887571,
+       "test_macro_f1": 0.9851843722563652,
+       "test_auroc": 0.9988270171037557,
+       "test_bal_acc_ci": [
+        0.9743110036535569,
+        0.9954962512848419
+       ],
+       "test_bal_acc_minimal": 0.9824439134474977,
+       "shuffled_bal_acc": 0.333687557902093,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.014602547211242878
+      },
+      {
+       "layer": 14,
+       "val_bal_acc": 0.9780716437897556,
+       "test_bal_acc": 0.9851778656126483,
+       "test_macro_f1": 0.9851778656126483,
+       "test_auroc": 0.9988190543785119,
+       "test_bal_acc_ci": [
+        0.9733532400994234,
+        0.9952727000299672
+       ],
+       "test_bal_acc_minimal": 0.9795898048586219,
+       "shuffled_bal_acc": 0.37251521883384786,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.014822134387351693
+      },
+      {
+       "layer": 16,
+       "val_bal_acc": 0.9820332552170518,
+       "test_bal_acc": 0.9802371541501976,
+       "test_macro_f1": 0.9802371541501976,
+       "test_auroc": 0.998891092923742,
+       "test_bal_acc_ci": [
+        0.9659257173787831,
+        0.9926552812603568
+       ],
+       "test_bal_acc_minimal": 0.9769016328156113,
+       "shuffled_bal_acc": 0.32213759300398465,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.01976284584980237
+      },
+      {
+       "layer": 18,
+       "val_bal_acc": 0.9694509541345832,
+       "test_bal_acc": 0.972880983750549,
+       "test_macro_f1": 0.9728282828282828,
+       "test_auroc": 0.997938089032025,
+       "test_bal_acc_ci": [
+        0.955269596416325,
+        0.9884393395879323
+       ],
+       "test_bal_acc_minimal": 0.9756405150670383,
+       "shuffled_bal_acc": 0.3249080779229938,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.02711901624945101
+      },
+      {
+       "layer": 20,
+       "val_bal_acc": 0.9755607633076666,
+       "test_bal_acc": 0.9679402722880983,
+       "test_macro_f1": 0.9678902229845626,
+       "test_auroc": 0.9979031881030206,
+       "test_bal_acc_ci": [
+        0.9494211675447317,
+        0.9847125806067413
+       ],
+       "test_bal_acc_minimal": 0.9688371166865789,
+       "shuffled_bal_acc": 0.32067100711975355,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03205972771190169
+      },
+      {
+       "layer": 22,
+       "val_bal_acc": 0.9543577725700256,
+       "test_bal_acc": 0.9678304787000439,
+       "test_macro_f1": 0.9678922071254785,
+       "test_auroc": 0.9969983025375212,
+       "test_bal_acc_ci": [
+        0.9502968188467137,
+        0.9840599508690085
+       ],
+       "test_bal_acc_minimal": 0.9674100623921413,
+       "shuffled_bal_acc": 0.361698546877855,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.032169521299956094
+      },
+      {
+       "layer": 24,
+       "val_bal_acc": 0.9579567012610201,
+       "test_bal_acc": 0.9655248133509003,
+       "test_macro_f1": 0.9654013957409705,
+       "test_auroc": 0.9967785589114769,
+       "test_bal_acc_ci": [
+        0.9468816373210022,
+        0.9821338482287533
+       ],
+       "test_bal_acc_minimal": 0.9647218903491305,
+       "shuffled_bal_acc": 0.31705583284447136,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.034475186649099654
+      },
+      {
+       "layer": 26,
+       "val_bal_acc": 0.9604675817431091,
+       "test_bal_acc": 0.9557531840140535,
+       "test_macro_f1": 0.9554755922201069,
+       "test_auroc": 0.996208929177106,
+       "test_bal_acc_ci": [
+        0.9342067169239361,
+        0.9756256994992198
+       ],
+       "test_bal_acc_minimal": 0.9525421478826496,
+       "shuffled_bal_acc": 0.31233070149287223,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.044246815985946486
+      },
+      {
+       "layer": 28,
+       "val_bal_acc": 0.9425008369601606,
+       "test_bal_acc": 0.9606938954765042,
+       "test_macro_f1": 0.9604328382764242,
+       "test_auroc": 0.9951470917077749,
+       "test_bal_acc_ci": [
+        0.9418780323411041,
+        0.9783248254625263
+       ],
+       "test_bal_acc_minimal": 0.9552303199256604,
+       "shuffled_bal_acc": 0.3025278170470173,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.03930610452349581
+      },
+      {
+       "layer": 30,
+       "val_bal_acc": 0.9482479633969424,
+       "test_bal_acc": 0.9608036890645586,
+       "test_macro_f1": 0.9604070924180714,
+       "test_auroc": 0.9943860158109717,
+       "test_bal_acc_ci": [
+        0.9412570569619193,
+        0.9782552483165166
+       ],
+       "test_bal_acc_minimal": 0.9539692021770875,
+       "shuffled_bal_acc": 0.37399142167469684,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.0391963109354414
+      },
+      {
+       "layer": 32,
+       "val_bal_acc": 0.9575940185247181,
+       "test_bal_acc": 0.9581686429512516,
+       "test_macro_f1": 0.9579702635752092,
+       "test_auroc": 0.9932483836329326,
+       "test_bal_acc_ci": [
+        0.9385741525747442,
+        0.9762088674927876
+       ],
+       "test_bal_acc_minimal": 0.9484269215452011,
+       "shuffled_bal_acc": 0.30055954659255196,
+       "control_bal_acc": 1.0,
+       "selectivity": -0.04183135704874841
+      }
+     ]
+    }
+   ],
+   "agg": {
+    "val_bal_acc": {
+     "mean": [
+      0.3761105393914847,
+      0.8445513037782905,
+      0.9161143594841507,
+      0.9221892885720542,
+      0.9691886976417087,
+      0.9670333332645759,
+      0.9782884646168356,
+      0.9768289832722967,
+      0.977027185959061,
+      0.9671201232331573,
+      0.9713578093980838,
+      0.9632707778270251,
+      0.9655927551796911,
+      0.9645303801077189,
+      0.9563681730213255,
+      0.9550095252146139,
+      0.9603798655509995
+     ],
+     "std": [
+      0.002686789993937061,
+      0.012225192251236172,
+      0.005532738397402032,
+      0.0012028869280239713,
+      0.007880959135461907,
+      0.0020792241848600723,
+      0.006826862217774439,
+      0.006852828516165362,
+      0.008904655522970527,
+      0.0046480258710027075,
+      0.00764322817116143,
+      0.00856056113550742,
+      0.006977094197813718,
+      0.004921327654987119,
+      0.00990726924420009,
+      0.0052854980544880335,
+      0.0019717499035747394
+     ]
+    },
+    "test_bal_acc": {
+     "mean": [
+      0.3719167896525076,
+      0.8590705408908771,
+      0.9169606198486381,
+      0.9212431017284405,
+      0.963459667240317,
+      0.9668927382605972,
+      0.9770947914432494,
+      0.977856617446797,
+      0.9701333247370911,
+      0.9616244546492903,
+      0.9608523354968628,
+      0.9590930847487343,
+      0.9583131513142887,
+      0.9550094494830339,
+      0.9558400507433622,
+      0.9532228088519165,
+      0.9558295288578402
+     ],
+     "std": [
+      0.003169717029442327,
+      0.007103162716354158,
+      0.009842690899483917,
+      0.005596716816759436,
+      0.005115662648623849,
+      0.006082685876916192,
+      0.009360033661716689,
+      0.0066593724275190854,
+      0.00721405642231103,
+      0.007960249320341325,
+      0.005856185464774685,
+      0.00624628941537274,
+      0.005972415720681814,
+      0.0031605265042249442,
+      0.00408389174313045,
+      0.006241106839912429,
+      0.005527207830058702
+     ]
+    },
+    "test_macro_f1": {
+     "mean": [
+      0.29825896721398915,
+      0.8588755451800477,
+      0.9169429599569359,
+      0.9212587490085742,
+      0.963511267115425,
+      0.9668398466104416,
+      0.9770361577962582,
+      0.9778990047137226,
+      0.9702080448114306,
+      0.9616834937746432,
+      0.9608310586552994,
+      0.9591069278694966,
+      0.9583826712488599,
+      0.9550634677058621,
+      0.9558251019858757,
+      0.953233552243946,
+      0.9558862107290538
+     ],
+     "std": [
+      0.0046865639860553835,
+      0.007346188192281698,
+      0.009814785287683368,
+      0.0055040147572831336,
+      0.005085869964474407,
+      0.006048513442033199,
+      0.009260123437283541,
+      0.006598957212889819,
+      0.007152913504250343,
+      0.007882621421887347,
+      0.00585596183770267,
+      0.006284299259014717,
+      0.005777098420532915,
+      0.002971949629145967,
+      0.003985336203962722,
+      0.005860242237323351,
+      0.005274178105289234
+     ]
+    },
+    "test_auroc": {
+     "mean": [
+      0.53655137460763,
+      0.9479777819779925,
+      0.9803569434707552,
+      0.9818187984400791,
+      0.9949441348426872,
+      0.9964744965984634,
+      0.9978155239665631,
+      0.9986988633394329,
+      0.9973540665945331,
+      0.9955851204752021,
+      0.9954344384283146,
+      0.9946057901649766,
+      0.9938668567212855,
+      0.9942708832338468,
+      0.9935042991062337,
+      0.9931751733552291,
+      0.9929210576165515
+     ],
+     "std": [
+      0.007480151003989746,
+      0.00232200363156741,
+      0.0030601840327981284,
+      0.001563690691753101,
+      0.001895326288296498,
+      0.0007455514150920645,
+      0.0008273913013295175,
+      0.0004286661279662643,
+      0.001356665505419187,
+      0.002869030798342953,
+      0.002788497408089915,
+      0.0028155150540325673,
+      0.0030281377857656966,
+      0.0025237165862387416,
+      0.001597085345375461,
+      0.0014582796218513758,
+      0.001356052572420518
+     ]
+    },
+    "test_bal_acc_minimal": {
+     "mean": [
+      0.33611024395299965,
+      0.8165655479442605,
+      0.9030913094819489,
+      0.9035844497675551,
+      0.958973080191432,
+      0.9606849009258541,
+      0.9786087998913882,
+      0.9761279272755511,
+      0.9705317798865961,
+      0.9624719734761462,
+      0.9603272073413048,
+      0.9608027355441074,
+      0.9563295037363874,
+      0.9525663709081617,
+      0.9514074366075848,
+      0.9487316871462784,
+      0.9494645608665345
+     ],
+     "std": [
+      0.006933459449409279,
+      0.021788823482821153,
+      0.010836875754187628,
+      0.010966293178124118,
+      0.008050161875538064,
+      0.010581374361552036,
+      0.011921360882452938,
+      0.010038609508588918,
+      0.00699442440344245,
+      0.009493259009843064,
+      0.008114751866110147,
+      0.005642695403700754,
+      0.006477602182572347,
+      0.00048517675590551747,
+      0.00961198560224329,
+      0.003704568563122668,
+      0.0020162008702196677
+     ]
+    },
+    "shuffled_bal_acc": {
+     "mean": [
+      0.3457229226882918,
+      0.360527640009283,
+      0.3390649704799813,
+      0.322067072421784,
+      0.3197785878696977,
+      0.34719119654876246,
+      0.31310208159025993,
+      0.354526767604392,
+      0.3473024123731863,
+      0.33847946031776566,
+      0.33282800699309306,
+      0.3471040904438986,
+      0.320080685178836,
+      0.30544039591693345,
+      0.3224189554200261,
+      0.32891085620305255,
+      0.32809434870757914
+     ],
+     "std": [
+      0.01539105223309318,
+      0.0162479974366489,
+      0.03732473950133391,
+      0.030677034531644616,
+      0.03873254576404758,
+      0.010733728261718761,
+      0.021087443934864076,
+      0.014548978957894304,
+      0.01800135144395626,
+      0.016129323673016997,
+      0.026349993148461315,
+      0.012359888035377471,
+      0.003109457071523894,
+      0.005945499381075267,
+      0.0426974495146379,
+      0.039425818645080865,
+      0.021153058530860917
+     ]
+    },
+    "control_bal_acc": {
+     "mean": [
+      0.3333333333333333,
+      0.9016865065623124,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "std": [
+      0.0,
+      0.10281534237919511,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "selectivity": {
+     "mean": [
+      0.03858345631917426,
+      -0.042615965671435295,
+      -0.08303938015136196,
+      -0.07875689827155952,
+      -0.03654033275968308,
+      -0.033107261739402816,
+      -0.022905208556750527,
+      -0.022143382553203066,
+      -0.02986667526290887,
+      -0.038375545350709674,
+      -0.039147664503137225,
+      -0.04090691525126563,
+      -0.04168684868571119,
+      -0.0449905505169661,
+      -0.04415994925663783,
+      -0.046777191148083506,
+      -0.04417047114215974
+     ],
+     "std": [
+      0.003169717029442327,
+      0.10990259736752367,
+      0.009842690899483917,
+      0.005596716816759436,
+      0.005115662648623849,
+      0.006082685876916192,
+      0.00936003366171669,
+      0.0066593724275190854,
+      0.00721405642231103,
+      0.007960249320341325,
+      0.005856185464774685,
+      0.006246289415372741,
+      0.005972415720681814,
+      0.0031605265042249442,
+      0.004083891743130449,
+      0.006241106839912429,
+      0.005527207830058702
+     ]
+    },
+    "test_bal_acc_ci95": [
+     [
+      0.334495015881992,
+      0.4120299457452205
+     ],
+     [
+      0.8269591836696404,
+      0.8915573486706303
+     ],
+     [
+      0.88961152187901,
+      0.9420943803221782
+     ],
+     [
+      0.8938512922551324,
+      0.9465711505594773
+     ],
+     [
+      0.9442336574691056,
+      0.9812606255304779
+     ],
+     [
+      0.9487609016690307,
+      0.9833414712116063
+     ],
+     [
+      0.9616149187808031,
+      0.990402571385509
+     ],
+     [
+      0.9635365900611363,
+      0.9910002221080779
+     ],
+     [
+      0.9525243888811091,
+      0.9857408235768128
+     ],
+     [
+      0.9419836265394211,
+      0.9796951417104497
+     ],
+     [
+      0.9409398437336588,
+      0.9795719177674801
+     ],
+     [
+      0.938187283233069,
+      0.9780080227912813
+     ],
+     [
+      0.9378110674453185,
+      0.9767253571469828
+     ],
+     [
+      0.933303492349177,
+      0.9749217304902346
+     ],
+     [
+      0.9346862415319358,
+      0.9751628814008498
+     ],
+     [
+      0.9312186898728041,
+      0.9726848380804362
+     ],
+     [
+      0.9342457988596465,
+      0.9748031651022177
+     ]
+    ]
+   },
+   "best_layer": 12,
+   "per_verb_at_best_layer": {
+    "delete_file": {
+     "bal_acc_mean": 0.8074124732266249,
+     "n_test_per_seed": [
+      44,
+      53,
+      40
+     ]
+    },
+    "edit_file": {
+     "bal_acc_mean": 0.9962962962962963,
+     "n_test_per_seed": [
+      249,
+      217,
+      262
+     ]
+    },
+    "move_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      15,
+      9,
+      4
+     ]
+    },
+    "read_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      7,
+      6,
+      13
+     ]
+    },
+    "send_email": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      33,
+      33,
+      31
+     ]
+    },
+    "transfer_money": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      33,
+      45,
+      46
+     ]
+    },
+    "trash_file": {
+     "bal_acc_mean": 1.0,
+     "n_test_per_seed": [
+      8,
+      17,
+      11
+     ]
+    }
+   },
+   "leave_one_verb_out": null,
+   "baselines_mean": {
+    "majority": 0.3333333333333333,
+    "lexical": 0.5590133620498888,
+    "lexical_minimal": 0.49324133178895346,
+    "state_bow": 0.627721990731888,
+    "state_bow_minimal": 0.6502553178232812,
+    "state_action_bow": 0.81955011545349,
+    "state_action_bow_minimal": 0.7747828154819566
+   }
+  }
+ }
+}

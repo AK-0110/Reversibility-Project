@@ -1,0 +1,519 @@
+[binary] layer  0  val 0.533  test 0.542  minimal 0.500  shuf 0.500  sel 0.042  sel_setting -0.008
+[binary] layer  1  val 0.718  test 0.754  minimal 0.741  shuf 0.471  sel -0.246  sel_setting 0.095
+[binary] layer  2  val 0.767  test 0.770  minimal 0.745  shuf 0.499  sel -0.230  sel_setting 0.102
+[binary] layer  3  val 0.805  test 0.814  minimal 0.800  shuf 0.493  sel -0.186  sel_setting 0.128
+[binary] layer  4  val 0.883  test 0.864  minimal 0.882  shuf 0.513  sel -0.136  sel_setting 0.186
+[binary] layer  5  val 0.881  test 0.866  minimal 0.877  shuf 0.493  sel -0.134  sel_setting 0.190
+[binary] layer  6  val 0.861  test 0.887  minimal 0.891  shuf 0.519  sel -0.113  sel_setting 0.197
+[binary] layer  7  val 0.910  test 0.915  minimal 0.909  shuf 0.515  sel -0.085  sel_setting 0.189
+[binary] layer  8  val 0.932  test 0.950  minimal 0.950  shuf 0.460  sel -0.050  sel_setting 0.180
+[binary] layer  9  val 0.932  test 0.935  minimal 0.932  shuf 0.468  sel -0.065  sel_setting 0.145
+[binary] layer 10  val 0.937  test 0.929  minimal 0.936  shuf 0.478  sel -0.071  sel_setting 0.109
+[binary] layer 11  val 0.937  test 0.945  minimal 0.955  shuf 0.503  sel -0.055  sel_setting 0.125
+[binary] layer 12  val 0.949  test 0.944  minimal 0.968  shuf 0.407  sel -0.056  sel_setting 0.139
+[binary] layer 13  val 0.971  test 0.953  minimal 0.968  shuf 0.539  sel -0.047  sel_setting 0.147
+[binary] layer 14  val 0.964  test 0.968  minimal 0.977  shuf 0.486  sel -0.032  sel_setting 0.128
+[binary] layer 15  val 0.958  test 0.970  minimal 0.982  shuf 0.570  sel -0.030  sel_setting 0.155
+[binary] layer 16  val 0.980  test 0.967  minimal 0.973  shuf 0.472  sel -0.033  sel_setting 0.147
+[binary] layer 17  val 0.980  test 0.958  minimal 0.959  shuf 0.471  sel -0.042  sel_setting 0.150
+[binary] layer 18  val 0.980  test 0.962  minimal 0.964  shuf 0.532  sel -0.038  sel_setting 0.170
+[binary] layer 19  val 0.968  test 0.971  minimal 0.977  shuf 0.503  sel -0.029  sel_setting 0.195
+[binary] layer 20  val 0.968  test 0.956  minimal 0.955  shuf 0.467  sel -0.044  sel_setting 0.185
+[binary] layer 21  val 0.963  test 0.949  minimal 0.950  shuf 0.541  sel -0.051  sel_setting 0.188
+[binary] layer 22  val 0.968  test 0.935  minimal 0.936  shuf 0.487  sel -0.065  sel_setting 0.167
+[binary] layer 23  val 0.972  test 0.935  minimal 0.941  shuf 0.451  sel -0.065  sel_setting 0.184
+[binary] layer 24  val 0.955  test 0.943  minimal 0.945  shuf 0.535  sel -0.057  sel_setting 0.172
+[binary] layer 25  val 0.970  test 0.931  minimal 0.932  shuf 0.473  sel -0.069  sel_setting 0.157
+[binary] layer 26  val 0.961  test 0.940  minimal 0.932  shuf 0.483  sel -0.060  sel_setting 0.160
+[binary] layer 27  val 0.966  test 0.916  minimal 0.905  shuf 0.514  sel -0.084  sel_setting 0.157
+[binary] layer 28  val 0.961  test 0.931  minimal 0.923  shuf 0.515  sel -0.069  sel_setting 0.190
+[binary] layer 29  val 0.958  test 0.930  minimal 0.918  shuf 0.493  sel -0.070  sel_setting 0.182
+[binary] layer 30  val 0.958  test 0.941  minimal 0.927  shuf 0.467  sel -0.059  sel_setting 0.179
+[binary] layer 31  val 0.946  test 0.930  minimal 0.918  shuf 0.458  sel -0.070  sel_setting 0.187
+[binary] layer 32  val 0.937  test 0.916  minimal 0.909  shuf 0.539  sel -0.084  sel_setting 0.170
+LOVO held-out delete_file (n=218): bal-acc 0.534 at layer 13
+LOVO held-out edit_file (n=820): bal-acc 0.500 at layer 13
+LOVO held-out send_email (n=168): bal-acc 0.500 at layer 13
+LOVO held-out transfer_money (n=190): bal-acc 0.500 at layer 13
+== binary: best layer 13 (chosen on validation). test bal-acc 0.966 ± 0.011; baselines {'majority': 0.5, 'lexical': 0.5225384150031446, 'lexical_minimal': 0.5, 'state_bow': 0.693605146165344, 'state_bow_minimal': 0.7051862814188395, 'state_action_bow': 0.7263598487390998, 'state_action_bow_minimal': 0.7045802208127788}; per verb {'delete_file': {'bal_acc_mean': 0.7848861283643892, 'n_test_per_seed': [44, 43, 34]}, 'edit_file': {'bal_acc_mean': 0.9943181818181818, 'n_test_per_seed': [157, 176, 180]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 5, 7]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 13, 9]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 28, 37]}, 'transfer_money': {'bal_acc_mean': 0.9912280701754387, 'n_test_per_seed': [33, 40, 38]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 8, 12]}}
+[three] layer  0  val 0.333  test 0.333  minimal 0.333  shuf 0.333  sel 0.000  sel_setting nan
+[three] layer  1  val 0.772  test 0.790  minimal 0.755  shuf 0.277  sel -0.190  sel_setting nan
+[three] layer  2  val 0.768  test 0.790  minimal 0.752  shuf 0.336  sel -0.208  sel_setting nan
+[three] layer  3  val 0.818  test 0.827  minimal 0.809  shuf 0.315  sel -0.173  sel_setting nan
+[three] layer  4  val 0.917  test 0.889  minimal 0.909  shuf 0.300  sel -0.111  sel_setting nan
+[three] layer  5  val 0.902  test 0.904  minimal 0.923  shuf 0.323  sel -0.096  sel_setting nan
+[three] layer  6  val 0.938  test 0.917  minimal 0.920  shuf 0.332  sel -0.083  sel_setting nan
+[three] layer  7  val 0.957  test 0.946  minimal 0.944  shuf 0.325  sel -0.054  sel_setting nan
+[three] layer  8  val 0.973  test 0.967  minimal 0.970  shuf 0.341  sel -0.033  sel_setting nan
+[three] layer  9  val 0.947  test 0.970  minimal 0.973  shuf 0.320  sel -0.030  sel_setting nan
+[three] layer 10  val 0.968  test 0.958  minimal 0.955  shuf 0.290  sel -0.042  sel_setting nan
+[three] layer 11  val 0.974  test 0.971  minimal 0.976  shuf 0.323  sel -0.029  sel_setting nan
+[three] layer 12  val 0.976  test 0.981  minimal 0.988  shuf 0.340  sel -0.019  sel_setting nan
+[three] layer 13  val 0.977  test 0.988  minimal 0.994  shuf 0.310  sel -0.012  sel_setting nan
+[three] layer 14  val 0.969  test 0.976  minimal 0.983  shuf 0.312  sel -0.024  sel_setting nan
+[three] layer 15  val 0.975  test 0.969  minimal 0.973  shuf 0.302  sel -0.031  sel_setting nan
+[three] layer 16  val 0.972  test 0.966  minimal 0.970  shuf 0.319  sel -0.034  sel_setting nan
+[three] layer 17  val 0.972  test 0.970  minimal 0.974  shuf 0.376  sel -0.030  sel_setting nan
+[three] layer 18  val 0.975  test 0.966  minimal 0.968  shuf 0.393  sel -0.034  sel_setting nan
+[three] layer 19  val 0.978  test 0.971  minimal 0.979  shuf 0.370  sel -0.029  sel_setting nan
+[three] layer 20  val 0.975  test 0.969  minimal 0.973  shuf 0.319  sel -0.031  sel_setting nan
+[three] layer 21  val 0.972  test 0.965  minimal 0.968  shuf 0.369  sel -0.035  sel_setting nan
+[three] layer 22  val 0.972  test 0.954  minimal 0.959  shuf 0.309  sel -0.046  sel_setting nan
+[three] layer 23  val 0.978  test 0.962  minimal 0.970  shuf 0.310  sel -0.038  sel_setting nan
+[three] layer 24  val 0.975  test 0.960  minimal 0.958  shuf 0.318  sel -0.040  sel_setting nan
+[three] layer 25  val 0.972  test 0.953  minimal 0.950  shuf 0.360  sel -0.047  sel_setting nan
+[three] layer 26  val 0.967  test 0.954  minimal 0.955  shuf 0.322  sel -0.046  sel_setting nan
+[three] layer 27  val 0.972  test 0.941  minimal 0.935  shuf 0.337  sel -0.059  sel_setting nan
+[three] layer 28  val 0.965  test 0.945  minimal 0.935  shuf 0.351  sel -0.055  sel_setting nan
+[three] layer 29  val 0.962  test 0.944  minimal 0.935  shuf 0.364  sel -0.056  sel_setting nan
+[three] layer 30  val 0.967  test 0.933  minimal 0.923  shuf 0.312  sel -0.067  sel_setting nan
+[three] layer 31  val 0.956  test 0.942  minimal 0.935  shuf 0.356  sel -0.058  sel_setting nan
+[three] layer 32  val 0.949  test 0.939  minimal 0.926  shuf 0.315  sel -0.061  sel_setting nan
+== three: best layer 13 (chosen on validation). test bal-acc 0.982 ± 0.007; baselines {'majority': 0.3333333333333333, 'lexical': 0.4773411178371793, 'lexical_minimal': 0.4227335233820746, 'state_bow': 0.599474862515232, 'state_bow_minimal': 0.6181829770009545, 'state_action_bow': 0.7356382831052279, 'state_action_bow_minimal': 0.7025788021042089}; per verb {'delete_file': {'bal_acc_mean': 0.8415665907140758, 'n_test_per_seed': [44, 53, 40]}, 'edit_file': {'bal_acc_mean': 0.996993746993747, 'n_test_per_seed': [249, 217, 262]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 9, 4]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 6, 13]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 33, 31]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 45, 46]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 17, 11]}}
+[binary] layer  0  val 0.500  test 0.500  minimal 0.500  shuf 0.500  sel 0.000  sel_setting 0.000
+[binary] layer  1  val 0.669  test 0.676  minimal 0.727  shuf 0.510  sel 0.160  sel_setting -0.033
+[binary] layer  2  val 0.665  test 0.694  minimal 0.736  shuf 0.494  sel 0.193  sel_setting -0.010
+[binary] layer  3  val 0.655  test 0.690  minimal 0.741  shuf 0.534  sel 0.193  sel_setting -0.011
+[binary] layer  4  val 0.640  test 0.701  minimal 0.736  shuf 0.522  sel 0.171  sel_setting 0.002
+[binary] layer  5  val 0.645  test 0.671  minimal 0.700  shuf 0.545  sel 0.118  sel_setting -0.022
+[binary] layer  6  val 0.628  test 0.718  minimal 0.745  shuf 0.471  sel 0.185  sel_setting 0.039
+[binary] layer  7  val 0.627  test 0.690  minimal 0.723  shuf 0.516  sel 0.174  sel_setting -0.001
+[binary] layer  8  val 0.644  test 0.712  minimal 0.750  shuf 0.479  sel 0.206  sel_setting 0.028
+[binary] layer  9  val 0.658  test 0.680  minimal 0.709  shuf 0.427  sel 0.141  sel_setting -0.026
+[binary] layer 10  val 0.679  test 0.683  minimal 0.709  shuf 0.456  sel 0.163  sel_setting -0.012
+[binary] layer 11  val 0.665  test 0.712  minimal 0.741  shuf 0.464  sel 0.168  sel_setting 0.028
+[binary] layer 12  val 0.658  test 0.694  minimal 0.718  shuf 0.514  sel 0.151  sel_setting -0.005
+[binary] layer 13  val 0.631  test 0.651  minimal 0.682  shuf 0.515  sel 0.097  sel_setting -0.029
+[binary] layer 14  val 0.622  test 0.662  minimal 0.705  shuf 0.499  sel 0.114  sel_setting -0.008
+[binary] layer 15  val 0.643  test 0.671  minimal 0.700  shuf 0.521  sel 0.185  sel_setting -0.008
+[binary] layer 16  val 0.642  test 0.668  minimal 0.695  shuf 0.515  sel 0.173  sel_setting 0.011
+[binary] layer 17  val 0.663  test 0.690  minimal 0.727  shuf 0.432  sel 0.183  sel_setting 0.012
+[binary] layer 18  val 0.647  test 0.683  minimal 0.727  shuf 0.514  sel 0.156  sel_setting 0.029
+[binary] layer 19  val 0.665  test 0.678  minimal 0.718  shuf 0.482  sel 0.161  sel_setting 0.014
+[binary] layer 20  val 0.668  test 0.704  minimal 0.732  shuf 0.466  sel 0.198  sel_setting 0.028
+[binary] layer 21  val 0.672  test 0.712  minimal 0.745  shuf 0.550  sel 0.196  sel_setting 0.040
+[binary] layer 22  val 0.667  test 0.706  minimal 0.736  shuf 0.447  sel 0.198  sel_setting 0.021
+[binary] layer 23  val 0.669  test 0.701  minimal 0.732  shuf 0.533  sel 0.185  sel_setting 0.019
+[binary] layer 24  val 0.671  test 0.703  minimal 0.732  shuf 0.491  sel 0.190  sel_setting 0.018
+[binary] layer 25  val 0.675  test 0.694  minimal 0.727  shuf 0.497  sel 0.178  sel_setting 0.010
+[binary] layer 26  val 0.656  test 0.694  minimal 0.727  shuf 0.469  sel 0.191  sel_setting 0.003
+[binary] layer 27  val 0.640  test 0.673  minimal 0.705  shuf 0.462  sel 0.155  sel_setting -0.011
+[binary] layer 28  val 0.669  test 0.688  minimal 0.718  shuf 0.503  sel 0.165  sel_setting 0.002
+[binary] layer 29  val 0.648  test 0.688  minimal 0.714  shuf 0.465  sel 0.153  sel_setting 0.002
+[binary] layer 30  val 0.672  test 0.684  minimal 0.709  shuf 0.515  sel 0.146  sel_setting 0.001
+[binary] layer 31  val 0.667  test 0.673  minimal 0.695  shuf 0.465  sel 0.163  sel_setting -0.014
+[binary] layer 32  val 0.670  test 0.674  minimal 0.700  shuf 0.489  sel 0.155  sel_setting -0.002
+LOVO held-out delete_file (n=218): bal-acc 0.499 at layer 1
+LOVO held-out edit_file (n=820): bal-acc 0.484 at layer 1
+LOVO held-out send_email (n=168): bal-acc 0.521 at layer 1
+LOVO held-out transfer_money (n=190): bal-acc 0.488 at layer 1
+== binary: best layer 1 (chosen on validation). test bal-acc 0.667 ± 0.010; baselines {'majority': 0.5, 'lexical': 0.5225384150031446, 'lexical_minimal': 0.5, 'state_bow': 0.693605146165344, 'state_bow_minimal': 0.7051862814188395, 'state_action_bow': 0.7263598487390998, 'state_action_bow_minimal': 0.7045802208127788}; per verb {'delete_file': {'bal_acc_mean': 0.6053830227743272, 'n_test_per_seed': [44, 43, 34]}, 'edit_file': {'bal_acc_mean': 0.7331804936028933, 'n_test_per_seed': [157, 176, 180]}, 'move_file': {'bal_acc_mean': 0.4761904761904762, 'n_test_per_seed': [15, 5, 7]}, 'read_file': {'bal_acc_mean': 0.5474155474155474, 'n_test_per_seed': [7, 13, 9]}, 'send_email': {'bal_acc_mean': 0.6106300562182915, 'n_test_per_seed': [33, 28, 37]}, 'transfer_money': {'bal_acc_mean': 0.593313860631972, 'n_test_per_seed': [33, 40, 38]}, 'trash_file': {'bal_acc_mean': 0.5694444444444445, 'n_test_per_seed': [8, 8, 12]}}
+[three] layer  0  val 0.333  test 0.333  minimal 0.333  shuf 0.333  sel 0.000  sel_setting nan
+[three] layer  1  val 0.566  test 0.586  minimal 0.626  shuf 0.287  sel 0.238  sel_setting nan
+[three] layer  2  val 0.525  test 0.571  minimal 0.585  shuf 0.346  sel 0.219  sel_setting nan
+[three] layer  3  val 0.548  test 0.565  minimal 0.593  shuf 0.312  sel 0.239  sel_setting nan
+[three] layer  4  val 0.517  test 0.565  minimal 0.597  shuf 0.351  sel 0.227  sel_setting nan
+[three] layer  5  val 0.503  test 0.536  minimal 0.554  shuf 0.356  sel 0.197  sel_setting nan
+[three] layer  6  val 0.501  test 0.528  minimal 0.555  shuf 0.322  sel 0.224  sel_setting nan
+[three] layer  7  val 0.507  test 0.530  minimal 0.545  shuf 0.352  sel 0.224  sel_setting nan
+[three] layer  8  val 0.520  test 0.547  minimal 0.564  shuf 0.311  sel 0.237  sel_setting nan
+[three] layer  9  val 0.539  test 0.564  minimal 0.586  shuf 0.329  sel 0.275  sel_setting nan
+[three] layer 10  val 0.550  test 0.541  minimal 0.546  shuf 0.314  sel 0.221  sel_setting nan
+[three] layer 11  val 0.559  test 0.557  minimal 0.570  shuf 0.330  sel 0.250  sel_setting nan
+[three] layer 12  val 0.567  test 0.559  minimal 0.588  shuf 0.334  sel 0.230  sel_setting nan
+[three] layer 13  val 0.518  test 0.530  minimal 0.544  shuf 0.319  sel 0.218  sel_setting nan
+[three] layer 14  val 0.527  test 0.542  minimal 0.575  shuf 0.332  sel 0.236  sel_setting nan
+[three] layer 15  val 0.549  test 0.514  minimal 0.539  shuf 0.253  sel 0.193  sel_setting nan
+[three] layer 16  val 0.522  test 0.537  minimal 0.552  shuf 0.341  sel 0.230  sel_setting nan
+[three] layer 17  val 0.516  test 0.550  minimal 0.564  shuf 0.299  sel 0.265  sel_setting nan
+[three] layer 18  val 0.497  test 0.532  minimal 0.554  shuf 0.344  sel 0.230  sel_setting nan
+[three] layer 19  val 0.538  test 0.535  minimal 0.551  shuf 0.310  sel 0.229  sel_setting nan
+[three] layer 20  val 0.515  test 0.532  minimal 0.553  shuf 0.308  sel 0.257  sel_setting nan
+[three] layer 21  val 0.511  test 0.540  minimal 0.553  shuf 0.329  sel 0.270  sel_setting nan
+[three] layer 22  val 0.542  test 0.545  minimal 0.563  shuf 0.348  sel 0.259  sel_setting nan
+[three] layer 23  val 0.549  test 0.542  minimal 0.557  shuf 0.297  sel 0.260  sel_setting nan
+[three] layer 24  val 0.561  test 0.534  minimal 0.545  shuf 0.323  sel 0.263  sel_setting nan
+[three] layer 25  val 0.562  test 0.518  minimal 0.535  shuf 0.361  sel 0.248  sel_setting nan
+[three] layer 26  val 0.560  test 0.520  minimal 0.537  shuf 0.347  sel 0.246  sel_setting nan
+[three] layer 27  val 0.549  test 0.519  minimal 0.538  shuf 0.311  sel 0.229  sel_setting nan
+[three] layer 28  val 0.554  test 0.515  minimal 0.533  shuf 0.376  sel 0.249  sel_setting nan
+[three] layer 29  val 0.555  test 0.510  minimal 0.533  shuf 0.337  sel 0.237  sel_setting nan
+[three] layer 30  val 0.566  test 0.526  minimal 0.554  shuf 0.289  sel 0.249  sel_setting nan
+[three] layer 31  val 0.564  test 0.502  minimal 0.529  shuf 0.338  sel 0.220  sel_setting nan
+[three] layer 32  val 0.546  test 0.499  minimal 0.519  shuf 0.307  sel 0.219  sel_setting nan
+== three: best layer 28 (chosen on validation). test bal-acc 0.533 ± 0.016; baselines {'majority': 0.3333333333333333, 'lexical': 0.4773411178371793, 'lexical_minimal': 0.4227335233820746, 'state_bow': 0.599474862515232, 'state_bow_minimal': 0.6181829770009545, 'state_action_bow': 0.7356382831052279, 'state_action_bow_minimal': 0.7025788021042089}; per verb {'delete_file': {'bal_acc_mean': 0.47769530207722877, 'n_test_per_seed': [44, 53, 40]}, 'edit_file': {'bal_acc_mean': 0.596389549848548, 'n_test_per_seed': [249, 217, 262]}, 'move_file': {'bal_acc_mean': 0.19999999999999998, 'n_test_per_seed': [15, 9, 4]}, 'read_file': {'bal_acc_mean': 0.18376068376068377, 'n_test_per_seed': [7, 6, 13]}, 'send_email': {'bal_acc_mean': 0.4484381201873462, 'n_test_per_seed': [33, 33, 31]}, 'transfer_money': {'bal_acc_mean': 0.4778722094898565, 'n_test_per_seed': [33, 45, 46]}, 'trash_file': {'bal_acc_mean': 0.5249554367201426, 'n_test_per_seed': [8, 17, 11]}}
+[binary] layer 0: original 0.542  reworded 0.542  same pred 1.000
+[binary] layer 1: original 0.754  reworded 0.571  same pred 0.552
+[binary] layer 2: original 0.770  reworded 0.583  same pred 0.579
+[binary] layer 3: original 0.814  reworded 0.664  same pred 0.747
+[binary] layer 4: original 0.864  reworded 0.714  same pred 0.778
+[binary] layer 5: original 0.866  reworded 0.772  same pred 0.852
+[binary] layer 6: original 0.887  reworded 0.750  same pred 0.825
+[binary] layer 7: original 0.915  reworded 0.795  same pred 0.801
+[binary] layer 8: original 0.950  reworded 0.755  same pred 0.768
+[binary] layer 9: original 0.935  reworded 0.817  same pred 0.815
+[binary] layer 10: original 0.929  reworded 0.800  same pred 0.832
+[binary] layer 11: original 0.945  reworded 0.814  same pred 0.845
+[binary] layer 12: original 0.944  reworded 0.809  same pred 0.801
+[binary] layer 13: original 0.953  reworded 0.830  same pred 0.805
+[binary] layer 14: original 0.968  reworded 0.801  same pred 0.801
+[binary] layer 15: original 0.970  reworded 0.805  same pred 0.798
+[binary] layer 16: original 0.967  reworded 0.817  same pred 0.805
+[binary] layer 17: original 0.958  reworded 0.781  same pred 0.788
+[binary] layer 18: original 0.962  reworded 0.772  same pred 0.771
+[binary] layer 19: original 0.971  reworded 0.778  same pred 0.778
+[binary] layer 20: original 0.956  reworded 0.764  same pred 0.737
+[binary] layer 21: original 0.949  reworded 0.747  same pred 0.741
+[binary] layer 22: original 0.935  reworded 0.772  same pred 0.768
+[binary] layer 23: original 0.935  reworded 0.777  same pred 0.771
+[binary] layer 24: original 0.943  reworded 0.767  same pred 0.774
+[binary] layer 25: original 0.931  reworded 0.779  same pred 0.771
+[binary] layer 26: original 0.940  reworded 0.760  same pred 0.768
+[binary] layer 27: original 0.916  reworded 0.759  same pred 0.751
+[binary] layer 28: original 0.931  reworded 0.772  same pred 0.778
+[binary] layer 29: original 0.930  reworded 0.771  same pred 0.764
+[binary] layer 30: original 0.941  reworded 0.758  same pred 0.771
+[binary] layer 31: original 0.930  reworded 0.776  same pred 0.778
+[binary] layer 32: original 0.916  reworded 0.781  same pred 0.774
+[three] layer 0: original 0.333  reworded 0.333  same pred 1.000
+[three] layer 1: original 0.790  reworded 0.387  same pred 0.442
+[three] layer 2: original 0.790  reworded 0.377  same pred 0.440
+[three] layer 3: original 0.827  reworded 0.440  same pred 0.540
+[three] layer 4: original 0.889  reworded 0.483  same pred 0.586
+[three] layer 5: original 0.904  reworded 0.513  same pred 0.617
+[three] layer 6: original 0.917  reworded 0.482  same pred 0.604
+[three] layer 7: original 0.946  reworded 0.530  same pred 0.630
+[three] layer 8: original 0.967  reworded 0.479  same pred 0.566
+[three] layer 9: original 0.970  reworded 0.536  same pred 0.607
+[three] layer 10: original 0.958  reworded 0.532  same pred 0.612
+[three] layer 11: original 0.971  reworded 0.568  same pred 0.656
+[three] layer 12: original 0.981  reworded 0.555  same pred 0.625
+[three] layer 13: original 0.988  reworded 0.587  same pred 0.650
+[three] layer 14: original 0.976  reworded 0.610  same pred 0.650
+[three] layer 15: original 0.969  reworded 0.604  same pred 0.661
+[three] layer 16: original 0.966  reworded 0.591  same pred 0.643
+[three] layer 17: original 0.970  reworded 0.561  same pred 0.625
+[three] layer 18: original 0.966  reworded 0.563  same pred 0.622
+[three] layer 19: original 0.971  reworded 0.565  same pred 0.620
+[three] layer 20: original 0.969  reworded 0.559  same pred 0.604
+[three] layer 21: original 0.965  reworded 0.553  same pred 0.602
+[three] layer 22: original 0.954  reworded 0.568  same pred 0.612
+[three] layer 23: original 0.962  reworded 0.569  same pred 0.625
+[three] layer 24: original 0.960  reworded 0.592  same pred 0.632
+[three] layer 25: original 0.953  reworded 0.579  same pred 0.625
+[three] layer 26: original 0.954  reworded 0.566  same pred 0.627
+[three] layer 27: original 0.941  reworded 0.565  same pred 0.627
+[three] layer 28: original 0.945  reworded 0.566  same pred 0.617
+[three] layer 29: original 0.944  reworded 0.572  same pred 0.614
+[three] layer 30: original 0.933  reworded 0.564  same pred 0.612
+[three] layer 31: original 0.942  reworded 0.540  same pred 0.604
+[three] layer 32: original 0.939  reworded 0.562  same pred 0.609
+[binary] layer 0: original 0.492  reworded 0.492  same pred 1.000
+[binary] layer 1: original 0.740  reworded 0.693  same pred 0.839
+[binary] layer 2: original 0.746  reworded 0.735  same pred 0.854
+[binary] layer 3: original 0.795  reworded 0.806  same pred 0.884
+[binary] layer 4: original 0.854  reworded 0.846  same pred 0.948
+[binary] layer 5: original 0.854  reworded 0.858  same pred 0.959
+[binary] layer 6: original 0.876  reworded 0.869  same pred 0.918
+[binary] layer 7: original 0.906  reworded 0.911  same pred 0.929
+[binary] layer 8: original 0.944  reworded 0.952  same pred 0.970
+[binary] layer 9: original 0.929  reworded 0.956  same pred 0.951
+[binary] layer 10: original 0.921  reworded 0.926  same pred 0.974
+[binary] layer 11: original 0.940  reworded 0.933  same pred 0.978
+[binary] layer 12: original 0.940  reworded 0.948  same pred 0.978
+[binary] layer 13: original 0.951  reworded 0.951  same pred 0.993
+[binary] layer 14: original 0.966  reworded 0.962  same pred 0.989
+[binary] layer 15: original 0.966  reworded 0.963  same pred 0.989
+[binary] layer 16: original 0.963  reworded 0.963  same pred 0.978
+[binary] layer 17: original 0.952  reworded 0.966  same pred 0.970
+[binary] layer 18: original 0.959  reworded 0.966  same pred 0.978
+[binary] layer 19: original 0.967  reworded 0.963  same pred 0.966
+[binary] layer 20: original 0.951  reworded 0.951  same pred 0.963
+[binary] layer 21: original 0.948  reworded 0.944  same pred 0.974
+[binary] layer 22: original 0.933  reworded 0.951  same pred 0.966
+[binary] layer 23: original 0.933  reworded 0.936  same pred 0.951
+[binary] layer 24: original 0.940  reworded 0.932  same pred 0.955
+[binary] layer 25: original 0.925  reworded 0.936  same pred 0.951
+[binary] layer 26: original 0.933  reworded 0.932  same pred 0.963
+[binary] layer 27: original 0.910  reworded 0.921  same pred 0.951
+[binary] layer 28: original 0.925  reworded 0.932  same pred 0.948
+[binary] layer 29: original 0.925  reworded 0.920  same pred 0.951
+[binary] layer 30: original 0.936  reworded 0.928  same pred 0.963
+[binary] layer 31: original 0.925  reworded 0.932  same pred 0.963
+[binary] layer 32: original 0.912  reworded 0.931  same pred 0.966
+[three] layer 0: original 0.333  reworded 0.333  same pred 1.000
+[three] layer 1: original 0.769  reworded 0.749  same pred 0.903
+[three] layer 2: original 0.765  reworded 0.772  same pred 0.911
+[three] layer 3: original 0.809  reworded 0.804  same pred 0.933
+[three] layer 4: original 0.884  reworded 0.894  same pred 0.953
+[three] layer 5: original 0.896  reworded 0.898  same pred 0.958
+[three] layer 6: original 0.909  reworded 0.915  same pred 0.944
+[three] layer 7: original 0.941  reworded 0.932  same pred 0.950
+[three] layer 8: original 0.964  reworded 0.964  same pred 0.967
+[three] layer 9: original 0.969  reworded 0.969  same pred 0.978
+[three] layer 10: original 0.955  reworded 0.962  same pred 0.969
+[three] layer 11: original 0.970  reworded 0.966  same pred 0.986
+[three] layer 12: original 0.980  reworded 0.965  same pred 0.981
+[three] layer 13: original 0.987  reworded 0.974  same pred 0.986
+[three] layer 14: original 0.974  reworded 0.975  same pred 0.975
+[three] layer 15: original 0.966  reworded 0.967  same pred 0.978
+[three] layer 16: original 0.963  reworded 0.961  same pred 0.981
+[three] layer 17: original 0.967  reworded 0.962  same pred 0.981
+[three] layer 18: original 0.962  reworded 0.963  same pred 0.975
+[three] layer 19: original 0.968  reworded 0.961  same pred 0.972
+[three] layer 20: original 0.965  reworded 0.957  same pred 0.969
+[three] layer 21: original 0.962  reworded 0.947  same pred 0.969
+[three] layer 22: original 0.952  reworded 0.942  same pred 0.969
+[three] layer 23: original 0.961  reworded 0.945  same pred 0.972
+[three] layer 24: original 0.957  reworded 0.943  same pred 0.953
+[three] layer 25: original 0.949  reworded 0.938  same pred 0.961
+[three] layer 26: original 0.950  reworded 0.945  same pred 0.955
+[three] layer 27: original 0.937  reworded 0.925  same pred 0.961
+[three] layer 28: original 0.941  reworded 0.927  same pred 0.964
+[three] layer 29: original 0.941  reworded 0.931  same pred 0.953
+[three] layer 30: original 0.929  reworded 0.929  same pred 0.953
+[three] layer 31: original 0.939  reworded 0.930  same pred 0.958
+[three] layer 32: original 0.936  reworded 0.932  same pred 0.964
+sandbox->sciworld layer 0: val 0.500 target 0.522 centred 0.500
+sandbox->sciworld layer 1: val 0.777 target 0.475 centred 0.496
+sandbox->sciworld layer 2: val 0.784 target 0.508 centred 0.425
+sandbox->sciworld layer 3: val 0.786 target 0.618 centred 0.581
+sandbox->sciworld layer 4: val 0.874 target 0.614 centred 0.568
+sandbox->sciworld layer 5: val 0.881 target 0.449 centred 0.485
+sandbox->sciworld layer 6: val 0.896 target 0.575 centred 0.662
+sandbox->sciworld layer 7: val 0.910 target 0.565 centred 0.525
+sandbox->sciworld layer 8: val 0.960 target 0.461 centred 0.452
+sandbox->sciworld layer 9: val 0.961 target 0.460 centred 0.466
+sandbox->sciworld layer 10: val 0.942 target 0.500 centred 0.460
+sandbox->sciworld layer 11: val 0.940 target 0.500 centred 0.390
+sandbox->sciworld layer 12: val 0.958 target 0.515 centred 0.492
+sandbox->sciworld layer 13: val 0.965 target 0.484 centred 0.478
+sandbox->sciworld layer 14: val 0.965 target 0.441 centred 0.449
+sandbox->sciworld layer 15: val 0.950 target 0.514 centred 0.533
+sandbox->sciworld layer 16: val 0.959 target 0.484 centred 0.474
+sandbox->sciworld layer 17: val 0.952 target 0.473 centred 0.469
+sandbox->sciworld layer 18: val 0.956 target 0.481 centred 0.348
+sandbox->sciworld layer 19: val 0.956 target 0.474 centred 0.389
+sandbox->sciworld layer 20: val 0.952 target 0.486 centred 0.463
+sandbox->sciworld layer 21: val 0.956 target 0.466 centred 0.489
+sandbox->sciworld layer 22: val 0.952 target 0.500 centred 0.499
+sandbox->sciworld layer 23: val 0.948 target 0.505 centred 0.529
+sandbox->sciworld layer 24: val 0.948 target 0.511 centred 0.516
+sandbox->sciworld layer 25: val 0.951 target 0.508 centred 0.551
+sandbox->sciworld layer 26: val 0.952 target 0.544 centred 0.532
+sandbox->sciworld layer 27: val 0.945 target 0.610 centred 0.583
+sandbox->sciworld layer 28: val 0.935 target 0.590 centred 0.532
+sandbox->sciworld layer 29: val 0.938 target 0.490 centred 0.495
+sandbox->sciworld layer 30: val 0.948 target 0.514 centred 0.522
+sandbox->sciworld layer 31: val 0.932 target 0.484 centred 0.532
+sandbox->sciworld layer 32: val 0.938 target 0.532 centred 0.473
+sciworld->sandbox layer 0: val 0.560 target 0.500 centred 0.500
+sciworld->sandbox layer 1: val 0.560 target 0.500 centred 0.500
+sciworld->sandbox layer 2: val 0.467 target 0.500 centred 0.500
+sciworld->sandbox layer 3: val 0.549 target 0.500 centred 0.500
+sciworld->sandbox layer 4: val 0.692 target 0.500 centred 0.500
+sciworld->sandbox layer 5: val 0.621 target 0.500 centred 0.500
+sciworld->sandbox layer 6: val 0.763 target 0.500 centred 0.500
+sciworld->sandbox layer 7: val 0.763 target 0.500 centred 0.500
+sciworld->sandbox layer 8: val 0.692 target 0.500 centred 0.500
+sciworld->sandbox layer 9: val 0.835 target 0.500 centred 0.500
+sciworld->sandbox layer 10: val 0.763 target 0.522 centred 0.500
+sciworld->sandbox layer 11: val 0.775 target 0.482 centred 0.500
+sciworld->sandbox layer 12: val 0.775 target 0.501 centred 0.500
+sciworld->sandbox layer 13: val 0.692 target 0.502 centred 0.500
+sciworld->sandbox layer 14: val 0.763 target 0.504 centred 0.500
+sciworld->sandbox layer 15: val 0.692 target 0.506 centred 0.500
+sciworld->sandbox layer 16: val 0.703 target 0.500 centred 0.500
+sciworld->sandbox layer 17: val 0.835 target 0.500 centred 0.500
+sciworld->sandbox layer 18: val 0.835 target 0.500 centred 0.500
+sciworld->sandbox layer 19: val 0.835 target 0.500 centred 0.500
+sciworld->sandbox layer 20: val 0.835 target 0.498 centred 0.500
+sciworld->sandbox layer 21: val 0.763 target 0.502 centred 0.500
+sciworld->sandbox layer 22: val 0.835 target 0.495 centred 0.500
+sciworld->sandbox layer 23: val 0.835 target 0.502 centred 0.500
+sciworld->sandbox layer 24: val 0.763 target 0.472 centred 0.500
+sciworld->sandbox layer 25: val 0.763 target 0.479 centred 0.500
+sciworld->sandbox layer 26: val 0.763 target 0.500 centred 0.500
+sciworld->sandbox layer 27: val 0.763 target 0.464 centred 0.500
+sciworld->sandbox layer 28: val 0.763 target 0.482 centred 0.500
+sciworld->sandbox layer 29: val 0.763 target 0.497 centred 0.500
+sciworld->sandbox layer 30: val 0.763 target 0.476 centred 0.500
+sciworld->sandbox layer 31: val 0.763 target 0.489 centred 0.500
+sciworld->sandbox layer 32: val 0.763 target 0.500 centred 0.500
+[binary] layer  0  val 0.500  test 0.500  minimal 0.500  shuf 0.500  sel 0.000  sel_setting 0.000
+[binary] layer  1  val 0.735  test 0.764  minimal 0.764  shuf 0.509  sel -0.236  sel_setting 0.144
+[binary] layer  2  val 0.740  test 0.709  minimal 0.709  shuf 0.436  sel -0.291  sel_setting 0.118
+[binary] layer  3  val 0.775  test 0.795  minimal 0.795  shuf 0.500  sel -0.205  sel_setting 0.147
+[binary] layer  4  val 0.895  test 0.900  minimal 0.900  shuf 0.464  sel -0.100  sel_setting 0.247
+[binary] layer  5  val 0.920  test 0.891  minimal 0.891  shuf 0.509  sel -0.109  sel_setting 0.238
+[binary] layer  6  val 0.905  test 0.900  minimal 0.900  shuf 0.491  sel -0.100  sel_setting 0.210
+[binary] layer  7  val 0.930  test 0.923  minimal 0.923  shuf 0.532  sel -0.077  sel_setting 0.185
+[binary] layer  8  val 0.945  test 0.945  minimal 0.945  shuf 0.505  sel -0.055  sel_setting 0.162
+[binary] layer  9  val 0.925  test 0.941  minimal 0.941  shuf 0.505  sel -0.059  sel_setting 0.145
+[binary] layer 10  val 0.950  test 0.955  minimal 0.955  shuf 0.514  sel -0.045  sel_setting 0.144
+[binary] layer 11  val 0.950  test 0.964  minimal 0.964  shuf 0.536  sel -0.036  sel_setting 0.141
+[binary] layer 12  val 0.985  test 0.973  minimal 0.973  shuf 0.491  sel -0.027  sel_setting 0.173
+[binary] layer 13  val 0.995  test 0.986  minimal 0.986  shuf 0.477  sel -0.014  sel_setting 0.217
+[binary] layer 14  val 0.995  test 0.977  minimal 0.977  shuf 0.541  sel -0.023  sel_setting 0.113
+[binary] layer 15  val 0.995  test 0.959  minimal 0.959  shuf 0.509  sel -0.041  sel_setting 0.126
+[binary] layer 16  val 0.990  test 0.959  minimal 0.959  shuf 0.495  sel -0.041  sel_setting 0.150
+[binary] layer 17  val 0.975  test 0.955  minimal 0.955  shuf 0.486  sel -0.045  sel_setting 0.135
+[binary] layer 18  val 0.970  test 0.945  minimal 0.945  shuf 0.495  sel -0.055  sel_setting 0.128
+[binary] layer 19  val 0.975  test 0.945  minimal 0.945  shuf 0.486  sel -0.055  sel_setting 0.130
+[binary] layer 20  val 0.975  test 0.945  minimal 0.945  shuf 0.545  sel -0.055  sel_setting 0.148
+[binary] layer 21  val 0.970  test 0.936  minimal 0.936  shuf 0.523  sel -0.064  sel_setting 0.162
+[binary] layer 22  val 0.960  test 0.941  minimal 0.941  shuf 0.473  sel -0.059  sel_setting 0.161
+[binary] layer 23  val 0.950  test 0.945  minimal 0.945  shuf 0.509  sel -0.055  sel_setting 0.134
+[binary] layer 24  val 0.950  test 0.950  minimal 0.950  shuf 0.477  sel -0.050  sel_setting 0.156
+[binary] layer 25  val 0.955  test 0.932  minimal 0.932  shuf 0.482  sel -0.068  sel_setting 0.164
+[binary] layer 26  val 0.955  test 0.932  minimal 0.932  shuf 0.514  sel -0.068  sel_setting 0.164
+[binary] layer 27  val 0.955  test 0.914  minimal 0.914  shuf 0.473  sel -0.086  sel_setting 0.134
+[binary] layer 28  val 0.960  test 0.914  minimal 0.914  shuf 0.473  sel -0.086  sel_setting 0.172
+[binary] layer 29  val 0.965  test 0.900  minimal 0.900  shuf 0.491  sel -0.100  sel_setting 0.149
+[binary] layer 30  val 0.960  test 0.900  minimal 0.900  shuf 0.482  sel -0.100  sel_setting 0.141
+[binary] layer 31  val 0.950  test 0.923  minimal 0.923  shuf 0.391  sel -0.077  sel_setting 0.167
+[binary] layer 32  val 0.940  test 0.900  minimal 0.900  shuf 0.491  sel -0.100  sel_setting 0.149
+== binary: best layer 13 (chosen on validation). test bal-acc 0.979 ± 0.006; baselines {'majority': 0.5, 'lexical': 0.5, 'lexical_minimal': 0.5, 'state_bow': 0.7348236462990562, 'state_bow_minimal': 0.7348236462990562, 'state_action_bow': 0.73725782414307, 'state_action_bow_minimal': 0.73725782414307}; per verb {'delete_file': {'bal_acc_mean': 0.8446570972886761, 'n_test_per_seed': [30, 38, 22]}, 'edit_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [150, 162, 152]}, 'send_email': {'bal_acc_mean': 0.986111111111111, 'n_test_per_seed': [18, 18, 24]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [22, 26, 46]}}
+[three] layer  0  val 0.333  test 0.333  minimal 0.333  shuf 0.333  sel 0.000  sel_setting nan
+[three] layer  1  val 0.738  test 0.748  minimal 0.748  shuf 0.323  sel -0.252  sel_setting nan
+[three] layer  2  val 0.716  test 0.721  minimal 0.721  shuf 0.308  sel -0.279  sel_setting nan
+[three] layer  3  val 0.820  test 0.801  minimal 0.801  shuf 0.362  sel -0.199  sel_setting nan
+[three] layer  4  val 0.913  test 0.924  minimal 0.924  shuf 0.356  sel -0.076  sel_setting nan
+[three] layer  5  val 0.942  test 0.927  minimal 0.927  shuf 0.315  sel -0.073  sel_setting nan
+[three] layer  6  val 0.938  test 0.937  minimal 0.937  shuf 0.313  sel -0.063  sel_setting nan
+[three] layer  7  val 0.953  test 0.947  minimal 0.947  shuf 0.387  sel -0.053  sel_setting nan
+[three] layer  8  val 0.960  test 0.976  minimal 0.976  shuf 0.374  sel -0.024  sel_setting nan
+[three] layer  9  val 0.950  test 0.964  minimal 0.964  shuf 0.379  sel -0.036  sel_setting nan
+[three] layer 10  val 0.963  test 0.970  minimal 0.970  shuf 0.314  sel -0.030  sel_setting nan
+[three] layer 11  val 0.967  test 0.973  minimal 0.973  shuf 0.303  sel -0.027  sel_setting nan
+[three] layer 12  val 0.987  test 0.988  minimal 0.988  shuf 0.354  sel -0.012  sel_setting nan
+[three] layer 13  val 0.993  test 0.986  minimal 0.986  shuf 0.322  sel -0.014  sel_setting nan
+[three] layer 14  val 0.993  test 0.976  minimal 0.976  shuf 0.378  sel -0.024  sel_setting nan
+[three] layer 15  val 0.990  test 0.967  minimal 0.967  shuf 0.300  sel -0.033  sel_setting nan
+[three] layer 16  val 0.983  test 0.964  minimal 0.964  shuf 0.310  sel -0.036  sel_setting nan
+[three] layer 17  val 0.977  test 0.953  minimal 0.953  shuf 0.341  sel -0.047  sel_setting nan
+[three] layer 18  val 0.970  test 0.953  minimal 0.953  shuf 0.335  sel -0.047  sel_setting nan
+[three] layer 19  val 0.970  test 0.961  minimal 0.961  shuf 0.292  sel -0.039  sel_setting nan
+[three] layer 20  val 0.977  test 0.955  minimal 0.955  shuf 0.345  sel -0.045  sel_setting nan
+[three] layer 21  val 0.970  test 0.950  minimal 0.950  shuf 0.312  sel -0.050  sel_setting nan
+[three] layer 22  val 0.973  test 0.950  minimal 0.950  shuf 0.346  sel -0.050  sel_setting nan
+[three] layer 23  val 0.960  test 0.947  minimal 0.947  shuf 0.356  sel -0.053  sel_setting nan
+[three] layer 24  val 0.957  test 0.949  minimal 0.949  shuf 0.326  sel -0.051  sel_setting nan
+[three] layer 25  val 0.960  test 0.940  minimal 0.940  shuf 0.335  sel -0.060  sel_setting nan
+[three] layer 26  val 0.963  test 0.946  minimal 0.946  shuf 0.323  sel -0.054  sel_setting nan
+[three] layer 27  val 0.963  test 0.929  minimal 0.929  shuf 0.356  sel -0.071  sel_setting nan
+[three] layer 28  val 0.955  test 0.940  minimal 0.940  shuf 0.351  sel -0.060  sel_setting nan
+[three] layer 29  val 0.945  test 0.929  minimal 0.929  shuf 0.383  sel -0.071  sel_setting nan
+[three] layer 30  val 0.950  test 0.926  minimal 0.926  shuf 0.359  sel -0.074  sel_setting nan
+[three] layer 31  val 0.945  test 0.929  minimal 0.929  shuf 0.318  sel -0.071  sel_setting nan
+[three] layer 32  val 0.942  test 0.923  minimal 0.923  shuf 0.306  sel -0.077  sel_setting nan
+== three: best layer 13 (chosen on validation). test bal-acc 0.985 ± 0.003; baselines {'majority': 0.3333333333333333, 'lexical': 0.3528833106789839, 'lexical_minimal': 0.3528833106789839, 'state_bow': 0.6493608579106933, 'state_bow_minimal': 0.6493608579106933, 'state_action_bow': 0.7214184075977448, 'state_action_bow_minimal': 0.7214184075977448}; per verb {'delete_file': {'bal_acc_mean': 0.8534290271132375, 'n_test_per_seed': [30, 38, 22]}, 'edit_file': {'bal_acc_mean': 0.9971467764060357, 'n_test_per_seed': [225, 243, 228]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [18, 18, 24]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [22, 26, 46]}}
+[binary] layer  0  val 0.555  test 0.549  minimal 0.500  shuf 0.463  sel -0.451  sel_setting 0.049
+[binary] layer  2  val 0.792  test 0.851  minimal 0.850  shuf 0.495  sel -0.149  sel_setting 0.227
+[binary] layer  4  val 0.920  test 0.923  minimal 0.927  shuf 0.517  sel -0.077  sel_setting 0.196
+[binary] layer  6  val 0.923  test 0.931  minimal 0.936  shuf 0.466  sel -0.069  sel_setting 0.192
+[binary] layer  8  val 0.959  test 0.969  minimal 0.973  shuf 0.504  sel -0.031  sel_setting 0.168
+[binary] layer 10  val 0.957  test 0.976  minimal 0.973  shuf 0.435  sel -0.024  sel_setting 0.073
+[binary] layer 12  val 0.979  test 0.964  minimal 0.973  shuf 0.505  sel -0.036  sel_setting 0.100
+[binary] layer 14  val 0.996  test 0.979  minimal 0.986  shuf 0.572  sel -0.021  sel_setting 0.110
+[binary] layer 16  val 0.992  test 0.985  minimal 0.991  shuf 0.431  sel -0.015  sel_setting 0.109
+[binary] layer 18  val 0.992  test 0.986  minimal 0.986  shuf 0.476  sel -0.014  sel_setting 0.141
+[binary] layer 20  val 0.987  test 0.989  minimal 0.991  shuf 0.464  sel -0.011  sel_setting 0.159
+[binary] layer 22  val 0.988  test 0.982  minimal 0.982  shuf 0.530  sel -0.018  sel_setting 0.153
+[binary] layer 24  val 0.983  test 0.986  minimal 0.986  shuf 0.418  sel -0.014  sel_setting 0.177
+[binary] layer 26  val 0.974  test 0.980  minimal 0.977  shuf 0.522  sel -0.020  sel_setting 0.168
+[binary] layer 28  val 0.970  test 0.984  minimal 0.977  shuf 0.468  sel -0.016  sel_setting 0.155
+[binary] layer 30  val 0.967  test 0.981  minimal 0.973  shuf 0.555  sel -0.019  sel_setting 0.156
+[binary] layer 32  val 0.979  test 0.979  minimal 0.977  shuf 0.481  sel -0.021  sel_setting 0.144
+== binary: best layer 14 (chosen on validation). test bal-acc 0.992 ± 0.009; baselines {'majority': 0.5, 'lexical': 0.5225384150031446, 'lexical_minimal': 0.5, 'state_bow': 0.693605146165344, 'state_bow_minimal': 0.7051862814188395, 'state_action_bow': 0.7263598487390998, 'state_action_bow_minimal': 0.7045802208127788}; per verb {'delete_file': {'bal_acc_mean': 0.9533643892339545, 'n_test_per_seed': [44, 43, 34]}, 'edit_file': {'bal_acc_mean': 0.9978632478632479, 'n_test_per_seed': [157, 176, 180]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 5, 7]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 13, 9]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 28, 37]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 40, 38]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 8, 12]}}
+[three] layer  0  val 0.454  test 0.470  minimal 0.408  shuf 0.315  sel -0.530  sel_setting nan
+[three] layer  2  val 0.827  test 0.851  minimal 0.841  shuf 0.302  sel -0.149  sel_setting nan
+[three] layer  4  val 0.956  test 0.956  minimal 0.961  shuf 0.365  sel -0.044  sel_setting nan
+[three] layer  6  val 0.970  test 0.961  minimal 0.967  shuf 0.311  sel -0.039  sel_setting nan
+[three] layer  8  val 0.970  test 0.982  minimal 0.982  shuf 0.335  sel -0.018  sel_setting nan
+[three] layer 10  val 0.978  test 0.990  minimal 0.991  shuf 0.348  sel -0.010  sel_setting nan
+[three] layer 12  val 0.992  test 0.988  minimal 0.994  shuf 0.347  sel -0.012  sel_setting nan
+[three] layer 14  val 0.998  test 0.998  minimal 0.997  shuf 0.310  sel -0.002  sel_setting nan
+[three] layer 16  val 0.998  test 0.995  minimal 0.997  shuf 0.374  sel -0.005  sel_setting nan
+[three] layer 18  val 0.988  test 0.990  minimal 0.989  shuf 0.319  sel -0.010  sel_setting nan
+[three] layer 20  val 0.988  test 0.988  minimal 0.986  shuf 0.305  sel -0.012  sel_setting nan
+[three] layer 22  val 0.988  test 0.985  minimal 0.986  shuf 0.340  sel -0.015  sel_setting nan
+[three] layer 24  val 0.985  test 0.978  minimal 0.977  shuf 0.322  sel -0.022  sel_setting nan
+[three] layer 26  val 0.975  test 0.980  minimal 0.977  shuf 0.319  sel -0.020  sel_setting nan
+[three] layer 28  val 0.972  test 0.983  minimal 0.977  shuf 0.326  sel -0.017  sel_setting nan
+[three] layer 30  val 0.967  test 0.980  minimal 0.977  shuf 0.290  sel -0.020  sel_setting nan
+[three] layer 32  val 0.946  test 0.978  minimal 0.980  shuf 0.361  sel -0.022  sel_setting nan
+== three: best layer 16 (chosen on validation). test bal-acc 0.996 ± 0.002; baselines {'majority': 0.3333333333333333, 'lexical': 0.4773411178371793, 'lexical_minimal': 0.4227335233820746, 'state_bow': 0.599474862515232, 'state_bow_minimal': 0.6181829770009545, 'state_action_bow': 0.7356382831052279, 'state_action_bow_minimal': 0.7025788021042089}; per verb {'delete_file': {'bal_acc_mean': 0.9794803961470628, 'n_test_per_seed': [44, 53, 40]}, 'edit_file': {'bal_acc_mean': 0.9955692455692455, 'n_test_per_seed': [249, 217, 262]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 9, 4]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 6, 13]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 33, 31]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 45, 46]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 17, 11]}}
+[binary] layer  0  val 0.572  test 0.560  minimal 0.515  shuf 0.500  sel -0.288  sel_setting -0.004
+[binary] layer  2  val 0.802  test 0.762  minimal 0.699  shuf 0.494  sel -0.238  sel_setting 0.025
+[binary] layer  4  val 0.870  test 0.844  minimal 0.819  shuf 0.494  sel -0.156  sel_setting 0.122
+[binary] layer  6  val 0.870  test 0.879  minimal 0.863  shuf 0.525  sel -0.121  sel_setting 0.152
+[binary] layer  8  val 0.952  test 0.938  minimal 0.940  shuf 0.564  sel -0.062  sel_setting 0.160
+[binary] layer 10  val 0.942  test 0.942  minimal 0.938  shuf 0.401  sel -0.058  sel_setting 0.145
+[binary] layer 12  val 0.962  test 0.942  minimal 0.959  shuf 0.482  sel -0.058  sel_setting 0.126
+[binary] layer 14  val 0.976  test 0.973  minimal 0.979  shuf 0.521  sel -0.027  sel_setting 0.116
+[binary] layer 16  val 0.976  test 0.961  minimal 0.963  shuf 0.506  sel -0.039  sel_setting 0.129
+[binary] layer 18  val 0.957  test 0.953  minimal 0.961  shuf 0.467  sel -0.047  sel_setting 0.160
+[binary] layer 20  val 0.952  test 0.945  minimal 0.949  shuf 0.474  sel -0.055  sel_setting 0.167
+[binary] layer 22  val 0.952  test 0.938  minimal 0.935  shuf 0.533  sel -0.062  sel_setting 0.163
+[binary] layer 24  val 0.952  test 0.930  minimal 0.919  shuf 0.498  sel -0.070  sel_setting 0.160
+[binary] layer 26  val 0.942  test 0.934  minimal 0.928  shuf 0.521  sel -0.066  sel_setting 0.181
+[binary] layer 28  val 0.952  test 0.926  minimal 0.912  shuf 0.517  sel -0.074  sel_setting 0.183
+[binary] layer 30  val 0.937  test 0.942  minimal 0.935  shuf 0.502  sel -0.058  sel_setting 0.214
+[binary] layer 32  val 0.923  test 0.930  minimal 0.915  shuf 0.420  sel -0.070  sel_setting 0.193
+== binary: best layer 14 (chosen on validation). test bal-acc 0.970 ± 0.007; baselines {'majority': 0.5, 'lexical': 0.6108657755713346, 'lexical_minimal': 0.5498797763475303, 'state_bow': 0.6568215682011274, 'state_bow_minimal': 0.6547912624673188, 'state_action_bow': 0.7140452528096047, 'state_action_bow_minimal': 0.643333517922102}; per verb {'delete_file': {'bal_acc_mean': 0.8574085760786528, 'n_test_per_seed': [44, 35, 38]}, 'edit_file': {'bal_acc_mean': 0.9776850655327335, 'n_test_per_seed': [117, 145, 137]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 9, 12]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 5, 8]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 36, 37]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 40, 50]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 12, 5]}}
+[three] layer  0  val 0.378  test 0.374  minimal 0.343  shuf 0.334  sel 0.040  sel_setting nan
+[three] layer  2  val 0.828  test 0.852  minimal 0.793  shuf 0.339  sel -0.146  sel_setting nan
+[three] layer  4  val 0.912  test 0.904  minimal 0.892  shuf 0.368  sel -0.096  sel_setting nan
+[three] layer  6  val 0.924  test 0.914  minimal 0.892  shuf 0.306  sel -0.086  sel_setting nan
+[three] layer  8  val 0.970  test 0.966  minimal 0.961  shuf 0.316  sel -0.034  sel_setting nan
+[three] layer 10  val 0.970  test 0.964  minimal 0.954  shuf 0.350  sel -0.036  sel_setting nan
+[three] layer 12  val 0.975  test 0.982  minimal 0.991  shuf 0.321  sel -0.018  sel_setting nan
+[three] layer 14  val 0.968  test 0.979  minimal 0.986  shuf 0.337  sel -0.021  sel_setting nan
+[three] layer 16  val 0.965  test 0.966  minimal 0.974  shuf 0.363  sel -0.034  sel_setting nan
+[three] layer 18  val 0.961  test 0.956  minimal 0.958  shuf 0.329  sel -0.044  sel_setting nan
+[three] layer 20  val 0.961  test 0.961  minimal 0.963  shuf 0.308  sel -0.039  sel_setting nan
+[three] layer 22  val 0.961  test 0.956  minimal 0.961  shuf 0.331  sel -0.044  sel_setting nan
+[three] layer 24  val 0.964  test 0.959  minimal 0.955  shuf 0.324  sel -0.041  sel_setting nan
+[three] layer 26  val 0.962  test 0.958  minimal 0.952  shuf 0.306  sel -0.042  sel_setting nan
+[three] layer 28  val 0.965  test 0.951  minimal 0.938  shuf 0.283  sel -0.049  sel_setting nan
+[three] layer 30  val 0.961  test 0.953  minimal 0.946  shuf 0.278  sel -0.047  sel_setting nan
+[three] layer 32  val 0.962  test 0.961  minimal 0.952  shuf 0.332  sel -0.039  sel_setting nan
+== three: best layer 12 (chosen on validation). test bal-acc 0.977 ± 0.009; baselines {'majority': 0.3333333333333333, 'lexical': 0.5590133620498888, 'lexical_minimal': 0.49324133178895346, 'state_bow': 0.627721990731888, 'state_bow_minimal': 0.6502553178232812, 'state_action_bow': 0.81955011545349, 'state_action_bow_minimal': 0.7747828154819566}; per verb {'delete_file': {'bal_acc_mean': 0.8074124732266249, 'n_test_per_seed': [44, 53, 40]}, 'edit_file': {'bal_acc_mean': 0.9962962962962963, 'n_test_per_seed': [249, 217, 262]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 9, 4]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 6, 13]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 33, 31]}, 'transfer_money': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 45, 46]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 17, 11]}}
+[binary] layer  0  val 0.533  test 0.542  minimal 0.500  shuf 0.500  sel 0.042  sel_setting -0.008
+[binary] layer  2  val 0.767  test 0.770  minimal 0.745  shuf 0.477  sel -0.230  sel_setting 0.102
+[binary] layer  4  val 0.883  test 0.864  minimal 0.882  shuf 0.519  sel -0.136  sel_setting 0.186
+[binary] layer  6  val 0.861  test 0.887  minimal 0.891  shuf 0.475  sel -0.113  sel_setting 0.197
+[binary] layer  8  val 0.932  test 0.950  minimal 0.950  shuf 0.550  sel -0.050  sel_setting 0.180
+[binary] layer 10  val 0.937  test 0.929  minimal 0.936  shuf 0.502  sel -0.071  sel_setting 0.109
+[binary] layer 12  val 0.949  test 0.944  minimal 0.968  shuf 0.527  sel -0.056  sel_setting 0.139
+[binary] layer 14  val 0.964  test 0.968  minimal 0.977  shuf 0.503  sel -0.032  sel_setting 0.128
+[binary] layer 16  val 0.980  test 0.967  minimal 0.973  shuf 0.477  sel -0.033  sel_setting 0.147
+[binary] layer 18  val 0.980  test 0.962  minimal 0.964  shuf 0.457  sel -0.038  sel_setting 0.170
+[binary] layer 20  val 0.968  test 0.956  minimal 0.955  shuf 0.470  sel -0.044  sel_setting 0.185
+[binary] layer 22  val 0.968  test 0.935  minimal 0.936  shuf 0.522  sel -0.065  sel_setting 0.167
+[binary] layer 24  val 0.955  test 0.943  minimal 0.945  shuf 0.440  sel -0.057  sel_setting 0.172
+[binary] layer 26  val 0.961  test 0.940  minimal 0.932  shuf 0.562  sel -0.060  sel_setting 0.160
+[binary] layer 28  val 0.961  test 0.931  minimal 0.923  shuf 0.482  sel -0.069  sel_setting 0.190
+[binary] layer 30  val 0.958  test 0.941  minimal 0.927  shuf 0.554  sel -0.059  sel_setting 0.179
+[binary] layer 32  val 0.937  test 0.916  minimal 0.909  shuf 0.479  sel -0.084  sel_setting 0.170
+== binary: best layer 16 (chosen on validation). test bal-acc 0.963 ± 0.007; baselines {'majority': 0.5, 'lexical': 0.5225384150031446, 'lexical_minimal': 0.5, 'state_bow': 0.693605146165344, 'state_bow_minimal': 0.7051862814188395, 'state_action_bow': 0.7263598487390998, 'state_action_bow_minimal': 0.7045802208127788}; per verb {'delete_file': {'bal_acc_mean': 0.8270531400966185, 'n_test_per_seed': [44, 43, 34]}, 'edit_file': {'bal_acc_mean': 0.9746503496503497, 'n_test_per_seed': [157, 176, 180]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 5, 7]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 13, 9]}, 'send_email': {'bal_acc_mean': 1.0, 'n_test_per_seed': [33, 28, 37]}, 'transfer_money': {'bal_acc_mean': 0.9901960784313726, 'n_test_per_seed': [33, 40, 38]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 8, 12]}}
+[three] layer  0  val 0.333  test 0.333  minimal 0.333  shuf 0.333  sel 0.000  sel_setting nan
+[three] layer  2  val 0.768  test 0.790  minimal 0.752  shuf 0.288  sel -0.208  sel_setting nan
+[three] layer  4  val 0.917  test 0.889  minimal 0.909  shuf 0.351  sel -0.111  sel_setting nan
+[three] layer  6  val 0.938  test 0.917  minimal 0.920  shuf 0.314  sel -0.083  sel_setting nan
+[three] layer  8  val 0.973  test 0.967  minimal 0.970  shuf 0.321  sel -0.033  sel_setting nan
+[three] layer 10  val 0.968  test 0.958  minimal 0.955  shuf 0.366  sel -0.042  sel_setting nan
+[three] layer 12  val 0.976  test 0.981  minimal 0.988  shuf 0.317  sel -0.019  sel_setting nan
+[three] layer 14  val 0.969  test 0.976  minimal 0.983  shuf 0.328  sel -0.024  sel_setting nan
+[three] layer 16  val 0.972  test 0.966  minimal 0.970  shuf 0.341  sel -0.034  sel_setting nan
+[three] layer 18  val 0.975  test 0.966  minimal 0.968  shuf 0.316  sel -0.034  sel_setting nan
+[three] layer 20  val 0.975  test 0.969  minimal 0.973  shuf 0.305  sel -0.031  sel_setting nan
+[three] layer 22  val 0.972  test 0.954  minimal 0.959  shuf 0.335  sel -0.046  sel_setting nan
+[three] layer 24  val 0.975  test 0.960  minimal 0.958  shuf 0.329  sel -0.040  sel_setting nan
+[three] layer 26  val 0.967  test 0.954  minimal 0.955  shuf 0.318  sel -0.046  sel_setting nan
+[three] layer 28  val 0.965  test 0.945  minimal 0.935  shuf 0.289  sel -0.055  sel_setting nan
+[three] layer 30  val 0.967  test 0.933  minimal 0.923  shuf 0.275  sel -0.067  sel_setting nan
+[three] layer 32  val 0.949  test 0.939  minimal 0.926  shuf 0.367  sel -0.061  sel_setting nan
+== three: best layer 16 (chosen on validation). test bal-acc 0.968 ± 0.005; baselines {'majority': 0.3333333333333333, 'lexical': 0.4773411178371793, 'lexical_minimal': 0.4227335233820746, 'state_bow': 0.599474862515232, 'state_bow_minimal': 0.6181829770009545, 'state_action_bow': 0.7356382831052279, 'state_action_bow_minimal': 0.7025788021042089}; per verb {'delete_file': {'bal_acc_mean': 0.7912253592134241, 'n_test_per_seed': [44, 53, 40]}, 'edit_file': {'bal_acc_mean': 0.9879907895335664, 'n_test_per_seed': [249, 217, 262]}, 'move_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [15, 9, 4]}, 'read_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [7, 6, 13]}, 'send_email': {'bal_acc_mean': 0.9880952380952381, 'n_test_per_seed': [33, 33, 31]}, 'transfer_money': {'bal_acc_mean': 0.9895833333333334, 'n_test_per_seed': [33, 45, 46]}, 'trash_file': {'bal_acc_mean': 1.0, 'n_test_per_seed': [8, 17, 11]}}
+PROBES_DONE
