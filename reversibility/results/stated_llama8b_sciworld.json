@@ -1,0 +1,74 @@
+{
+ "n": 46,
+ "parse_failures": 0,
+ "binary_strict": {
+  "accuracy": 0.8536585365853658,
+  "bal_acc": 0.5,
+  "accuracy_ci95": [
+   0.7560975609756098,
+   0.9512195121951219
+  ],
+  "confusion_true_by_stated": [
+   [
+    35,
+    0
+   ],
+   [
+    6,
+    0
+   ]
+  ]
+ },
+ "three_strict": {
+  "accuracy": 0.10869565217391304,
+  "bal_acc": 0.3333333333333333,
+  "accuracy_ci95": [
+   0.021739130434782608,
+   0.1956521739130435
+  ],
+  "confusion_true_by_stated": [
+   [
+    0,
+    35,
+    0
+   ],
+   [
+    0,
+    5,
+    0
+   ],
+   [
+    0,
+    6,
+    0
+   ]
+  ]
+ },
+ "three_parsed_only": {
+  "accuracy": 0.10869565217391304,
+  "bal_acc": 0.3333333333333333,
+  "accuracy_ci95": [
+   0.021739130434782608,
+   0.1956521739130435
+  ],
+  "confusion_true_by_stated": [
+   [
+    0,
+    35,
+    0
+   ],
+   [
+    0,
+    5,
+    0
+   ],
+   [
+    0,
+    6,
+    0
+   ]
+  ]
+ },
+ "binary_strict_bal_acc_sciworld": 0.5,
+ "vs_probe": {}
+}

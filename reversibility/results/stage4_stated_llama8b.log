@@ -1,0 +1,100 @@
+{
+ "n": 389,
+ "parse_failures": 0,
+ "binary_strict": {
+  "accuracy": 0.5656565656565656,
+  "bal_acc": 0.5,
+  "accuracy_ci95": [
+   0.5050505050505051,
+   0.622895622895623
+  ],
+  "confusion_true_by_stated": [
+   [
+    168,
+    0
+   ],
+   [
+    129,
+    0
+   ]
+  ]
+ },
+ "three_strict": {
+  "accuracy": 0.2365038560411311,
+  "bal_acc": 0.3333333333333333,
+  "accuracy_ci95": [
+   0.1953727506426735,
+   0.2776349614395887
+  ],
+  "confusion_true_by_stated": [
+   [
+    0,
+    168,
+    0
+   ],
+   [
+    0,
+    92,
+    0
+   ],
+   [
+    0,
+    129,
+    0
+   ]
+  ]
+ },
+ "three_parsed_only": {
+  "accuracy": 0.2365038560411311,
+  "bal_acc": 0.3333333333333333,
+  "accuracy_ci95": [
+   0.1953727506426735,
+   0.2776349614395887
+  ],
+  "confusion_true_by_stated": [
+   [
+    0,
+    168,
+    0
+   ],
+   [
+    0,
+    92,
+    0
+   ],
+   [
+    0,
+    129,
+    0
+   ]
+  ]
+ },
+ "binary_strict_minimal_pairs_bal_acc": 0.5,
+ "binary_strict_bal_acc_sandbox": 0.5,
+ "vs_probe": {
+  "binary": {
+   "n": 297,
+   "kappa_stated_vs_probe": 0.0,
+   "probe_bal_acc": 0.9532115171650055,
+   "stated_bal_acc": 0.5,
+   "probe_accuracy": 0.9562289562289562,
+   "stated_accuracy": 0.5656565656565656,
+   "agreement_stated_probe": 0.5824915824915825,
+   "both_correct": 0.5521885521885522,
+   "probe_right_stated_wrong": 0.40404040404040403,
+   "stated_right_probe_wrong": 0.013468013468013467
+  },
+  "three": {
+   "n": 389,
+   "kappa_stated_vs_probe": 0.0,
+   "probe_bal_acc": 0.9882798080472499,
+   "stated_bal_acc": 0.3333333333333333,
+   "probe_accuracy": 0.987146529562982,
+   "stated_accuracy": 0.2365038560411311,
+   "agreement_stated_probe": 0.2365038560411311,
+   "both_correct": 0.2365038560411311,
+   "probe_right_stated_wrong": 0.7506426735218509,
+   "stated_right_probe_wrong": 0.0
+  }
+ }
+}
