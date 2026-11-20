@@ -33,4 +33,4 @@ Reworded copies of the sandbox test rows (same ids and labels, for frozen-probe 
 - ScienceWorld spot check: not done (planned in Amendment 2; listed as a deviation in the paper). ScienceWorld labels are unchecked by people.
 
 ## Licences
-Sandbox data: yours. ScienceWorld-derived rows: check the repository LICENSE before release. ToolEmu: Apache-2.0. ByteSized32: no licence file, do not redistribute.
+Sandbox data: yours. ScienceWorld-derived rows: ScienceWorld is Apache-2.0 (allenai/ScienceWorld LICENSE, checked 2026-11-20). ToolEmu: Apache-2.0. ByteSized32: no licence file, do not redistribute.
