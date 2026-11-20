@@ -1,70 +1,214 @@
 \documentclass[conference]{IEEEtran}
 \usepackage{booktabs,graphicx,amsmath,url}
+\graphicspath{{../figures/}}
+\newcommand{\todo}[1]{\textbf{[TODO: #1]}}
 \begin{document}
-\title{Do Open-Weight LLM Agents Represent and Act on Action Reversibility?}
-\author{\IEEEauthorblockN{TODO: names and IDs}}
+\title{Encoded but Not Acted On: Do Open-Weight LLM Agents Know Which Actions Cannot Be Undone?}
+\author{\IEEEauthorblockN{\todo{names and student IDs}}}
 \maketitle
 
 \begin{abstract}
-TODO (write last). One sentence each: the question; the setup (sandbox and ScienceWorld, which models); the main finding, stated plainly even if negative; the main caveat.
+We test whether two open-weight instruction-tuned models, Qwen2.5-3B-Instruct and Llama-3.1-8B-Instruct, represent whether an action can be undone, say so when asked, and act on it as agents. On 2{,}014 labelled state--action pairs from a simulated file, email and payment sandbox, a linear probe on the hidden state at the last action token separates irreversible from other actions with balanced accuracy 0.980 (Qwen) and 0.966 (Llama), well above a state-only bag-of-words baseline (0.705) and a probe that sees the state but not the action (0.677 and 0.667). This information is verb-specific: probes trained without a verb score at chance on it, and they lose much of their accuracy when the settings are reworded. Asked directly, Qwen is right in 0.699 of cases (balanced) and Llama gives the same answer, ``partial'', to all 389 test items. In 72 paired agent tasks neither model is more careful in the irreversible version than in the reversible one (reversibility sensitivity $-0.042$ and $-0.014$), and an instruction to be careful does not change this. Because the brief's gap $K-A$ is about $0.5$ for a model that knows nothing, we report a chance-corrected gap $\mathrm{Gap}^*$: $0.222$ [0.069, 0.375] for Qwen and $0.403$ [$-0.250$, 0.903] for Llama. The models encode reversibility far better than they state it, and their behaviour ignores it.
 \end{abstract}
 
 \section{Introduction}
-LLM agents run commands, edit files and send messages. Some of these actions can be undone and some cannot. We ask two questions. First, does the model internally represent whether an action is reversible? Second, if it does, does that knowledge reach action selection? We call the case where a model can state that an action is permanent but still takes it without hesitation \emph{irreversibility blindness}. Reversibility has been studied in reinforcement learning~\cite{grinsztajn2021turning}, and agent safety benchmarks test risky actions in general~\cite{ruan2024toolemu,yin2024safeagentbench}. Closest to our question, \cite{tang2025risk} show a gap between risk knowledge and action for risky actions in general, not for reversibility. TODO: state our contributions and the finding once results are in.
+LLM agents run commands, edit files, send messages and move money. Some of these actions can be undone and some cannot: a file deleted with the recycle bin disabled is gone, a sent email cannot be recalled. A careful human checks before such an action. We ask whether an LLM agent does, and if not, where the knowledge is lost. We separate three measurements on the same labelled data: what the model \emph{encodes} (a linear probe on its hidden states, RQ1), what it \emph{says} when asked (RQ2), and what it \emph{does} as an agent (RQ3). We call the case where a model can tell that an action is permanent but takes it without hesitation \emph{irreversibility blindness}.
+
+Reversibility has been studied in reinforcement learning~\cite{grinsztajn2021turning} and side-effect avoidance~\cite{krakovna2018side,turner2020aup}, and agent benchmarks test risky actions in general~\cite{ruan2024toolemu,yin2024safeagentbench}. Closest to our question, \cite{tang2025risk} show that LM agents often fail to act on risk knowledge they can state. We focus on one property, reversibility, which has a precise ground truth in a simulator, and we add the internal measurement. Our contributions are:
+\begin{itemize}
+\item A labelled reversibility dataset of 2{,}273 state--action pairs (a simulated sandbox and ScienceWorld~\cite{wang2022scienceworld}), with 71\% minimal pairs, search-verified labels and two-annotator agreement of $\kappa=0.85$.
+\item Probes with the full set of controls on two model families. Reversibility of the action is linearly decodable at the action token (0.97--0.98 balanced accuracy), beyond what the state text alone gives, but the decoder is verb-specific and partly wording-dependent.
+\item A three-way comparison of encoded, stated and enacted knowledge, with a chance-corrected knowing--acting gap. Neither model's behaviour depends on reversibility, including under an explicit instruction to be careful.
+\end{itemize}
 
 \section{Related Work}
-\textbf{Reversibility and side effects.} \cite{grinsztajn2021turning} learn a reversibility estimate in RL; \cite{krakovna2018side,turner2020aup} penalise side effects through reachability and attainable utility. \textbf{Agent safety.} ToolEmu~\cite{ruan2024toolemu} and SafeAgentBench~\cite{yin2024safeagentbench} measure risky behaviour; \cite{tang2025risk} measure the knowing--acting gap. \textbf{Probing and steering.} Linear probes~\cite{alain2016probes} need control tasks~\cite{hewitt2019control}; world-state representations have been found in sequence models~\cite{li2023othello}; activation steering~\cite{rimsky2024caa} tests causal use. TODO: search arXiv for newer work on reversibility and LLM agents and cite it or rule it out.
+\textbf{Reversibility and side effects.} \cite{grinsztajn2021turning} learn a reversibility estimate from experience in RL and use it to avoid irreversible actions; \cite{krakovna2018side} penalise reductions in reachability, and attainable utility preservation~\cite{turner2020aup} penalises changes in the ability to reach other goals. These works shape an agent's reward. We ask instead whether a pre-trained language model already holds this information and uses it.
+
+\textbf{Safety of LLM agents.} ToolEmu~\cite{ruan2024toolemu} emulates tools with an LM to find risky agent behaviour, and SafeAgentBench~\cite{yin2024safeagentbench} tests hazardous task planning by embodied agents. Both measure behaviour only. \cite{tang2025risk} find that agents that answer risk questions correctly still take the risky action. We study one risk dimension with an exact ground truth and add the model's internal state, which tells apart ``does not know'' from ``knows but does not act''. \todo{newer related work from the arXiv search (handoff/lookups.md); state clearly if any paper runs this same experiment}
+
+\textbf{Probing and steering.} Linear probes~\cite{alain2016probes} show what is linearly decodable, not what the model uses, and a probe can memorise; control tasks and selectivity~\cite{hewitt2019control} address the second point. World-state representations have been found in sequence models, though sometimes only non-linearly~\cite{li2023othello}, so a failed linear probe would not show the information is absent. Contrastive activation addition~\cite{rimsky2024caa} adds a direction to the residual stream to test whether a representation is causally used; we use it for RQ4.
 
 \section{Method}
 \subsection{Data}
-\textbf{Sandbox.} A small Python simulation of a file system, email outbox and wallet. Each tool has a known reversibility given the state (recycle bin, backups, undo window, versioning). We label each (state, action) pair as reversible, partially reversible or irreversible, meaning the exact previous state can be restored in at most $h$ further actions; we report $h=1,2,3$. The designed label is checked by breadth-first search, with agreement 0.878, 1.000 and 1.000 at $h=1,2,3$. The sandbox has 1{,}664 pairs (607 reversible, 450 partially reversible, 607 irreversible); 97\% are minimal pairs, i.e.\ the same action with only a reversibility-relevant setting changed. A supplement of 350 single-variant pairs adds the read, move and trash verbs. About a fifth of scenarios (18\% of pairs) are held out for testing, and splits are grouped by scenario. ``Partially reversible'' (an edit with history but no backup) hinges on a file timestamp the state text does not show, so the binary task is primary.
+\textbf{Sandbox.} A Python class holds a small file system, an email outbox and a wallet, and can save and restore its full state. Each tool has a known reversibility given the settings: \texttt{delete\_file} is undoable only with the recycle bin enabled or a current backup; \texttt{edit\_file} is undoable with a backup, approximately undoable with edit history (the old text returns but the timestamp does not), and not undoable otherwise; \texttt{send\_email} and \texttt{transfer\_money} are undoable only within an undo window. A pair (state, action) is \emph{reversible} if the exact previous state can be restored in at most $h$ further actions, \emph{partially reversible} if only an approximation can, and \emph{irreversible} otherwise. The designed label is checked by breadth-first search over action sequences, with agreement 0.878, 1.000 and 1.000 at $h=1,2,3$. The sandbox has 1{,}664 pairs (607 reversible, 450 partially reversible, 607 irreversible); 97\% are minimal pairs, i.e.\ the same action with only the relevant setting changed. A supplement of 350 single-variant pairs (244/18/88) adds the read, move and trash verbs. Splits are grouped by scenario; the test split holds 389 pairs (297 reversible or irreversible). The primary task is binary (irreversible vs.\ not); the three-class task is secondary because ``partially reversible'' depends on a timestamp the state text does not show.
 
-\textbf{ScienceWorld}~\cite{wang2022scienceworld}. 259 pairs (TODO class counts after the re-search), split by task. Labels come from a search over a ranked shortlist of follow-up actions, so ``irreversible'' means no restoring sequence was found among them (an upper bound). With the first search budget most non-reversible labels were search cut-offs (TODO: re-searched over the whole shortlist, or reported as a limitation). The total is 2{,}273 pairs. Because of these labels, probes and stated answers are trained and scored on the sandbox only (2{,}014 pairs); ScienceWorld serves as the cross-environment transfer test and gets its own stated-answer table.
+\textbf{ScienceWorld.} 259 pairs from ScienceWorld~\cite{wang2022scienceworld} (203/17/39 at $h=3$; 177/29/53 at $h=1$ and 196/17/46 at $h=2$), split by task, 46 test pairs. The label comes from a search over a ranked shortlist of follow-up actions with a budget of 60 states, so ``irreversible'' means that no restoring sequence was found; for most non-reversible labels the search hit the budget. Following our pre-registered amendment, probes and stated answers are trained and scored on the sandbox only (2{,}014 pairs); ScienceWorld is the cross-environment transfer test and has its own stated-answer table.
 
-\textbf{Human check.} Two annotators labelled the same 100 sandbox pairs independently and blind to the automatic label. Cohen's $\kappa$ between them is 0.85 for three classes and 0.90 for irreversible vs.\ not (same three-class label on 90 of 100 pairs). Against the automatic label, annotator~1 reaches $\kappa=0.86$ (binary 0.90) and annotator~2 $\kappa=0.98$ (binary 1.00).
+\textbf{Human check.} Two annotators labelled the same 100 random sandbox pairs independently, blind to the automatic label. Cohen's $\kappa$ between them is 0.85 for three classes and 0.90 for irreversible vs.\ not (same three-class label on 90 of 100 pairs). Against the automatic label, annotator~1 reaches $\kappa=0.86$ (binary 0.90) and annotator~2 $\kappa=0.98$ (binary 1.00). The labels thus match what people infer from the state text.
 
 \subsection{RQ1: probes}
-We extract, in one forward pass, the hidden state of the last action token, the mean over action tokens, and the last token \emph{before} the action (``pre'', which sees the state but not the action) at every layer and train a standardised L2 logistic regression ($C=0.05$) per layer, binary and three-class. The layer is chosen on a validation split taken from the training scenarios, never on the test set. We report balanced accuracy over 3 split seeds with bootstrap 95\% confidence intervals. Controls: majority class; bag-of-words baselines over the action, the state, and both (all rows and minimal pairs); shuffled labels; a Hewitt--Liang verb control task with selectivity~\cite{hewitt2019control}; a \emph{permuted-setting} control whose label is a setting irrelevant to the verb (same structure and danger phrases, no meaning); and a layer-0 probe. The state text names reversibility (``removed permanently''), so a state-only bag-of-words reaches 0.745 on minimal pairs; we claim action-specific information only if the probe at the last action token beats both that baseline and the pre-action probe. We also report leave-one-verb-out transfer, per-verb accuracy, and frozen probes on reworded test rows (settings written only as on/off; or only an irrelevant setting flipped). Ablations: token position, minimal pairs only, horizon $h$, cross-environment transfer (layer chosen on source validation), and the careful system prompt. TODO: confirm which were actually run.
+For each pair we build the probe prompt (state, then proposed action) and extract, in one forward pass and at every layer, three positions: the last action token (\emph{last}), the mean over action tokens (\emph{mean}), and the last token \emph{before} the action (\emph{pre}), which sees the state but not the action. Per layer we train a standardised L2 logistic regression ($C=0.05$). The layer is chosen on a validation split taken from the training scenarios, never on the test set. Each experiment is repeated over 3 scenario-grouped splits; we report test balanced accuracy as mean $\pm$ standard deviation over splits, and the 95\% interval as the mean of the per-split bootstrap intervals (1{,}000 resamples of test rows). We also report macro-F1 and AUROC.
+
+\textbf{Controls.} A majority-class baseline; bag-of-words logistic regressions over the action text, the state text, and both; a probe on shuffled labels; a layer-0 (embedding) probe; a Hewitt--Liang control task~\cite{hewitt2019control} that gives each verb a random fixed label, with selectivity = probe minus control accuracy; and a \emph{permuted-setting} control whose label is a setting irrelevant to the verb, with the same structure and wording but no meaning. The state text names reversibility (``removed permanently''), so the state-only bag-of-words is the bar to beat: on minimal pairs it reaches 0.735 (binary; 0.705 on the minimal pairs of the full test split), while the action-only bag-of-words is at 0.5 by construction. We claim action-specific information only if the \emph{last} probe beats that baseline and the \emph{pre} probe.
 
 \subsection{RQ2: stated answer}
-We ask the model directly whether the action can be undone, take the first label word of its answer, and compare the true label, the stated answer and the probe prediction on the same test rows (balanced accuracy and Cohen's kappa). In the stated-answer scores parse failures count as wrong; the stated-vs-probe comparison uses only rows with a parsed answer, and we report how many were dropped.
+We give the model the same state and action and ask whether the previous state can be restored with at most 3 further actions, with one-word answers REVERSIBLE, PARTIAL or IRREVERSIBLE. We parse the first label word. Parse failures count as wrong in the stated-answer scores; the comparison with the probe uses rows with a parsed answer (none were dropped). We report balanced accuracy and Cohen's $\kappa$ between stated answer and probe prediction on the same test rows.
 
 \subsection{RQ3: behaviour}
-72 paired tasks (12 per template) in the sandbox. Each task has a tempting irreversible shortcut and a safer path, in two versions that differ in one prompt line. Greedy decoding, at most 15 steps, one JSON tool call per step; parse failures are counted and reported. Caution means checking settings, asking the user, making a backup, using the recycle bin before the first irreversible action, or refusing (finishing without taking the shortcut). Reversibility sensitivity $A^*$ is the caution rate on the irreversible version minus that on the reversible version (McNemar exact test on pairs); $A^*_\mathrm{out}$ is the same for avoiding the shortcut. $K$ is the share of correct answers when the model is asked which version makes the planned action irreversible, asked in both A/B orders. The brief's gap $K-A$ is about $0.5$ for a model that knows nothing and acts the same in both versions ($K$ has chance $0.5$, $A$ a floor of $0$), so our headline is the chance-corrected $\mathrm{Gap}^*=K^*-A^*$ with $K^*=2K-1$: $0$ for a model that neither knows nor acts, $1$ for one that knows perfectly but acts identically. We verified these properties with mock policies. CIs are bootstrapped over pairs and over the six templates.
+We built 72 task pairs from six templates (12 each): deleting temporary files, clearing logs, replacing a config file, sending an email, sending a bulk email, and paying an invoice. Each task has a tempting shortcut (e.g.\ ``delete\_file is the fastest way'') that is irreversible in one version and reversible in the other; the two versions differ in one line of the state. The agent calls one JSON tool per step, at most 15 steps, with greedy decoding; the tools include \texttt{check\_settings}, \texttt{ask\_user}, \texttt{make\_backup} and \texttt{trash\_file}. A run is \emph{cautious} if the agent uses one of these four tools before its first call of the shortcut tool, or finishes without taking the shortcut. We report the irreversible action rate, caution rate, over-caution rate (caution in the reversible version) and task success. Reversibility sensitivity $A^*$ is the caution rate on the irreversible version minus that on the reversible version, tested with McNemar's exact test over pairs. $A^*_\mathrm{out}$ is the same for avoiding the shortcut.
+
+$K$ is the share of correct answers when the model is shown both states and asked in which one the planned action cannot be undone, asked in both A/B orders; unparsed answers count as wrong. The brief defines $\mathrm{Gap}=K-A$, with $A$ the share of pairs where the agent is more careful in the irreversible version. Since $K$ has chance level $0.5$ and $A$ a floor of $0$, $\mathrm{Gap}\approx0.5$ for a model that knows nothing and acts the same in both versions. We therefore also report the chance-corrected $\mathrm{Gap}^*=K^*-A^*$ with $K^*=2K-1$, which is $0$ for such a model and $1$ for one that knows perfectly but acts identically. We checked both properties with mock policies (\texttt{test\_agent\_metrics.py}). Intervals for $K$, $A$ and $\mathrm{Gap}$ are bootstrapped over pairs; for the starred quantities we resample whole templates (6 clusters), which is wider and, with only six clusters, unstable.
 
 \subsection{RQ4: steering (bonus)}
-TODO if run: direction $v$ = mean(irreversible) $-$ mean(reversible) on the training split at the selected layer; the added vector has norm $f\cdot\mathrm{median}\lVert h\rVert$ for $f\in\{-0.5,-0.25,0,0.25,0.5,1\}$; three random directions of equal norm at $\pm0.5$ as control; task success reported alongside caution.
+The direction $v$ is mean(irreversible) minus mean(reversible) of the \emph{last}-token hidden states on the training split, at the binary best layer. During agent runs we add $f\cdot\mathrm{median}\lVert h\rVert\cdot v/\lVert v\rVert$ to every position at that layer, for $f\in\{-0.5,-0.25,0,0.25,0.5,1\}$, on 24 task pairs (4 per template). Three random directions of the same norm, added at $f=\pm0.5$, are the control. We report caution and task success at each strength.
 
 \section{Experiments}
-Models: Qwen2.5-3B-Instruct in fp16 (7B does not fit a free 16\,GB T4) and TODO the second family (Llama-3.1-8B-Instruct in 4-bit NF4 if access was granted). Both are deviations from the brief. Greedy decoding with the repetition penalty and sampling parameters of the shipped generation config switched off, fixed seeds, all prompts and outputs saved. The analysis plan and its two amendments were committed before the first full real-model run; at that point only a pilot run on older code existed, which we report but do not use. Exact library versions are in \texttt{requirements.txt}.
+\textbf{Models and compute.} The brief names Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct. We had only free GPUs (16\,GB T4). Qwen2.5-7B in bf16 ran out of memory on the T4, so we used Qwen2.5-3B-Instruct in fp16 (free Colab T4; torch 2.14.1, transformers 5.22.1). Llama-3.1-8B-Instruct ran in 4-bit NF4 quantisation on Kaggle (2$\times$T4; torch 2.11.0, transformers 5.20.2; 9.0\,h for the full pipeline). The two models therefore differ in family, size and precision at once, and we did not run the 7B-vs-14B size ablation. Decoding is greedy with the repetition penalty and sampling parameters of the shipped generation config switched off; seeds are fixed; every prompt and output is saved. Library versions are in \texttt{results/requirements.lock\_<model>.txt}.
+
+\textbf{Ablations run.} Token position (last, mean, pre); minimal pairs only vs.\ all data; cross-environment transfer in both directions; horizon $h=1,2,3$; careful vs.\ neutral system prompt (``Be careful with actions that cannot be undone.''); binary vs.\ three-class labels. We also report per-verb accuracy, leave-one-verb-out transfer, and frozen probes on reworded test rows: \emph{terse} writes every setting as on/off without the explanatory phrase, and \emph{flip} changes only an irrelevant setting.
+
+\textbf{Pre-registration and deviations.} The analysis plan and its two amendments were committed before the first full real-model run; at that time only a pilot on older code existed (repetition penalty on, no \emph{pre} position), which we do not use. Deviations from the plan and the brief:
+(i)~the model substitutions above;
+(ii)~the transfer and reworded-row probes use one split, not three;
+(iii)~the ScienceWorld re-search with a larger budget (200) was stopped twice by the laptop running out of memory and was not completed, so ScienceWorld uses the budget-60 labels;
+(iv)~the team spot check of ScienceWorld labels promised in Amendment~2 was not done;
+(v)~a first Llama run crashed in the careful-prompt condition because the model passed a list of paths as one argument; the sandbox now rejects such calls as failed actions (9 of 655 calls in the careful run, 0 of 603 in the neutral run), and the reported Llama results come from a complete rerun with this fix;
+(vi)~the Llama agent pilot was skipped;
+(vii)~the confidence intervals for stated answers and the careful-prompt gap (which reuses $K$ from the neutral run, as $K$ does not depend on the agent's system prompt) were added after seeing the results; they do not change any point estimate.
+Further runs not in the results: a plumbing test on Qwen2.5-0.5B and the Qwen agent pilot on 6 separate task pairs.
 
 \section{Results}
-\subsection{RQ1: probe accuracy by layer}
-TODO figure (accuracy vs.\ layer with baselines) and numbers.
-\subsection{RQ2: stated vs.\ probed}
-TODO.
-\subsection{RQ3: behaviour and the blindness gap}
-TODO table and gap with CI.
+\subsection{RQ1: reversibility is linearly decodable at the action token}
+Table~\ref{tab:probe} and Fig.~\ref{fig:layers} answer RQ1. At the last action token, the binary probe reaches 0.980 (Qwen, layer 22 of 36) and 0.966 (Llama, layer 13 of 32), with AUROC near 1. Accuracy rises over the first third of the network, is highest in the middle layers and declines slightly towards the output. The probe beats every baseline: the state-only bag-of-words (0.694 on all test rows, 0.705 on its minimal pairs) and, more tellingly, the \emph{pre} probe, which sees the full state but not the action (0.677 and 0.667). Trained and tested on minimal pairs only, the probe still reaches 0.983 and 0.979 against 0.735 for the state-only bag-of-words. The shuffled-label and layer-0 probes are at chance. So the hidden state at the action token carries whether \emph{this} action is reversible in \emph{this} state, beyond what the state text alone gives.
+
+Two controls qualify this. The verb control task has selectivity slightly below zero ($-0.020$, $-0.034$). This is expected by construction: with seven verbs written in the action text, a probe recovers a fixed per-verb label almost perfectly, so this control carries no information in our design. The permuted-setting control is the informative one: a probe can also decode an arbitrary verb--setting conjunction from the same position (about 0.90 for Qwen and 0.83 for Llama at the best layer), and the reversibility probe exceeds it by only 0.07 and 0.14. Much of the accuracy thus reflects a general ability to read verb--setting combinations, not a dedicated reversibility feature.
+
+\begin{table}[t]
+\centering
+\caption{RQ1, binary task (irreversible vs.\ not), sandbox test split ($n=297$; minimal pairs $n=220$). Probes: mean $\pm$ sd over 3 splits [mean per-split 95\% CI], best layer chosen on validation. Baselines and controls: mean over 3 splits.}
+\label{tab:probe}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcc}
+\toprule
+ & Qwen2.5-3B & Llama-3.1-8B (4-bit) \\
+\midrule
+last token (layer) & 0.980$\pm$0.014 (22) & 0.966$\pm$0.011 (13) \\
+\quad 95\% CI & [0.963, 0.993] & [0.944, 0.985] \\
+\quad macro-F1 / AUROC & 0.979 / 0.999 & 0.967 / 0.996 \\
+mean over action tokens & 0.983$\pm$0.010 & 0.992$\pm$0.009 \\
+pre (state, no action) & 0.677$\pm$0.006 & 0.667$\pm$0.010 \\
+minimal pairs only & 0.983$\pm$0.003 & 0.979$\pm$0.006 \\
+three-class, last token & 0.982$\pm$0.008 & 0.982$\pm$0.007 \\
+\midrule
+majority class & 0.500 & 0.500 \\
+action BoW, all / minimal & 0.523 / 0.500 & 0.523 / 0.500 \\
+state BoW, all / minimal & 0.694 / 0.705 & 0.694 / 0.705 \\
+state+action BoW, all / minimal & 0.726 / 0.705 & 0.726 / 0.705 \\
+shuffled labels & 0.482 & 0.508 \\
+layer-0 probe & 0.524 & 0.524 \\
+selectivity, verb control & $-$0.020 & $-$0.034 \\
+selectivity, permuted setting & 0.073 & 0.137 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.49\textwidth]{probe_qwen3b_last_binary.png}\hfill
+\includegraphics[width=0.49\textwidth]{probe_llama8b_last_binary.png}
+\caption{RQ1: test balanced accuracy of the binary probe at the last action token versus layer, for Qwen2.5-3B (left) and Llama-3.1-8B (right). Band: $\pm$1 sd over 3 splits. Dashed lines: majority, action-only and state-only bag-of-words on minimal pairs. Dotted: shuffled labels, verb control task, permuted-setting control. Green line: layer chosen on validation.}
+\label{fig:layers}
+\end{figure*}
+
+\subsection{RQ1: the decoder is verb-specific and partly wording-dependent}
+Within each verb the probe is near perfect for Qwen (delete 0.955, edit 0.975, email and transfer 1.000) and for Llama except on \texttt{delete\_file} (0.785). Trained on the other verbs, however, it is at chance on the held-out one (Qwen 0.490--0.532, Llama 0.500--0.534; Table~\ref{tab:abl}): there is no shared ``irreversible'' direction that transfers across verbs. Each verb depends on a different setting, so the probes learn a separate rule per verb. Frozen probes keep their accuracy when only an irrelevant setting changes (\emph{flip}: 0.982$\to$0.978, 0.963$\to$0.963), but lose much of it when the settings are written as bare on/off values (\emph{terse}: binary 0.984$\to$0.799 and 0.967$\to$0.817; three-class 0.993$\to$0.592 and 0.971$\to$0.565). Transfer from the sandbox to ScienceWorld fails (0.442 and 0.441, $n=46$), as does the reverse direction (0.531 and 0.500), although the weak ScienceWorld labels limit what this shows.
+
+\subsection{RQ2: the models say much less than they encode}
+Asked directly (Table~\ref{tab:rq23}, Fig.~\ref{fig:compare}), Qwen reaches binary balanced accuracy 0.699 [0.649, 0.746] on the 297 binary test rows and 0.466 [0.421, 0.515] on three classes, against 0.984 and 0.993 for the probe on the same rows; Cohen's $\kappa$ between stated answer and probe is 0.393 [0.290, 0.491]. Llama answers ``PARTIAL'' to all 389 items, so its stated accuracy is at chance (0.500, 0.333) and $\kappa=0$, while its probe reaches 0.953 on the same rows. Its explanations rarely name permanence: ``cannot be'', ``permanent'', ``irreversible'' or ``not possible'' appear in 13 of the 129 irreversible items. There were no parse failures. On ScienceWorld ($n=46$, 6 irreversible) both models are at chance (Qwen 0.476 [0.248, 0.684], Llama 0.500).
+
+The comparison question used for $K$, which shows both versions side by side, gives a different picture: both models pick the irreversible version above chance ($K=0.590$ [0.549, 0.639] for Qwen and $0.694$ [0.597, 0.785] for Llama, with 12 of 144 Llama answers unparsed and counted wrong). Asked about each version alone, Qwen labels the pair correctly in 0.181 of pairs and Llama in none. The models can compare two states better than they can judge one.
+
+\begin{table}[t]
+\centering
+\caption{RQ2 and RQ3, sandbox. Stated answers on the test split; behaviour on 72 task pairs (144 runs per model and prompt, 0 parse failures). [95\% CI]: $^p$ over pairs or rows, $^t$ over the 6 templates.}
+\label{tab:rq23}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lcc}
+\toprule
+ & Qwen2.5-3B & Llama-3.1-8B \\
+\midrule
+stated, binary bal-acc ($n$=297)$^p$ & 0.699 [0.649, 0.746] & 0.500 [0.500, 0.500] \\
+stated, three-class ($n$=389)$^p$ & 0.466 [0.421, 0.515] & 0.333 [0.333, 0.333] \\
+probe on same rows, binary & 0.984 & 0.953 \\
+$\kappa$(stated, probe), binary$^p$ & 0.393 [0.290, 0.491] & 0.000 [0.000, 0.000] \\
+\midrule
+irreversible action rate & 0.764 & 0.833 \\
+shortcut taken, irr / rev & 0.76 / 0.83 & 0.83 / 0.85 \\
+caution irr / over-caution rev & 0.42 / 0.46 & 0.25 / 0.26 \\
+task success irr / rev & 0.61 / 0.64 & 0.83 / 0.82 \\
+$A^*$ (sensitivity)$^t$ & $-$0.042 [$-$0.125, 0.000] & $-$0.014 [$-$0.083, 0.042] \\
+McNemar $p$ & 0.25 & 1.00 \\
+$K$ (both orders; chance 0.5)$^p$ & 0.590 [0.549, 0.639] & 0.694 [0.597, 0.785] \\
+$K^*=2K-1$$^t$ & 0.181 [0.042, 0.333] & 0.389 [$-$0.250, 0.861] \\
+Gap $=K-A$ (brief)$^p$ & 0.590 [0.549, 0.639] & 0.681 [0.583, 0.764] \\
+$\mathrm{Gap}^*=K^*-A^*$$^t$ & 0.222 [0.069, 0.375] & 0.403 [$-$0.250, 0.903] \\
+\midrule
+careful prompt: $A^*$$^t$ & $-$0.083 [$-$0.194, 0.000] & 0.000 [0.000, 0.000] \\
+careful prompt: $\mathrm{Gap}^*$$^t$ & 0.264 [0.139, 0.389] & 0.389 [$-$0.250, 0.861] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.49\textwidth]{stated_probed_behaviour_qwen3b.png}\hfill
+\includegraphics[width=0.49\textwidth]{stated_probed_behaviour_llama8b.png}
+\caption{Encoded vs.\ stated vs.\ enacted, Qwen2.5-3B (left) and Llama-3.1-8B (right). In each pair of panels, left: binary balanced accuracy of the probe and of the stated answer on the same sandbox test rows (dashed: chance). Right: chance-corrected knowledge $K^*$, behavioural sensitivity $A^*$ and $A^*_\mathrm{out}$, and $\mathrm{Gap}^*$ on the 72 task pairs, with 95\% CIs over templates. The two panels use different item sets (test rows vs.\ task pairs).}
+\label{fig:compare}
+\end{figure*}
+
+\subsection{RQ3: behaviour does not depend on reversibility}
+Both models usually take the shortcut, and about as often when it is irreversible as when it is not (Qwen 0.76 vs.\ 0.83, Llama 0.83 vs.\ 0.85). Qwen is cautious in about 0.42 of runs, but equally so in both versions (over-caution 0.46); in no pair is it cautious only in the irreversible version ($A=0$), and in 3 pairs only in the reversible one. Llama is cautious less often (0.25 vs.\ 0.26). Reversibility sensitivity is zero within its interval for both models ($A^*=-0.042$ and $-0.014$; McNemar $p=0.25$ and $1.0$), and so is the outcome measure $A^*_\mathrm{out}$ (0.069 and 0.014). The brief's gap is $0.590$ and $0.681$, but this is close to its no-knowledge value of 0.5; the chance-corrected gap is $0.222$ [0.069, 0.375] for Qwen, whose interval excludes zero, and $0.403$ [$-0.250$, 0.903] for Llama, whose template interval is too wide to exclude zero (over pairs it is [0.208, 0.583]). In both models the gap comes from $K^*>0$ with $A^*\approx0$: what knowledge there is does not reach behaviour (Fig.~\ref{fig:gap}).
+
+\textbf{A careful instruction does not help.} With ``Be careful with actions that cannot be undone'' in the system prompt, Llama behaves identically in both versions ($A^*=0$; caution 0.17 in each), and Qwen becomes more cautious in the \emph{reversible} version ($A^*=-0.083$; McNemar $p=0.031$). Under this prompt Llama's irreversible action rate (0.792) is below its shortcut rate (0.833) only because 9 calls with a list of paths were rejected as invalid. The instruction does not close the gap ($\mathrm{Gap}^*$ 0.264 and 0.389).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{blindness_gap.png}
+\caption{Knowing--acting gap per model (neutral prompt). Hatched: the brief's $\mathrm{Gap}=K-A$ (95\% CI over pairs); dashed line: its value for a model that knows nothing and acts the same in both versions. Plain: chance-corrected $\mathrm{Gap}^*=K^*-A^*$ (95\% CI over 6 templates; 0 for such a model).}
+\label{fig:gap}
+\end{figure}
+
 \subsection{Ablations}
-TODO table.
+Table~\ref{tab:abl} collects the ablations. The \emph{mean} position is as good as or slightly better than the last token; the \emph{pre} position is far worse, so the information appears once the action is read. Training on minimal pairs only changes little. With $h=1$ more pairs are irreversible (in the sandbox $h=2$ and $h=3$ give the same labels), and the probe stays at 0.979 and 0.970. The three-class probe is as accurate as the binary one, while three-class stated answers are much worse than binary ones.
+
+\begin{table}[t]
+\centering
+\caption{Ablations (binary balanced accuracy unless noted). Transfer and reworded rows: one split, layer chosen on source validation. LOVO: leave one verb out, range over the 4 held-out verbs with test data.}
+\label{tab:abl}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcc}
+\toprule
+ & Qwen2.5-3B & Llama-3.1-8B \\
+\midrule
+horizon $h=1$ ($n$=257) & 0.979$\pm$0.012 & 0.970$\pm$0.007 \\
+horizon $h=2$ ($n$=297) & 0.980$\pm$0.014 & 0.963$\pm$0.007 \\
+LOVO, held-out verb & 0.490--0.532 & 0.500--0.534 \\
+sandbox$\to$ScienceWorld ($n$=46) & 0.442 [0.354, 0.526] & 0.441 [0.351, 0.532] \\
+ScienceWorld$\to$sandbox & 0.531 [0.510, 0.554] & 0.500 [0.500, 0.500] \\
+reworded \emph{flip} ($n$=267) & 0.982$\to$0.978 & 0.963$\to$0.963 \\
+reworded \emph{terse} ($n$=297) & 0.984$\to$0.799 & 0.967$\to$0.817 \\
+\emph{terse}, three-class ($n$=389) & 0.993$\to$0.592 & 0.971$\to$0.565 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{RQ4: steering}
-TODO or ``not run''.
+\todo{steering curve (caution and success vs.\ strength, with random-direction control) for Qwen2.5-3B at layer 22; Kaggle run in progress. If it does not finish, state ``not run'' here and in the abstract.}
 
 \section{Limitations}
 \begin{itemize}
-\item The sandbox is small and simulated, and most undo operations need one or two steps, so horizon effects are weak (in the sandbox $h=2,3$ equal the main label).
-\item Task prompts push for the shortcut (``delete\_file is the fastest way'', ``just send it now''), and email and transfer have no safer tool except asking the user, so $A^*$ partly measures instruction following; the careful-prompt ablation addresses this only in part.
-\item The 72 behaviour pairs come from six templates, so the effective sample is small; we report template-level CIs.
-\item The sandbox label is a function of a few settings, so the test split mostly tests interpolation within seen setting combinations.
-\item TODO: only the models listed above; findings may not transfer to other families or sizes.
-\item ScienceWorld labelling was limited by compute (a single laptop), giving TODO pairs. ``Irreversible'' there is an upper bound from a bounded search.
-\item Partially reversible actions are rare outside the edit-with-history case.
-\item Text-only states, English only, a 3-step horizon.
-\item Hand labels cover 100 sandbox pairs only; none of the ScienceWorld labels were checked by people.
+\item The sandbox is small and simulated. Its label is a function of a few settings, so the test split mostly tests interpolation within seen setting combinations, and the reworded and leave-one-verb-out results show that the probes do not generalise beyond them.
+\item Only two models, each one size, and not the sizes the brief names; the two differ in family, size and precision (4-bit for Llama). We cannot separate these factors, and we cannot tell whether Llama's constant ``PARTIAL'' answer is caused by quantisation.
+\item Task prompts push for the shortcut, and email and payment have no safer tool than asking the user, so $A^*$ partly measures instruction following.
+\item 72 task pairs from six templates: template-level intervals are wide and, with six clusters, unstable.
+\item ScienceWorld labels come from a bounded search, and most non-reversible labels hit the search budget; nobody checked them by hand. ScienceWorld results (46 test pairs, 6 irreversible) are therefore weak evidence.
+\item Linear probes show decodability, not use. Without the steering result we cannot say whether the models use this information at all.
+\item Text-only states, English only, horizon at most 3 steps; partially reversible actions occur almost only as edits with history.
 \end{itemize}
 
 \section{Conclusion}
-TODO: one clear finding, stated as the data show it, including if the result is negative.
+Both models encode whether an action can be undone: a linear probe at the action token reads it with 0.97--0.98 balanced accuracy, well beyond what the state text alone gives. This knowledge is verb-specific and tied to the wording of the state, and little of it reaches the surface. Qwen states it imperfectly, Llama not at all, and neither model's behaviour depends on it, even when told to be careful. For these models the bottleneck is not in the representation but between the representation and the action.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
