@@ -27,6 +27,12 @@ Brief: `~/Downloads/ADNN_Project_Option_1_Irreversibility.docx`. Pipeline lives 
 - Paper is `reversibility/paper/main.tex` (IEEEtran). `refs.bib`: all 10 entries verified by search 2026-11-17 (turner pages from the brief; yin has no venue, kept as arXiv).
 - Git: existing author, Conventional Commits written like a human, no Claude attribution, ponytail review before each commit. History was reworded and force-pushed once with the user's permission.
 
+## Status 2026-11-20
+- Both models done and committed: Qwen2.5-3B (Colab, results_qwen3b.zip of 2026-11-17) and Llama-3.1-8B 4-bit (Kaggle 2xT4, 9 h). Tables/figures rebuilt locally with both.
+- Hidden states (.npy) of both runs are gone (not in the zips). Steering needs Qwen sandbox hidden states re-extracted (Kaggle, Chrome agent).
+- Key findings to write up: probes ~0.97-0.98 (beat pre ~0.67 and state BoW 0.705; minimal pairs 0.98 vs 0.735); leave-one-verb-out ~0.50 (per-verb rules, no shared direction); terse rewording drops (three-class ~0.57-0.59); transfer to ScienceWorld fails (~0.44). Stated: Qwen binary 0.70, Llama says PARTIAL on every item (0.50). Behaviour: A* ~0 for both, careful prompt does not help.
+- Next: paper (Claude, with the ml-paper-writing skill in ~/.claude/skills); Chrome agent: Qwen steering on Kaggle + citation/licence lookups; user: contributions, email, slides, repo visibility after the Kaggle clone.
+
 ## Plan (updated 2026-11-17, 10-15 hours to submission; goal: finish ALL tasks including the bonus)
 Status when written: Qwen-3B STEP 3 running on Colab (driven by a second Claude with browser access, reports every ~25 min). Hand labels done. ScienceWorld re-label not done.
 1. **Now, in parallel with STEP 3 (no GPU needed):** instructor email sent (user); contribution log and presentation outline; search arXiv for newer work on this exact experiment; check the paper compiles (Overleaf); ToolEmu cases and ByteSized32 labelling prep for RQ5.
