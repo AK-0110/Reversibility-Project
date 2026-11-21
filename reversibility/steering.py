@@ -31,7 +31,7 @@ if __name__ == "__main__":
     ap.add_argument("--model", required=True); ap.add_argument("--data", nargs="+", required=True)
     ap.add_argument("--hidden", nargs="+", required=True); ap.add_argument("--pos", default="last")
     ap.add_argument("--layer", type=int, required=True); ap.add_argument("--tag", required=True)
-    ap.add_argument("--fractions", type=float, nargs="+", default=[-0.5, -0.25, 0, 0.25, 0.5, 1.0])
+    ap.add_argument("--fractions", type=float, nargs="*", default=[-0.5, -0.25, 0, 0.25, 0.5, 1.0])
     ap.add_argument("--n-random", type=int, default=3); ap.add_argument("--random-fraction", type=float, default=0.5)
     ap.add_argument("--n-per-template", type=int, default=4)
     ap.add_argument("--careful", action="store_true")
