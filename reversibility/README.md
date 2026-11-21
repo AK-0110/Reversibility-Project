@@ -36,6 +36,7 @@ The data is frozen (`data/*.jsonl`); do not regenerate it (the hand-label sheets
 | Table III ablations | `results/tables/ablations.md` | `make_tables.py` |
 | Fig. 4 steering (bonus) | `figures/steering_<tag>.png`, `results/tables/steering.md` | `steering.py` (GPU, writes `results/steering_<tag>.json`), then `make_tables.py` |
 | Hand-label kappa | `results/label_agreement.json` | `agreement.py` |
+| Verb×state BoW baseline (Table I) | `results/baseline_interaction.json` | `baseline_interaction.py data/sandbox.jsonl data/sandbox_extra.jsonl` (CPU) |
 
 ## Design decisions worth stating in the report
 - Labels are from the design plus BFS verification (sandbox) and bounded search (ScienceWorld). Sandbox: designed vs BFS agreement 100% at horizons 2-3, 88% at horizon 1 (edit with backup + history needs two undo steps).
