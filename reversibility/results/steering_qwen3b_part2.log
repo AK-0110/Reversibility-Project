@@ -1,0 +1,17 @@
+layer 22: ||v|| = 3.28, median ||h|| = 60.75 (||v|| / ||h|| = 0.054)
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:   0%|          | 1/434 [00:00<05:39,  1.28it/s]Loading weights:  23%|██▎       | 99/434 [00:00<00:02, 147.99it/s]Loading weights:  34%|███▍      | 148/434 [00:01<00:01, 150.72it/s]Loading weights:  42%|████▏     | 182/434 [00:01<00:01, 163.31it/s]Loading weights:  49%|████▊     | 211/434 [00:01<00:01, 155.21it/s]Loading weights:  54%|█████▍    | 235/434 [00:01<00:01, 152.06it/s]Loading weights:  59%|█████▉    | 257/434 [00:01<00:01, 157.48it/s]Loading weights:  64%|██████▍   | 279/434 [00:02<00:00, 163.48it/s]Loading weights:  69%|██████▉   | 299/434 [00:02<00:00, 170.58it/s]Loading weights:  74%|███████▎  | 319/434 [00:02<00:00, 167.90it/s]Loading weights:  78%|███████▊  | 339/434 [00:02<00:00, 167.94it/s]Loading weights:  84%|████████▎ | 363/434 [00:02<00:00, 160.80it/s]Loading weights:  89%|████████▉ | 387/434 [00:02<00:00, 171.34it/s]Loading weights:  95%|█████████▍| 411/434 [00:02<00:00, 167.26it/s]Loading weights: 100%|██████████| 434/434 [00:02<00:00, 151.76it/s]
+probe_direction 1.0 {'caution_rate_irr': 0.125, 'over_caution_rate_rev': 0.0, 'task_success_irr': 0.0, 'task_success_rev': 0.0, 'parse_failures_total': 665}
+random_0 -0.5 {'caution_rate_irr': 0.167, 'over_caution_rate_rev': 0.375, 'task_success_irr': 0.375, 'task_success_rev': 0.458, 'parse_failures_total': 101}
+Traceback (most recent call last):
+  File "/kaggle/working/Reversibility-Project/reversibility/steering.py", line 53, in <module>
+    logs, _, _, summ = evaluate(gen, tasks, a.careful, with_stated=False)
+                       ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kaggle/working/Reversibility-Project/reversibility/agent_eval.py", line 172, in evaluate
+    logs = [run_episode(gen, t, v, careful, max_steps) for t in tasks for v in ("rev", "irr")]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kaggle/working/Reversibility-Project/reversibility/agent_eval.py", line 65, in run_episode
+    obs = sb.execute(tool, args); steps.append({"raw": out, "tool": tool, "args": args, "obs": obs})
+  File "/kaggle/working/Reversibility-Project/reversibility/sandbox.py", line 169, in execute
+    obs, ok = self.apply(tool, **args)
+              ~~~~~~~~~~^^^^^^^^^^^^^^
+TypeError: Sandbox.apply() got multiple values for argument 'tool'

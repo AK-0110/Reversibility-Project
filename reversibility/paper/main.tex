@@ -8,7 +8,7 @@
 \maketitle
 
 \begin{abstract}
-We test whether two open-weight instruction-tuned models, Qwen2.5-3B-Instruct and Llama-3.1-8B-Instruct, represent whether an action can be undone, say so when asked, and act on it as agents. On 2{,}014 labelled state--action pairs from a simulated file, email and payment sandbox, a linear probe on the hidden state at the last action token separates irreversible from other actions with balanced accuracy 0.980 (Qwen) and 0.966 (Llama), well above a state-only bag-of-words baseline (0.705) and a probe that sees the state but not the action (0.677 and 0.667). This information is verb-specific: probes trained without a verb score at chance on it, and they lose much of their accuracy when the settings are reworded. Asked directly, Qwen is right in 0.699 of cases (balanced) and Llama gives the same answer, ``partial'', to all 389 test items. In 72 paired agent tasks neither model is more careful in the irreversible version than in the reversible one (reversibility sensitivity $-0.042$ and $-0.014$), and an instruction to be careful does not change this. Because the brief's gap $K-A$ is about $0.5$ for a model that knows nothing, we report a chance-corrected gap $\mathrm{Gap}^*$: $0.222$ [0.069, 0.375] for Qwen and $0.403$ [$-0.250$, 0.903] for Llama. The models encode reversibility far better than they state it, and their behaviour ignores it.
+We test whether two open-weight instruction-tuned models, Qwen2.5-3B-Instruct and Llama-3.1-8B-Instruct, represent whether an action can be undone, say so when asked, and act on it as agents. On 2{,}014 labelled state--action pairs from a simulated file, email and payment sandbox, a linear probe on the hidden state at the last action token separates irreversible from other actions with balanced accuracy 0.980 (Qwen) and 0.966 (Llama), well above a state-only bag-of-words baseline (0.705) and a probe that sees the state but not the action (0.677 and 0.667). This information is verb-specific: probes trained without a verb score at chance on it, and they lose much of their accuracy when the settings are reworded. Asked directly, Qwen is right in 0.699 of cases (balanced) and Llama gives the same answer, ``partial'', to all 389 test items. In 72 paired agent tasks neither model is more careful in the irreversible version than in the reversible one (reversibility sensitivity $-0.042$ and $-0.014$), and an instruction to be careful does not change this. Because the brief's gap $K-A$ is about $0.5$ for a model that knows nothing, we report a chance-corrected gap $\mathrm{Gap}^*$: $0.222$ [0.069, 0.375] for Qwen and $0.403$ [$-0.250$, 0.903] for Llama. Steering Qwen along the probe direction changes how cautious the agent is, but not whether its caution depends on reversibility. The models encode reversibility far better than they state it, and their behaviour ignores it.
 \end{abstract}
 
 \section{Introduction}
@@ -64,7 +64,8 @@ The direction $v$ is mean(irreversible) minus mean(reversible) of the \emph{last
 (iv)~the team spot check of ScienceWorld labels promised in Amendment~2 was not done;
 (v)~a first Llama run crashed in the careful-prompt condition because the model passed a list of paths as one argument; the sandbox now rejects such calls as failed actions (9 of 655 calls in the careful run, 0 of 603 in the neutral run), and the reported Llama results come from a complete rerun with this fix;
 (vi)~the Llama agent pilot was skipped;
-(vii)~the confidence intervals for stated answers and the careful-prompt gap (which reuses $K$ from the neutral run, as $K$ does not depend on the agent's system prompt) were added after seeing the results; they do not change any point estimate.
+(vii)~the confidence intervals for stated answers and the careful-prompt gap (which reuses $K$ from the neutral run, as $K$ does not depend on the agent's system prompt) were added after seeing the results; they do not change any point estimate;
+(viii)~steering ran in three parts: twice a steered model emitted a malformed tool call (a non-string tool name, then a \texttt{tool} key inside the arguments) that crashed the harness; both now count as failed calls, and the missing configurations were rerun with the same directions (one random configuration ran twice with identical results). Steering covers Qwen only.
 Further runs not in the results: a plumbing test on Qwen2.5-0.5B and the Qwen agent pilot on 6 separate task pairs.
 
 \section{Results}
@@ -193,8 +194,17 @@ reworded \emph{terse} ($n$=297) & 0.984$\to$0.799 & 0.967$\to$0.817 \\
 \end{tabular}
 \end{table}
 
-\subsection{RQ4: steering}
-\todo{steering curve (caution and success vs.\ strength, with random-direction control) for Qwen2.5-3B at layer 22; Kaggle run in progress. If it does not finish, state ``not run'' here and in the abstract.}
+\subsection{RQ4: steering moves caution, not its dependence on reversibility}
+We steered Qwen2.5-3B at layer 22 ($\lVert v\rVert=3.28$, median $\lVert h\rVert=60.75$; Fig.~\ref{fig:steer}). Unsteered ($f=0$), on these 24 pairs, the agent is cautious in 0.42 of irreversible and 0.54 of reversible runs and succeeds in 0.67 and 0.71. The probe direction has a large, graded effect on caution, but with the opposite sign to the one expected: adding the ``irreversible'' direction removes caution altogether ($f=0.25$ and $0.5$: caution 0 in both versions, shortcut taken in 1.00 and 0.92 of irreversible runs) while task success stays at 0.62--0.71. Subtracting it raises caution (0.67/0.62 at $f=-0.25$) but costs task success (0.29/0.33, and 0.08/0.00 at $f=-0.5$). At $f=1$ the output breaks (665 parse failures, no success). Random directions of the same norm at $f=\pm0.5$ hurt the agent more than the probe direction at $+0.5$ (success 0.04--0.42 against 0.62) and move caution anywhere between 0 and 0.79.
+
+What steering does not do is make caution depend on reversibility. $A^*$ stays within $[-0.125, 0.167]$ for the probe direction. The only probe value whose interval excludes zero ($f=-0.5$: 0.167 [0.042, 0.333]) comes with an agent that almost never completes the task, and one random direction gives a larger value (0.292 [0.125, 0.500] at $+0.5$) for the same reason. So the direction is not inert: it controls how readily the agent commits to the shortcut, more cleanly than random directions do. But we find no strength at which it lets the agent tell the irreversible version from the reversible one. Two caveats: $v$ is computed from the probe prompts (state plus one action) and applied in agent prompts, which may explain the unexpected sign; and we steered one model at one layer.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{steering_qwen3b.png}
+\caption{Steering Qwen2.5-3B along the probe direction (lines) and three random directions of equal norm ($\times$, $+$) at layer 22; $f$ is the added norm as a fraction of the median hidden-state norm; 24 task pairs. Left: caution in the irreversible and reversible version. Middle: reversibility sensitivity $A^*$ with 95\% intervals over pairs. Right: task success.}
+\label{fig:steer}
+\end{figure*}
 
 \section{Limitations}
 \begin{itemize}
@@ -203,12 +213,12 @@ reworded \emph{terse} ($n$=297) & 0.984$\to$0.799 & 0.967$\to$0.817 \\
 \item Task prompts push for the shortcut, and email and payment have no safer tool than asking the user, so $A^*$ partly measures instruction following.
 \item 72 task pairs from six templates: template-level intervals are wide and, with six clusters, unstable.
 \item ScienceWorld labels come from a bounded search, and most non-reversible labels hit the search budget; nobody checked them by hand. ScienceWorld results (46 test pairs, 6 irreversible) are therefore weak evidence.
-\item Linear probes show decodability, not use. Without the steering result we cannot say whether the models use this information at all.
+\item Linear probes show decodability, not use. Steering one model at one layer moved caution but not its reversibility sensitivity; this does not rule out that the information is used elsewhere or non-linearly.
 \item Text-only states, English only, horizon at most 3 steps; partially reversible actions occur almost only as edits with history.
 \end{itemize}
 
 \section{Conclusion}
-Both models encode whether an action can be undone: a linear probe at the action token reads it with 0.97--0.98 balanced accuracy, well beyond what the state text alone gives. This knowledge is verb-specific and tied to the wording of the state, and little of it reaches the surface. Qwen states it imperfectly, Llama not at all, and neither model's behaviour depends on it, even when told to be careful. For these models the bottleneck is not in the representation but between the representation and the action.
+Both models encode whether an action can be undone: a linear probe at the action token reads it with 0.97--0.98 balanced accuracy, well beyond what the state text alone gives. This knowledge is verb-specific and tied to the wording of the state, and little of it reaches the surface. Qwen states it imperfectly, Llama not at all, and neither model's behaviour depends on it, even when told to be careful. Steering along the probe direction shifts how cautious the agent is, but does not make it more careful where it matters. For these models the bottleneck is not in the representation but between the representation and the action.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}

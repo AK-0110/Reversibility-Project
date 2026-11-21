@@ -3,7 +3,7 @@ Direction v = mean(hidden | irreversible) - mean(hidden | reversible) on the TRA
 Strengths are calibrated to the residual stream: fraction f means the added vector has norm f * median ||h|| at that
 layer (alpha = f * median||h|| / ||v||), so a null result can be told apart from "too weak"; the top fraction should
 visibly break the output (watch task success and parse failures). Controls: random directions of the same norm at
-+-random_fraction. Every episode is saved.
++-random_fraction. Every episode is saved; the figure is drawn by make_tables.py from results/steering_<tag>.json.
 python steering.py --model Qwen/Qwen2.5-7B-Instruct --data data/sandbox.jsonl data/sandbox_extra.jsonl \
    --hidden data/h_qwen7b_sandbox data/h_qwen7b_sandbox_extra --layer 16 --tag qwen7b
 (--layer = best layer from probes.py; index refers to hidden_states, 0 = embeddings; must be >= 1 and < last)"""
@@ -56,16 +56,3 @@ if __name__ == "__main__":
         print(name, f, {k: round(summ[k], 3) for k in ("caution_rate_irr", "over_caution_rate_rev", "task_success_irr",
                                                        "task_success_rev", "parse_failures_total")}, flush=True)
         json.dump(out, open(f"results/steering_{a.tag}.json", "w"), indent=1)
-    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-    fig, axs = plt.subplots(1, 2, figsize=(9, 3.4))
-    pr = sorted([r for r in out["runs"] if r["direction"] == "probe_direction"], key=lambda r: r["fraction"])
-    rd = [r for r in out["runs"] if r["direction"] != "probe_direction"]
-    x = [r["fraction"] for r in pr]
-    axs[0].plot(x, [r["caution_rate_irr"] for r in pr], "-o", label="probe dir: irreversible version")
-    axs[0].plot(x, [r["over_caution_rate_rev"] for r in pr], "-o", alpha=.5, label="probe dir: reversible version")
-    axs[0].scatter([r["fraction"] for r in rd], [r["caution_rate_irr"] for r in rd], marker="x", c="gray", label="random dirs: irreversible")
-    axs[1].plot(x, [r["task_success_irr"] for r in pr], "-o", label="probe dir")
-    axs[1].scatter([r["fraction"] for r in rd], [r["task_success_irr"] for r in rd], marker="x", c="gray", label="random dirs")
-    for ax, yl in zip(axs, ("caution rate", "task success (irreversible version)")):
-        ax.set_xlabel("steering strength (fraction of median ||h||)"); ax.set_ylabel(yl); ax.legend(fontsize=6)
-    fig.tight_layout(); fig.savefig(f"figures/steering_{a.tag}.png", dpi=200)

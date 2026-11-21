@@ -34,7 +34,7 @@ The data is frozen (`data/*.jsonl`); do not regenerate it (the hand-label sheets
 | Table I probes and controls | `results/tables/probe_summary.md` | `make_tables.py` |
 | Table II stated answers and behaviour | `results/tables/stated_probe_behaviour_<tag>.md` | `make_tables.py` |
 | Table III ablations | `results/tables/ablations.md` | `make_tables.py` |
-| Steering curve (bonus) | `figures/steering_<tag>.png`, `results/tables/steering.md` | `steering.py`, `make_tables.py` |
+| Fig. 4 steering (bonus) | `figures/steering_<tag>.png`, `results/tables/steering.md` | `steering.py` (GPU, writes `results/steering_<tag>.json`), then `make_tables.py` |
 | Hand-label kappa | `results/label_agreement.json` | `agreement.py` |
 
 ## Design decisions worth stating in the report

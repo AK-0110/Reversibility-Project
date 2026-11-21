@@ -147,10 +147,29 @@ def comparison(tag):
     if s:
         with open("results/tables/steering.md", "w", encoding="utf-8") as f:
             f.write(f"Layer {s['layer']}, ||v|| = {s['direction_norm']:.2f}, median ||h|| = {s['median_hidden_norm']:.2f}, {s['n_pairs']} pairs\n\n")
-            table(f, ("direction", "fraction of median ||h||", "caution irr / rev", "target taken irr", "success irr / rev", "parse failures"),
+            table(f, ("direction", "fraction of median ||h||", "caution irr / rev", "A* [95% CI, pairs]", "target taken irr",
+                      "success irr / rev", "parse failures"),
                   [(r["direction"], r["fraction"], f'{r["caution_rate_irr"]:.2f} / {r["over_caution_rate_rev"]:.2f}',
-                    f'{r["target_action_rate_irr_version"]:.2f}', f'{r["task_success_irr"]:.2f} / {r["task_success_rev"]:.2f}',
-                    r["parse_failures_total"]) for r in s["runs"]])
+                    fmt(r["A_star"], None, r["A_star_ci95"]["pairs"]), f'{r["target_action_rate_irr_version"]:.2f}',
+                    f'{r["task_success_irr"]:.2f} / {r["task_success_rev"]:.2f}', r["parse_failures_total"]) for r in s["runs"]])
+        pr = sorted([r for r in s["runs"] if r["direction"] == "probe_direction"], key=lambda r: r["fraction"])
+        rd = [r for r in s["runs"] if r["direction"] != "probe_direction"]
+        fig, axs = plt.subplots(1, 3, figsize=(11, 3.3))
+        for ax, (k_irr, k_rev, yl) in zip(axs[[0, 2]], (("caution_rate_irr", "over_caution_rate_rev", "caution rate"),
+                                                      ("task_success_irr", "task_success_rev", "task success"))):
+            ax.plot([r["fraction"] for r in pr], [r[k_irr] for r in pr], "-o", c="C3", label="probe dir, irreversible version")
+            ax.plot([r["fraction"] for r in pr], [r[k_rev] for r in pr], "--s", c="C0", label="probe dir, reversible version")
+            ax.scatter([r["fraction"] + .03 for r in rd], [r[k_irr] for r in rd], marker="x", c="C3", label="random dirs, irreversible")
+            ax.scatter([r["fraction"] - .03 for r in rd], [r[k_rev] for r in rd], marker="+", c="C0", label="random dirs, reversible")
+            ax.set_ylabel(yl); ax.set_ylim(-.05, 1.05)
+        for rs, st, c in ((pr, "-o", "k"), (rd, "x", "gray")):
+            if not rs: continue
+            ci = np.array([r["A_star_ci95"]["pairs"] for r in rs]); y = np.array([r["A_star"] for r in rs])
+            axs[1].errorbar([r["fraction"] + (.03 if rs is rd else 0) for r in rs], y, yerr=[y - ci[:, 0], ci[:, 1] - y], fmt=st,
+                            c=c, capsize=2, label="probe direction" if rs is pr else "random directions")
+        axs[1].axhline(0, c="gray", lw=.5); axs[1].set_ylabel("$A^*$ = caution irr - rev (95% CI, pairs)")
+        for ax in axs: ax.set_xlabel("steering strength f (x median ||h||)"); ax.legend(fontsize=6)
+        fig.tight_layout(); fig.savefig(f"figures/steering_{tag}.png", dpi=200); plt.close(fig)
 
 
 if __name__ == "__main__":
