@@ -1,9 +1,9 @@
-# Versions below are the ones the CPU-side code was tested with.
-# torch / transformers / accelerate were NOT installed where I tested: after your first successful GPU run,
-# replace these three lines with exact pins (run_all.sh writes results/requirements.lock_<tag>.txt on the GPU box).
-torch
-transformers
-accelerate
+# Pinned from results/requirements.lock_qwen3b.txt (Colab, main Qwen run; use the cu130 torch wheel on a GPU).
+# Llama and the steering run used Kaggle's torch==2.11.0 and transformers==5.20.2: see results/requirements.lock_llama8b.txt
+# and results/requirements.lock_qwen3b_steering_kaggle.txt for those exact environments.
+torch==2.14.1
+transformers==5.22.1
+accelerate==1.15.0
 numpy==2.5.4
 scikit-learn==1.9.1
 scipy==1.18.1
@@ -11,4 +11,4 @@ statsmodels==0.15.0
 matplotlib==3.11.2
 scienceworld==1.2.3
 tqdm==4.70.1
-# bitsandbytes   (only for LOAD_4BIT=1, e.g. Llama-3.1-8B on a T4)
+# bitsandbytes==0.50.2   (only for LOAD_4BIT=1, e.g. Llama-3.1-8B on a T4)

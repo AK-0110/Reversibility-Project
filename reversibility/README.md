@@ -11,13 +11,13 @@ Pipeline for the six steps of the brief; every stage below is scripted and seede
 | 4 RQ2 stated answer | `stated_answer.py` | `results/stated_<tag>.json` |
 | 5 RQ3 behaviour | `tasks.py`, `agent_eval.py` | `results/agent_*.json(l)` (full logs) |
 | 6 Bonus RQ4/RQ5 | `steering.py`, `uncertainty.py` | `results/steering_*.json`, `uncertainty_*.json` |
-| Report | `make_tables.py`, `demo.py`, `ANALYSIS_PLAN.md`, `DATA_CARD.md`, `CONTRIBUTIONS.md`, `paper/` | `results/tables/*.md`, figures, `results/demo_<task>.md` |
+| Report | `make_tables.py`, `demo.py`, `ANALYSIS_PLAN.md`, `DATA_CARD.md`, `CONTRIBUTIONS.md`, `PRESENTATION.md`, `paper/` | `results/tables/*.md`, figures, `results/demo_<task>.md` |
 | Checks | `test_agent_metrics.py` (RQ3 metrics on mock policies), `agreement.py` | |
 
 `bash run_all.sh` runs everything for one model on a GPU box (`MODEL=... TAG=... bash run_all.sh`; `QUICK=1` plumbing test, `PILOT=1` agent pilot, `LOAD_4BIT=1` for 8B on a T4). On Colab use `colab_run.ipynb`. The data files are frozen inputs; the script never regenerates them.
 
 ## Setup
-`pip install -r requirements.txt` (Java 11+ only for ScienceWorld labelling). Models used: `Qwen/Qwen2.5-3B-Instruct` (fp16 on a T4; 7B does not fit) and `meta-llama/Llama-3.1-8B-Instruct` in 4-bit (gated: request access first). Load one model at a time. `run_all.sh` writes `results/requirements.lock_<tag>.txt`.
+`pip install -r requirements.txt` (pinned to the Qwen Colab run; Java 11+ only for ScienceWorld labelling). Models used: `Qwen/Qwen2.5-3B-Instruct` (fp16 on a T4; 7B does not fit) and `meta-llama/Llama-3.1-8B-Instruct` in 4-bit (gated: request access first). Load one model at a time. `run_all.sh` writes `results/requirements.lock_<tag>.txt`.
 
 ## Reproduce
 The data is frozen (`data/*.jsonl`); do not regenerate it (the hand-label sheets are tied to its ids).
