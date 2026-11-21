@@ -6,6 +6,8 @@ for tool in ("delete_file", "edit_file", "trash_file", "move_file", "read_file",
     obs = sb.execute(tool, {"path": ["a.txt", "b.txt"], "content": "x", "dest": "c.txt"})
     assert obs.startswith("ERROR"), (tool, obs)
 assert sb.execute("move_file", {"path": "a.txt", "dest": ["c.txt"]}).startswith("ERROR")
+for extra in ("tool", "self"):   # steered Qwen put a "tool" key inside args (random_0 +0.5)
+    assert sb.execute("delete_file", {"path": "a.txt", extra: "x"}).startswith("ERROR")
 assert set(sb.files) == {"a.txt", "b.txt"} and all(e["ok"] is False and e["label"] is None for e in sb.log)
 assert sb.execute("delete_file", {"path": "a.txt"}) == "Deleted a.txt" and sb.log[-1]["label"] == "irreversible"
 print("sandbox argument checks passed")

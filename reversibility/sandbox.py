@@ -150,7 +150,7 @@ class Sandbox:
         self.balance += self.ledger.pop()["amount"]; return "reversed", True
 
     # ---------- execution ----------
-    def apply(self, tool, **args):
+    def apply(self, tool, /, **args):   # positional-only: args may hold a "tool" key (steered Qwen)
         fn = getattr(self, "t_" + tool, None)
         if fn is None: return f"ERROR: unknown tool {tool}", False
         try:
