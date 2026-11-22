@@ -59,7 +59,7 @@ The direction $v$ is mean(irreversible) minus mean(reversible) of the \emph{last
 \textbf{Pre-registration and deviations.} The analysis plan and its two amendments were committed before the first full real-model run; at that time only a pilot on older code existed (repetition penalty on, no \emph{pre} position), which we do not use. Deviations from the plan and the project specification:
 (i)~the model substitutions above;
 (ii)~the transfer and reworded-row probes use one split, not three;
-(iii)~the ScienceWorld re-search with a larger budget (200) was stopped twice by the laptop running out of memory and was not completed, so ScienceWorld uses the budget-60 labels;
+(iii)~the ScienceWorld re-search with a larger budget (200) finished only after all model runs, on a second machine (\texttt{data/sciworld\_v1\_relabel.jsonl}): no search hit the budget, 18 of the 56 non-reversible labels changed (13 to reversible) and 4 rows became unverified. Only 5 changes are clearly due to the larger budget; the rest come from re-running the search, which did not exactly reproduce the original run. The hidden states needed to re-score the transfer probes were no longer available, so all reported ScienceWorld results use the budget-60 labels;
 (iv)~the team spot check of ScienceWorld labels promised in Amendment~2 was not done;
 (v)~a first Llama run crashed in the careful-prompt condition because the model passed a list of paths as one argument; the sandbox now rejects such calls as failed actions (9 of 655 calls in the careful run, 0 of 603 in the neutral run), and the reported Llama results come from a complete rerun with this fix;
 (vi)~the Llama agent pilot was skipped;
@@ -217,7 +217,7 @@ What steering does not do is make caution depend on reversibility. $A^*$ stays w
 \item Only two models, each one size, and not the sizes the project specification names; the two differ in family, size and precision (4-bit for Llama). We cannot separate these factors, and we cannot tell whether Llama's constant ``PARTIAL'' answer is caused by quantisation.
 \item Task prompts push for the shortcut, and email and payment have no safer tool than asking the user, so $A^*$ partly measures instruction following.
 \item 72 task pairs from six templates: template-level intervals are wide and, with six clusters, unstable.
-\item ScienceWorld labels come from a bounded search, and 54 of 56 non-reversible labels hit the search budget; nobody checked them by hand. ScienceWorld results (46 test pairs, 6 irreversible) are therefore weak evidence.
+\item ScienceWorld labels come from a bounded search, and 54 of 56 non-reversible labels hit the search budget; a later re-search changed 18 of them (deviation iii), and nobody checked them by hand. ScienceWorld results (46 test pairs, 6 irreversible) are therefore weak evidence.
 \item Linear probes show decodability, not use. Steering one model at one layer moved caution but not its reversibility sensitivity; this does not rule out that the information is used elsewhere or non-linearly.
 \item Text-only states, English only, horizon at most 3 steps; partially reversible actions occur almost only as edits with history.
 \end{itemize}
