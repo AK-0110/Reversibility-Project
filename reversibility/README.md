@@ -10,7 +10,7 @@ Pipeline for the six steps of the brief; every stage below is scripted and seede
 | 3 RQ1 probes | `probes.py` | `results/probe_*.json`, `results/probe_preds_*.csv` (scores, every split), `figures/probe_*.png` |
 | 4 RQ2 stated answer | `stated_answer.py` | `results/stated_<tag>.json` |
 | 5 RQ3 behaviour | `tasks.py`, `agent_eval.py` | `results/agent_*.json(l)` (full logs) |
-| 6 Bonus RQ4/RQ5 | `steering.py`, `uncertainty.py` | `results/steering_*.json`, `uncertainty_*.json` |
+| 6 Bonus RQ4 (RQ5 not run) | `steering.py` (`uncertainty.py` written, not run) | `results/steering_*.json` |
 | Report | `make_tables.py`, `demo.py`, `ANALYSIS_PLAN.md`, `DATA_CARD.md`, `CONTRIBUTIONS.md`, `PRESENTATION.md`, `paper/` | `results/tables/*.md`, figures, `results/demo_<task>.md` |
 | Checks | `test_agent_metrics.py` (RQ3 metrics on mock policies), `agreement.py` | |
 

@@ -7,6 +7,7 @@
 python make_tables.py [--model-tag qwen3b]"""
 import argparse, glob, json, os
 import numpy as np
+from probes import MODEL_NAMES
 
 
 def load(p):
@@ -108,13 +109,13 @@ def comparison(tag):
     runs = [(n, d) for n, d in runs if "gap_star" in d and "_pilot" not in n]
     fig, ax = plt.subplots(figsize=(4.2, 3.2)); x = np.arange(len(runs)); w = .38
     gci = lambda d: d["gap_ci95"] if isinstance(d["gap_ci95"], list) else d["gap_ci95"]["templates"]
-    for off, key, ci, lab, hatch in ((-w / 2, "blindness_gap", gci, "Gap = K − A (brief; ~0.5 if no knowledge)", "//"),
+    for off, key, ci, lab, hatch in ((-w / 2, "blindness_gap", gci, "Gap = K − A (original; ~0.5 if no knowledge)", "//"),
                                      (w / 2, "gap_star", lambda d: d["gap_star_ci95"]["templates"], "Gap* = K* − A* (chance-corrected)", "")):
         m = [d[key] for _, d in runs]
         ax.bar(x + off, m, w, label=lab, hatch=hatch, edgecolor="k", lw=.5, capsize=3,
                yerr=[[v - ci(d)[0] for v, (_, d) in zip(m, runs)], [ci(d)[1] - v for v, (_, d) in zip(m, runs)]])
     ax.axhline(0, color="k", lw=.5); ax.axhline(.5, color="gray", ls="--", lw=.8)
-    ax.set_xticks(x); ax.set_xticklabels([n.replace("_neutral", "") for n, _ in runs], fontsize=8)
+    ax.set_xticks(x); ax.set_xticklabels([MODEL_NAMES.get(n.replace("_neutral", ""), n) for n, _ in runs], fontsize=8)
     ax.set_ylabel("knowing − acting gap"); ax.set_ylim(-.3, 1.05); ax.legend(fontsize=6, loc="upper left")
     fig.tight_layout(); fig.savefig("figures/blindness_gap.png", dpi=200); plt.close(fig)
     with open(f"results/tables/stated_probe_behaviour_{tag}.md", "w", encoding="utf-8") as f:

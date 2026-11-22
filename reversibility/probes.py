@@ -222,6 +222,9 @@ def leave_one_verb_out(sub, y, H, layers, C, best_layer):
     return out
 
 
+MODEL_NAMES = {"qwen3b": "Qwen2.5-3B-Instruct", "llama8b": "Llama-3.1-8B-Instruct (4-bit)"}
+
+
 def plot(results, tag):
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
     os.makedirs("figures", exist_ok=True); layers = results["layers"]
@@ -234,11 +237,11 @@ def plot(results, tag):
         ax.plot(layers, a["control_bal_acc"]["mean"], ":", label="control task (verb labels)")
         if "setting_control_bal_acc" in a:
             ax.plot(layers, a["setting_control_bal_acc"]["mean"], ":", label="control (permuted setting)")
-        ax.axhline(b["majority"], color="gray", ls="--", label="majority")
+        ax.axhline(b["majority"], color="gray", lw=4, alpha=.4, label="majority")   # wide: often equals action BoW (0.5)
         ax.axhline(b["lexical_minimal"], color="r", ls="--", label="action BoW (minimal pairs)")
         ax.axhline(b["state_bow_minimal"], color="m", ls="--", label="state BoW (minimal pairs)")
         ax.axvline(t["best_layer"], color="g", alpha=.3); ax.set_xlabel("layer (0 = embeddings)")
-        ax.set_ylabel("balanced accuracy"); ax.set_title(f"{tag} – {task}"); ax.legend(fontsize=6)
+        ax.set_ylabel("balanced accuracy"); ax.set_title(f"{MODEL_NAMES.get(tag.split('_')[0], tag)}, {task} task"); ax.legend(fontsize=6)
         fig.tight_layout(); fig.savefig(f"figures/probe_{tag}_{task}.png", dpi=200); plt.close(fig)
 
 

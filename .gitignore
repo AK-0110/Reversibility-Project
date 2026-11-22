@@ -6,3 +6,7 @@ __pycache__/
 # ByteSized32 has no licence: research use only, do not redistribute
 test.jsonl
 **/data/bytesized_*
+# local-only files: duplicate of data/sciworld_v1.jsonl, team handoff notes, email draft
+reversibility/data/sciworld.jsonl
+handoff/
+instructor_email_draft.txt
