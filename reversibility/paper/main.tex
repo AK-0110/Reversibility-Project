@@ -68,6 +68,15 @@ The direction $v$ is mean(irreversible) minus mean(reversible) of the \emph{last
 Not done, for lack of time: the bonus RQ5 (next-state uncertainty on ByteSized32 transitions~\cite{wang2024simulators}, which would need new reversibility labels and our own inference code) and ToolEmu cases as a third testbed. Further runs not in the results: a plumbing test on Qwen2.5-0.5B and the Qwen agent pilot on 6 separate task pairs.
 
 \section{Results}
+% figure* floats can only land on a later page, so they are placed ahead of their first mention
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.49\textwidth]{probe_qwen3b_last_binary.png}\hfill
+\includegraphics[width=0.49\textwidth]{probe_llama8b_last_binary.png}
+\caption{RQ1: test balanced accuracy of the binary probe at the last action token versus layer, for Qwen2.5-3B (left) and Llama-3.1-8B (right). Band: $\pm$1 sd over 3 splits. Dashed lines: majority, action-only and state-only bag-of-words on minimal pairs. Dotted: shuffled labels, verb control task, permuted-setting control. Green line: layer chosen on validation.}
+\label{fig:layers}
+\end{figure*}
+
 \subsection{RQ1: reversibility is linearly decodable at the action token}
 Table~\ref{tab:probe} and Fig.~\ref{fig:layers} answer RQ1. At the last action token, the binary probe reaches 0.980 (Qwen, layer 22 of 36) and 0.966 (Llama, layer 13 of 32), with AUROC near 1. Accuracy rises over the first third of the network, is highest in the middle layers and declines slightly towards the output. The probe beats every baseline: the state-only bag-of-words (0.694 on all test rows, 0.705 on its minimal pairs), the best verb$\times$state bag-of-words (0.885 and 0.859) and, more tellingly, the \emph{pre} probe, which sees the full state but not the action (0.677 and 0.667). Trained and tested on minimal pairs only, the probe still reaches 0.983 and 0.979 against 0.735 for the state-only bag-of-words. The shuffled-label and layer-0 probes are at chance. So the hidden state at the action token carries whether \emph{this} action is reversible in \emph{this} state, beyond what bag-of-words features of the text give.
 
@@ -78,6 +87,7 @@ Two controls qualify this. The verb control task has selectivity slightly below 
 \caption{RQ1, binary task (irreversible vs.\ reversible, partial excluded), sandbox test split ($n=297$; minimal pairs $n=220$). Probes: mean $\pm$ sd over 3 splits [mean per-split 95\% CI], best layer chosen on validation. Baselines and controls: mean over 3 splits, without intervals.}
 \label{tab:probe}
 \setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcc}
 \toprule
  & Qwen2.5-3B & Llama-3.1-8B (4-bit) \\
@@ -101,16 +111,8 @@ layer-0 probe & 0.524 & 0.524 \\
 selectivity, verb control & $-$0.020 & $-$0.034 \\
 selectivity, permuted setting & 0.073 & 0.137 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.49\textwidth]{probe_qwen3b_last_binary.png}\hfill
-\includegraphics[width=0.49\textwidth]{probe_llama8b_last_binary.png}
-\caption{RQ1: test balanced accuracy of the binary probe at the last action token versus layer, for Qwen2.5-3B (left) and Llama-3.1-8B (right). Band: $\pm$1 sd over 3 splits. Dashed lines: majority, action-only and state-only bag-of-words on minimal pairs. Dotted: shuffled labels, verb control task, permuted-setting control. Green line: layer chosen on validation.}
-\label{fig:layers}
-\end{figure*}
 
 \subsection{RQ1: the decoder is verb-specific and partly wording-dependent}
 Within each verb the probe is near perfect for Qwen (delete 0.955, edit 0.975, email and transfer 1.000) and for Llama except on \texttt{delete\_file} (0.785). Trained on the other verbs, however, it is at chance on the held-out one (Qwen 0.490--0.532, Llama 0.500--0.534; Table~\ref{tab:abl}): no decoder we trained transfers across verbs. Several held-out verbs get a constant prediction (0.500), which a shifted threshold could also cause; without AUROC for these runs we cannot tell a missing direction from a miscalibrated one. Each verb depends on a different setting, so the probes learn a separate rule per verb. Frozen probes keep their accuracy when only an irrelevant setting changes (\emph{flip}: 0.982$\to$0.978, 0.963$\to$0.963), but lose much of it when the settings are written as bare on/off values (\emph{terse}: binary 0.984$\to$0.799 and 0.967$\to$0.817; three-class 0.993$\to$0.592 and 0.971$\to$0.565). Transfer from the sandbox to ScienceWorld fails (0.442 and 0.441, $n=46$), as does the reverse direction (0.531 and 0.500), although the weak ScienceWorld labels limit what this shows.
@@ -125,6 +127,7 @@ The comparison question used for $K$, which shows both versions side by side, gi
 \caption{RQ2 and RQ3, sandbox. Stated answers on the test split; behaviour on 72 task pairs (144 runs per model and prompt, 0 parse failures). Behaviour rates are shares of the 72 runs per version, without intervals. [95\% CI]: $^p$ over pairs or rows, $^t$ over the 6 templates.}
 \label{tab:rq23}
 \setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcc}
 \toprule
  & Qwen2.5-3B & Llama-3.1-8B \\
@@ -147,7 +150,7 @@ $\mathrm{Gap}^*=K^*-A^*$$^t$ & 0.222 [0.069, 0.375] & 0.403 [$-$0.250, 0.903] \\
 careful prompt: $A^*$$^t$ & $-$0.083 [$-$0.194, 0.000] & 0.000 [0.000, 0.000] \\
 careful prompt: $\mathrm{Gap}^*$$^t$ & 0.264 [0.139, 0.389] & 0.389 [$-$0.250, 0.861] \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \begin{figure*}[t]
@@ -170,6 +173,13 @@ Both models usually take the shortcut, and about as often when it is irreversibl
 \label{fig:gap}
 \end{figure}
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{steering_qwen3b.png}
+\caption{Steering Qwen2.5-3B along the probe direction (lines) and three random directions of equal norm ($\times$, $+$) at layer 22; $f$ is the added norm as a fraction of the median hidden-state norm; 24 task pairs. Left: caution in the irreversible and reversible version. Middle: reversibility sensitivity $A^*$ with 95\% intervals over pairs. Right: task success.}
+\label{fig:steer}
+\end{figure*}
+
 \subsection{Ablations}
 Table~\ref{tab:abl} collects the ablations. The \emph{mean} position is as good as or slightly better than the last token; the \emph{pre} position is far worse, so the information appears once the action is read. Training on minimal pairs only changes little. With $h=1$ more pairs are irreversible (in the sandbox $h=2$ and $h=3$ give the same labels), and the probe stays at 0.979 and 0.970. The three-class probe is as accurate as the binary one, while three-class stated answers are much worse than binary ones.
 
@@ -178,6 +188,7 @@ Table~\ref{tab:abl} collects the ablations. The \emph{mean} position is as good 
 \caption{Ablations (binary balanced accuracy unless noted). Transfer and reworded rows: one split, layer chosen on source validation. LOVO: leave one verb out, range over the 4 held-out verbs with test data; every held-out interval contains 0.5.}
 \label{tab:abl}
 \setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcc}
 \toprule
  & Qwen2.5-3B & Llama-3.1-8B \\
@@ -192,20 +203,13 @@ reworded \emph{flip} ($n$=267) & 0.982$\to$0.978 & 0.963$\to$0.963 \\
 reworded \emph{terse} ($n$=297) & 0.984$\to$0.799 & 0.967$\to$0.817 \\
 \emph{terse}, three-class ($n$=389) & 0.993$\to$0.592 & 0.971$\to$0.565 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \subsection{RQ4: steering moves caution, not its dependence on reversibility}
 We steered Qwen2.5-3B at layer 22 ($\lVert v\rVert=3.28$, median $\lVert h\rVert=60.75$; Fig.~\ref{fig:steer}). The added vector has norm $18.5\,f\,\lVert v\rVert$, so even $f=0.25$ moves the state 4.6 times the distance between the class means. Unsteered ($f=0$), on these 24 pairs, the agent is cautious in 0.42 of irreversible and 0.54 of reversible runs and succeeds in 0.67 and 0.71. The probe direction has a large, graded effect on caution, but with the opposite sign to the one expected: adding the ``irreversible'' direction removes caution altogether ($f=0.25$ and $0.5$: caution 0 in both versions, shortcut taken in 1.00 and 0.92 of irreversible runs) while task success stays at 0.62--0.71. Subtracting it raises caution (0.67/0.62 at $f=-0.25$) but costs task success (0.29/0.33, and 0.08/0.00 at $f=-0.5$). At $f=1$ the output breaks (665 parse failures, no success). Random directions of the same norm at $f=\pm0.5$ hurt the agent more than the probe direction at $+0.5$ (success 0.04--0.54 against 0.62--0.67, both versions) and move caution anywhere between 0 and 0.79. At $f=\pm0.25$ they keep success at 0.46--0.71 and move caution between 0 and 0.58; one of them ($-0.25$) also removes caution in both versions, with 52 parse failures. So removing caution is not specific to the probe direction; what is specific at $f=+0.25$ is that it does so with no parse failures and unchanged success (0.71).
 
 What steering does not do is make caution depend on reversibility. $A^*$ stays within $[-0.125, 0.167]$ for the probe direction. The only probe value whose interval excludes zero ($f=-0.5$: 0.167 [0.042, 0.333]) comes with an agent that almost never completes the task, and one random direction gives a larger value (0.292 [0.125, 0.500] at $+0.5$) for the same reason; at $\pm0.25$ the random directions give $A^*$ between $-0.083$ and 0. So the direction is not inert: it changes how readily the agent commits to the shortcut, and it harms task success no more than random directions of the same norm (less at $f=+0.5$). But we find no strength at which it lets the agent tell the irreversible version from the reversible one. Two caveats: $v$ is computed from the probe prompts (state plus one action) and applied in agent prompts, which, together with strengths far beyond the natural class separation, may explain the unexpected sign; and we steered one model at one layer.
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.95\textwidth]{steering_qwen3b.png}
-\caption{Steering Qwen2.5-3B along the probe direction (lines) and three random directions of equal norm ($\times$, $+$) at layer 22; $f$ is the added norm as a fraction of the median hidden-state norm; 24 task pairs. Left: caution in the irreversible and reversible version. Middle: reversibility sensitivity $A^*$ with 95\% intervals over pairs. Right: task success.}
-\label{fig:steer}
-\end{figure*}
 
 \section{Limitations}
 \begin{itemize}
