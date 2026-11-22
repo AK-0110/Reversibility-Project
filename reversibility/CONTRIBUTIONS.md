@@ -1,10 +1,9 @@
 # Individual contribution log
-One paragraph per team member (what you built, which experiments you ran, which figures/sections you wrote, what you debugged).
+Approximate share of the total work, as agreed by the team.
 
-**Member 1 (name, ID):**
-
-**Member 2 (name, ID):**
-
-**Member 3 (name, ID):**
-
-**Member 4 (name, ID):**
+| Member | ID | Share |
+|---|---|---|
+| Tejaansh | SE23UCSE174 | 55% |
+| Arushi | SE23UCSE031 | 15% |
+| Tejas | SE23UCSE175 | 15% |
+| Tanishka | SE23UARI124 | 15% |
