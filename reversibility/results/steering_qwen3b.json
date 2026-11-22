@@ -1260,5 +1260,5 @@
    }
   }
  ],
- "note": "merged from four Kaggle runs at the same commit lineage (crashes fixed in 2e0370d, e55e369): probe -0.5..+0.5 (log steering_qwen3b.log), probe +1.0 (part2.log), random controls at +-0.5 (part3.log), random controls at +-0.25 (part4.log, commit 65a8d5b); random_0 -0.5 ran in parts 2 and 3 with identical results"
+ "note": "merged from four Kaggle runs at the same commit lineage (crashes fixed in a402b90, 6ec3de1): probe -0.5..+0.5 (log steering_qwen3b.log), probe +1.0 (part2.log), random controls at +-0.5 (part3.log), random controls at +-0.25 (part4.log, commit 420e80d); random_0 -0.5 ran in parts 2 and 3 with identical results"
 }
