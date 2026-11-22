@@ -14,7 +14,7 @@ All numbers are from `paper/main.tex` / `results/tables/`. About one minute per 
 | 8 | RQ2 + RQ3 result | Asked: Qwen 0.70, Llama says "partial" to everything. Agent: same caution in both versions (A* = -0.04 / -0.01); careful prompt does not help. Gap* = 0.22 / 0.40; the brief's K-A is ~0.5 even for a know-nothing model, hence the corrected gap. | Fig. 2, Fig. 3 `blindness_gap.png` | 2:00 |
 | 9 | Demo 1: blind | `cleanup-0`: same task, recycle bin on vs off. Qwen runs the identical 5 steps in both, permanently deleting in the irreversible one. | `results/demo_cleanup-0.md` | 1:30 |
 | 10 | Demo 2: backwards | `email-4`: Qwen asks the user and checks settings when the email *can* be recalled, and sends straight away when it cannot. | `results/demo_email-4.md` | 1:00 |
-| 11 | RQ4 steering (bonus) | Adding the probe direction removes caution in both versions (task success stays ~0.7); subtracting it adds caution but breaks the task. A* never beyond what random directions give. Steering moves caution, not its dependence on reversibility. | Fig. 4 `steering_qwen3b.png` | 1:30 |
+| 11 | RQ4 steering (bonus) | Adding the probe direction removes caution in both versions (task success stays ~0.7); subtracting it adds caution but breaks the task. A random direction of the same norm can also remove caution, but with parse failures and lower success. A* never beyond what random directions give. Steering moves caution, not its dependence on reversibility. | Fig. 4 `steering_qwen3b.png` | 1:30 |
 | 12 | Limitations + conclusion | Small simulated world; two models, not the named sizes; 6 templates. Takeaway: the knowledge is in the representation, the bottleneck is between representation and action. | | 1:00 |
 
 ## Demo plan

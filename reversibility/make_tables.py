@@ -151,7 +151,7 @@ def comparison(tag):
                       "success irr / rev", "parse failures"),
                   [(r["direction"], r["fraction"], f'{r["caution_rate_irr"]:.2f} / {r["over_caution_rate_rev"]:.2f}',
                     fmt(r["A_star"], None, r["A_star_ci95"]["pairs"]), f'{r["target_action_rate_irr_version"]:.2f}',
-                    f'{r["task_success_irr"]:.2f} / {r["task_success_rev"]:.2f}', r["parse_failures_total"]) for r in s["runs"]])
+                    f'{r["task_success_irr"]:.2f} / {r["task_success_rev"]:.2f}', r["parse_failures_total"]) for r in sorted(s["runs"], key=lambda r: (r["direction"], r["fraction"]))])
         pr = sorted([r for r in s["runs"] if r["direction"] == "probe_direction"], key=lambda r: r["fraction"])
         rd = [r for r in s["runs"] if r["direction"] != "probe_direction"]
         fig, axs = plt.subplots(1, 3, figsize=(11, 3.3))
