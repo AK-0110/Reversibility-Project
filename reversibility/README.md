@@ -38,7 +38,7 @@ The data is frozen (`data/*.jsonl`); do not regenerate it (the hand-label sheets
 | Hand-label kappa | `results/label_agreement.json` | `agreement.py` |
 | Verb×state BoW baseline (Table I) | `results/baseline_interaction.json` | `baseline_interaction.py data/sandbox.jsonl data/sandbox_extra.jsonl` (CPU) |
 
-## Design decisions worth stating in the report
+## Design decisions 
 - Labels are from the design plus BFS verification (sandbox) and bounded search (ScienceWorld). Sandbox: designed vs BFS agreement 100% at horizons 2-3, 88% at horizon 1 (edit with backup + history needs two undo steps).
 - Minimal pairs: 97% of sandbox rows (same action, only the relevant setting differs). The action-only lexical baseline is 0.5 on them by construction, but a state-only bag-of-words reaches 0.735 (trained and tested on minimal pairs only), so probes are also compared with state baselines, a pre-action hidden state, a permuted-setting control, leave-one-verb-out, and reworded test rows.
 - Splits are grouped by scenario (sandbox) or task (ScienceWorld); layer chosen on validation, never on test.
